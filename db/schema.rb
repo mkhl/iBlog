@@ -9,12 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090511160221) do
+ActiveRecord::Schema.define(:version => 20090511163322) do
 
   create_table "entries", :force => true do |t|
     t.string   "title"
-    t.string   "body"
-    t.string   "excerpt"
+    t.string   "body",       :limit => 24000
+    t.string   "excerpt",    :limit => 1000
     t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"

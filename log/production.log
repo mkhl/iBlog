@@ -1,0 +1,31 @@
+
+
+Processing EntriesController#index (for 88.130.121.87 at 2009-05-11 20:39:14) [GET]
+Rendering template within layouts/entries
+Rendering entries/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [https://internal.innoq.com/iblog]
+
+
+Processing EntriesController#new (for 88.130.121.87 at 2009-05-11 20:39:17) [GET]
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 8ms (View: 6, DB: 1) | 200 OK [https://internal.innoq.com/iblog/entries/new]
+
+
+Processing EntriesController#create (for 88.130.121.87 at 2009-05-11 20:39:37) [POST]
+  Parameters: {"commit"=>"Anlegen", "authenticity_token"=>"07be586a223f8cfeb78b4bcbbdbb7122cb179191", "entry"=>{"author"=>"st", "body"=>"", "title"=>"First post", "excerpt"=>"Der unlöschbare, allererste Post."}}
+Redirected to #<Entry:0x7ff2e85b4a18>
+Completed in 30ms (DB: 26) | 302 Found [https://internal.innoq.com/iblog/entries]
+
+
+Processing EntriesController#show (for 88.130.121.87 at 2009-05-11 20:39:38) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/entries
+Rendering entries/show
+Completed in 3ms (View: 1, DB: 0) | 200 OK [https://internal.innoq.com/iblog/entries/1]
+
+
+Processing EntriesController#index (for 88.130.121.87 at 2009-05-11 20:39:40) [GET]
+Rendering template within layouts/entries
+Rendering entries/index
+Completed in 8ms (View: 7, DB: 0) | 200 OK [https://internal.innoq.com/iblog/entries]
