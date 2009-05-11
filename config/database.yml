@@ -38,8 +38,8 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: git-blog_production
+  database: iblog
   pool: 5
-  username: root
-  password: 
-  socket: /tmp/mysql.sock
+  username: iblog
+  password: sushf2819s
+  socket: /var/run/mysqld/mysqld.sock

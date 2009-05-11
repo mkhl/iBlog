@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.xml
   def index
-    @entries = Entry.find(:all)
+    @entries = Entry.find(:all, :order => 'created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +27,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :action => 'edit'}
       format.xml  { render :xml => @entry }
     end
   end
@@ -48,7 +48,7 @@ class EntriesController < ApplicationController
         format.html { redirect_to(@entry) }
         format.xml  { render :xml => @entry, :status => :created, :location => @entry }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "edit" }
         format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
       end
     end
