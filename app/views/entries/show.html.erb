@@ -1,0 +1,23 @@
+<p>
+  <b>Title:</b>
+  <%=h @entry.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @entry.body %>
+</p>
+
+<p>
+  <b>Excerpt:</b>
+  <%=h @entry.excerpt %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%=h @entry.author %>
+</p>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

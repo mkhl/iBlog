@@ -1,0 +1,20 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: REST-Grundlagen
+  body: bflhfsdlk fdljkh ldfjfljhldfjkhldfsjk dfls
+  excerpt: REST ist sooo gut
+  author: st
+
+two:
+  title: Die neuen REST-Grundlagen
+  body: ljkslfjk hjlkfd ldkjldjkfh ldkjhdfs ljdhf sljdhldkhdsflkjdfldhldfhj dlfjkhl kjh ljdh l dfjhldfjkhdfl jhd 
+  excerpt: REST ist geil
+  author: st
+
+three:
+  title: Ganz wichtiger Blog-Beitrag (Wird bei Veröffentlichung großartig anerkannt)
+  body: ljkslfjk hjlkfd ldkjldjkfh ldkjhdfs ljdhf sljdhldkhdsflkjdfldhldfhj dlfjkhl kjh ljdh l dfjhldfjkhdfl jhd 
+  excerpt: Ich bin nicht okay, Du bist nicht okay, aber das ist schon okay.
+  author: pg
+
