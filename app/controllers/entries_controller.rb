@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.save
         flash[:notice] = 'Entry was successfully created.'
-        format.html { redirect_to(@entry) }
+        format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @entry, :status => :created, :location => @entry }
       else
         format.html { render :action => "edit" }
@@ -64,7 +64,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
         flash[:notice] = 'Entry was successfully updated.'
-        format.html { redirect_to(@entry) }
+        format.html { redirect_to :action => 'index' }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
