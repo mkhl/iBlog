@@ -1400,3 +1400,188 @@ Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 19:49:46) [GET]
 Rendering template within layouts/entries
 Rendering entries/new
 Completed in 14ms (View: 7, DB: 2) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:57:06) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.2ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 33ms (View: 27, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 19:57:11) [GET]
+  Parameters: {"id"=>"442820205"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (0.5ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 442820205) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/442820205/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:57:15) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.2ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 14ms (View: 7, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:57:36) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.2ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 19:57:38) [GET]
+  Parameters: {"id"=>"442820205"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (0.4ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 442820205) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/entries/442820205/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:57:46) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (3.8ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 69ms (View: 61, DB: 4) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:58:31) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 14ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 19:58:33) [GET]
+  Parameters: {"id"=>"953125641"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (1.1ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 953125641) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 7, DB: 3) | 200 OK [http://localhost/entries/953125641/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:58:38) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 14ms (View: 7, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 19:58:39) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 14ms (View: 7, DB: 3) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:58:41) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 13ms (View: 7, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:59:09) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 19:59:11) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 14ms (View: 7, DB: 3) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#create (for 127.0.0.1 at 2009-05-11 19:59:47) [POST]
+  Parameters: {"commit"=>"Anlegen", "authenticity_token"=>"fc9d9efc8f12de2a5ae050c5012bec7939afcada", "entry"=>{"body"=>"Was ist die Wahrheit?", "title"=>"Wichtige Informationen", "author"=>"pg", "excerpt"=>"Lügen haben kurze Beine."}}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (4.8ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mSQL (6.8ms)[0m   [0mBEGIN[0m
+  [4;36;1mEntry Create (0.2ms)[0m   [0;1mINSERT INTO `entries` (`updated_at`, `title`, `body`, `author`, `excerpt`, `created_at`) VALUES('2009-05-11 17:59:47', 'Wichtige Informationen', 'Was ist die Wahrheit?', 'pg', 'Lügen haben kurze Beine.', '2009-05-11 17:59:47')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+Redirected to #<Entry:0x2dee2a0>
+Completed in 20ms (DB: 12) | 302 Found [http://localhost/entries]
+
+
+Processing EntriesController#show (for 127.0.0.1 at 2009-05-11 19:59:47) [GET]
+  Parameters: {"id"=>"996332878"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332878) [0m
+Rendering template within layouts/entries
+Rendering entries/show
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/entries/996332878]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 19:59:49) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 19:59:59) [GET]
+  Parameters: {"id"=>"996332878"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332878) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 16ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/996332878/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:00:03) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 74ms (View: 67, DB: 3) | 200 OK [http://localhost/entries]

@@ -27,7 +27,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :action => 'edit'}
       format.xml  { render :xml => @entry }
     end
   end
@@ -48,7 +48,7 @@ class EntriesController < ApplicationController
         format.html { redirect_to(@entry) }
         format.xml  { render :xml => @entry, :status => :created, :location => @entry }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "edit" }
         format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
       end
     end
