@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.xml
   def index
-    @entries = Entry.find(:all)
+    @entries = Entry.find(:all, :order => 'created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
