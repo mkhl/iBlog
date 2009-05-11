@@ -29,3 +29,9 @@ Processing EntriesController#index (for 88.130.121.87 at 2009-05-11 20:39:40) [G
 Rendering template within layouts/entries
 Rendering entries/index
 Completed in 8ms (View: 7, DB: 0) | 200 OK [https://internal.innoq.com/iblog/entries]
+
+
+Processing EntriesController#index (for 88.130.121.87 at 2009-05-11 20:43:02) [GET]
+Rendering template within layouts/entries
+Rendering entries/index
+Completed in 3ms (View: 2, DB: 0) | 200 OK [https://internal.innoq.com/iblog/entries]
