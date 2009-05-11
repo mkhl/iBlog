@@ -14,7 +14,7 @@
 	<span class="date"><%= h entry.created_at %></span>
 	<span class="author"><%=h entry.author %></span>
 </p>
-<p class="edit_post"><%= link_to 'Edit', edit_entry_path(entry) %></p>
+<% if entry.author == @user %><p class="edit_post"><%= link_to 'Edit', edit_entry_path(entry) %></p><% end %>
 </div>
 <% end %>
 
