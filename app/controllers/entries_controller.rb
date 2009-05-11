@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_filter :set_user
+  
   # GET /entries
   # GET /entries.xml
   def index
@@ -24,7 +26,7 @@ class EntriesController < ApplicationController
   # GET /entries/new
   # GET /entries/new.xml
   def new
-    @entry = Entry.new
+    @entry = Entry.new(:author => @user)
 
     respond_to do |format|
       format.html { render :action => 'edit'}
@@ -41,7 +43,7 @@ class EntriesController < ApplicationController
   # POST /entries.xml
   def create
     @entry = Entry.new(params[:entry])
-
+    @entry.author = @user
     respond_to do |format|
       if @entry.save
         flash[:notice] = 'Entry was successfully created.'
@@ -81,5 +83,18 @@ class EntriesController < ApplicationController
       format.html { redirect_to(entries_url) }
       format.xml  { head :ok }
     end
+  end                  
+   
+  def home
+    redirect_to :action => 'user_home', :id => @user
+  end                                               
+  
+  def user_home
+    
+  end
+
+private
+  def set_user
+    @user = request.headers['REMOTE_USER'] || 'guest'
   end
 end
