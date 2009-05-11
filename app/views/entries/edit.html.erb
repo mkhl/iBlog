@@ -7,10 +7,12 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>
-  <p>
-    <%= f.label :excerpt %><br />
-    <%= f.text_area :excerpt %>
-  </p>
+  <div>
+    <%= f.label :excerpt %>
+	<%= link_to_function ',', 'show_excerpt()' %><br/>
+    <%= f.text_area :excerpt , :style => "display: #{ @entry.excerpt.nil? || @entry.excerpt.empty? ? 'none' : 'block'};" %>
+  </div>
+<div>
   <p>
     <%= f.label :body %><br />
     <%= f.text_area :body %>
@@ -22,9 +24,25 @@
   <p>
     <%= f.submit( @entry.id.nil? ? 'Anlegen' : "Ändern" ) %>
   </p>
+<div>
 <% end %>
 
 <% unless @entry.id.nil? %>
 <%= link_to 'Show', @entry %> |
 <% end %>
 <%= link_to 'Back', entries_path %>
+
+
+<script>
+
+function show_excerpt() {
+	
+	el = document.getElementById('entry_excerpt');
+	if ( el.style.display == 'block' ) {
+		el.style.display = 'none';
+	} else {
+		el.style.display = 'block';
+	}
+}
+
+</script>

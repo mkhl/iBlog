@@ -1585,3 +1585,873 @@ Rendering template within layouts/entries
 Rendering entries/index
   [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
 Completed in 74ms (View: 67, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#show (for 127.0.0.1 at 2009-05-11 20:04:11) [GET]
+  Parameters: {"id"=>"996332878"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (0.5ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332878) [0m
+Rendering template within layouts/entries
+Rendering entries/show
+Completed in 14ms (View: 6, DB: 3) | 200 OK [http://localhost/entries/996332878]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:04:14) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 32ms (View: 26, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:04:16) [GET]
+  Parameters: {"id"=>"442820205"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (0.4ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 442820205) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/442820205/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:04:21) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.2ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 14ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:06:52) [GET]
+  Parameters: {"id"=>"953125641"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (0.5ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 953125641) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/953125641/edit]
+
+
+Processing EntriesController#show (for 127.0.0.1 at 2009-05-11 20:07:08) [GET]
+  Parameters: {"id"=>"953125641"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+  [4;35;1mEntry Load (2.4ms)[0m   [0mSELECT * FROM `entries` WHERE (`entries`.`id` = 953125641) [0m
+Rendering template within layouts/entries
+Rendering entries/show
+Completed in 18ms (View: 6, DB: 7) | 200 OK [http://localhost/entries/953125641]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:07:11) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.4ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:07:13) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 14ms (View: 7, DB: 2) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:09:58) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:11:02) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 17ms (View: 9, DB: 2) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:11:04) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:11:35) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#create (for 127.0.0.1 at 2009-05-11 20:14:25) [POST]
+  Parameters: {"commit"=>"Anlegen", "authenticity_token"=>"fc9d9efc8f12de2a5ae050c5012bec7939afcada", "entry"=>{"body"=>"dg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\ndg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\ndg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\ndg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\n", "title"=>"Wie weit ist es gekommen?", "author"=>"pg", "excerpt"=>"khg khkhg k\r\ngs kgd\r\nj glkgjhlj "}}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mEntry Create (0.2ms)[0m   [0mINSERT INTO `entries` (`updated_at`, `title`, `body`, `author`, `excerpt`, `created_at`) VALUES('2009-05-11 18:14:25', 'Wie weit ist es gekommen?', 'dg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\ndg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\ndg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\ndg dsh ghdfgjh dgfsgh\r\nhg\r\nghdfljhg ldjk\r\nghdjlh dgöghj lgh\r\n\r\n', 'pg', 'khg khkhg k\r\ngs kgd\r\nj glkgjhlj ', '2009-05-11 18:14:25')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to #<Entry:0x2e2cd20>
+Completed in 10ms (DB: 3) | 302 Found [http://localhost/entries]
+
+
+Processing EntriesController#show (for 127.0.0.1 at 2009-05-11 20:14:25) [GET]
+  Parameters: {"id"=>"996332879"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.2ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332879) [0m
+Rendering template within layouts/entries
+Rendering entries/show
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/entries/996332879]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:14:27) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:15:32) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:15:35) [GET]
+  Parameters: {"id"=>"996332879"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.4ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332879) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 16ms (View: 9, DB: 3) | 200 OK [http://localhost/entries/996332879/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:15:43) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:15:45) [GET]
+  Parameters: {"id"=>"953125641"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 953125641) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/953125641/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:15:52) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#show (for 127.0.0.1 at 2009-05-11 20:15:55) [GET]
+  Parameters: {"id"=>"996332877"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332877) [0m
+Rendering template within layouts/entries
+Rendering entries/show
+Completed in 13ms (View: 5, DB: 3) | 200 OK [http://localhost/entries/996332877]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:15:58) [GET]
+  Parameters: {"id"=>"996332877"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.7ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332877) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/entries/996332877/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:16:02) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:17:07) [GET]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 9, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:17:08) [GET]
+  Parameters: {"id"=>"442820205"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.5ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 442820205) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+ERROR: compiling _run_erb_app47views47entries47edit46html46erb RAISED compile error
+/Users/ghadir/myProjects/ttt/iblog/app/views/entries/edit.html.erb:13: syntax error, unexpected ':'
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_area :excerpt , :style => "visibility: #{ @entry.excerpt.empty? ? : 'collapse' : 'visible'};" ).to_s); @output_buffer.concat "\n"
+                                                                                                                                ^
+/Users/ghadir/myProjects/ttt/iblog/app/views/entries/edit.html.erb:13: syntax error, unexpected ':', expecting '}'
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_area :excerpt , :style => "visibility: #{ @entry.excerpt.empty? ? : 'collapse' : 'visible'};" ).to_s); @output_buffer.concat "\n"
+                                                                                                                                             ^
+Function body:           def _run_erb_app47views47entries47edit46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1>Blogpost "; @output_buffer.concat(( @entry.id.nil? ? 'erstellen' : 'bearbeiten' ).to_s); @output_buffer.concat "</h1>\n"
+@output_buffer.concat "\n"
+ form_for(@entry) do |f| ; @output_buffer.concat "\n"
+@output_buffer.concat "  "; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.label :title ).to_s); @output_buffer.concat "<br />\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_field :title ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+@output_buffer.concat "  <div>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.label :excerpt ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\t"; @output_buffer.concat(( link_to_function ',', 'show_excerpt()' ).to_s); @output_buffer.concat "<br/>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_area :excerpt , :style => "visibility: #{ @entry.excerpt.empty? ? : 'collapse' : 'visible'};" ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </d>\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.label :body ).to_s); @output_buffer.concat "<br />\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_area :body ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.label :author ).to_s); @output_buffer.concat "<br />\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_field :author ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+@output_buffer.concat "  <p>\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.submit( @entry.id.nil? ? 'Anlegen' : "Ändern" ) ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "  </p>\n"
+ end ; @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+ unless @entry.id.nil? ; @output_buffer.concat "\n"
+@output_buffer.concat(( link_to 'Show', @entry ).to_s); @output_buffer.concat " |\n"
+ end ; @output_buffer.concat "\n"
+@output_buffer.concat(( link_to 'Back', entries_path ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<script>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "function show_excerpt() {\n"
+@output_buffer.concat "\t\n"
+@output_buffer.concat "\tel = document.getElementById('entry_excerpt');\n"
+@output_buffer.concat "\t\n"
+@output_buffer.concat "\tel.style.visibility = 'visible';\n"
+@output_buffer.concat "}\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "</script>"; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/ghadir/myProjects/ttt/iblog/app/views/entries/edit.html.erb:46:in `compile!'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:66:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:26:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:896:in `render_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:868:in `render_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1248:in `default_render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1254:in `perform_action_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/../lib/mongrel/rails.rb:76:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/../lib/mongrel/rails.rb:74:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:159:in `process_client'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:158:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:158:in `process_client'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `initialize'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `new'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `initialize'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `new'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:282:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:281:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:281:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/mongrel_rails:128:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/command.rb:212:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/mongrel_rails:281
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+
+ActionView::TemplateError (compile error
+/Users/ghadir/myProjects/ttt/iblog/app/views/entries/edit.html.erb:13: syntax error, unexpected ':'
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_area :excerpt , :style => "visibility: #{ @entry.excerpt.empty? ? : 'collapse' : 'visible'};" ).to_s); @output_buffer.concat "\n"
+                                                                                                                                ^
+/Users/ghadir/myProjects/ttt/iblog/app/views/entries/edit.html.erb:13: syntax error, unexpected ':', expecting '}'
+@output_buffer.concat "    "; @output_buffer.concat(( f.text_area :excerpt , :style => "visibility: #{ @entry.excerpt.empty? ? : 'collapse' : 'visible'};" ).to_s); @output_buffer.concat "\n"
+                                                                                                                                             ^) on line #13 of app/views/entries/edit.html.erb:
+10:   <div>
+11:     <%= f.label :excerpt %>
+12: 	<%= link_to_function ',', 'show_excerpt()' %><br/>
+13:     <%= f.text_area :excerpt , :style => "visibility: #{ @entry.excerpt.empty? ? : 'collapse' : 'visible'};" %>
+14:   </d>
+15:   <p>
+16:     <%= f.label :body %><br />
+
+    app/views/entries/edit.html.erb:46:in `compile!'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:66:in `compile'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:64:in `compile'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:26:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:896:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:868:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1248:in `default_render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1254:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/mongrel_rails:281
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (102.3ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (0.8ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:17:26) [GET]
+  Parameters: {"id"=>"442820205"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.5ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 442820205) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/442820205/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:17:30) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 12ms (View: 6, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:17:33) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) on line #13 of app/views/entries/edit.html.erb:
+10:   <div>
+11:     <%= f.label :excerpt %>
+12: 	<%= link_to_function ',', 'show_excerpt()' %><br/>
+13:     <%= f.text_area :excerpt , :style => "visibility: #{ @entry.excerpt.empty? ? 'collapse' : 'visible'};" %>
+14:   </d>
+15:   <p>
+16:     <%= f.label :body %><br />
+
+    app/views/entries/edit.html.erb:13
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/helpers/form_helper.rb:313:in `fields_for'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/helpers/form_helper.rb:253:in `form_for'
+    app/views/entries/edit.html.erb:3
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:367:in `_render_with_layout'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:254:in `render'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:905:in `render_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    app/controllers/entries_controller.rb:30:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:135:in `custom'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `call'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:164:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:158:in `respond'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/entries_controller.rb:29:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.3/bin/mongrel_rails:281
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/ghadir/.gem/ruby/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (109.5ms)
+Rendered /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (0.8ms)
+Rendering /usr/local/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:18:11) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.2ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 9, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:18:16) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#create (for 127.0.0.1 at 2009-05-11 20:18:28) [POST]
+  Parameters: {"commit"=>"Anlegen", "authenticity_token"=>"fc9d9efc8f12de2a5ae050c5012bec7939afcada", "entry"=>{"body"=>"fgdfgdfg", "title"=>"a", "author"=>"pg", "excerpt"=>"gfdgffd"}}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (3.9ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mEntry Create (0.2ms)[0m   [0mINSERT INTO `entries` (`updated_at`, `title`, `body`, `author`, `excerpt`, `created_at`) VALUES('2009-05-11 18:18:28', 'a', 'fgdfgdfg', 'pg', 'gfdgffd', '2009-05-11 18:18:28')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+Redirected to #<Entry:0x2f7c748>
+Completed in 15ms (DB: 5) | 302 Found [http://localhost/entries]
+
+
+Processing EntriesController#show (for 127.0.0.1 at 2009-05-11 20:18:28) [GET]
+  Parameters: {"id"=>"996332880"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.5ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332880) [0m
+Rendering template within layouts/entries
+Rendering entries/show
+Completed in 10ms (View: 4, DB: 2) | 200 OK [http://localhost/entries/996332880]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:18:31) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:18:49) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:18:51) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:18:56) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:19:13) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 16ms (View: 8, DB: 4) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:19:31) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 17ms (View: 8, DB: 4) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:20:03) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 16ms (View: 9, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:20:04) [GET]
+  Parameters: {"id"=>"953125641"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (1.1ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 953125641) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 16ms (View: 8, DB: 4) | 200 OK [http://localhost/entries/953125641/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:20:07) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.3ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 17ms (View: 9, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:20:11) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 7, DB: 3) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:21:20) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:21:29) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (4.8ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 18ms (View: 9, DB: 5) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:21:49) [GET]
+  Parameters: {"id"=>"996332878"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.5ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332878) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/996332878/edit]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:25:23) [GET]
+  Parameters: {"id"=>"996332878"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.9ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332878) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 16ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/996332878/edit]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:26:40) [GET]
+  Parameters: {"id"=>"996332878"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (0.6ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332878) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 16ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/996332878/edit]
+
+
+Processing EntriesController#edit (for 127.0.0.1 at 2009-05-11 20:27:08) [GET]
+  Parameters: {"id"=>"996332878"}
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+  [4;36;1mEntry Load (1.0ms)[0m   [0;1mSELECT * FROM `entries` WHERE (`entries`.`id` = 996332878) [0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 16ms (View: 8, DB: 4) | 200 OK [http://localhost/entries/996332878/edit]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:27:23) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Load (0.2ms)[0m   [0mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;36;1mEntry Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `entries`[0m
+Completed in 18ms (View: 9, DB: 4) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#new (for 127.0.0.1 at 2009-05-11 20:27:25) [GET]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mEntry Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Rendering template within layouts/entries
+Rendering entries/edit
+Completed in 15ms (View: 8, DB: 3) | 200 OK [http://localhost/entries/new]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:27:37) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (4.2ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 17ms (View: 9, DB: 5) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:27:56) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 17ms (View: 10, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:28:07) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.8ms)[0m   [0;1mSELECT * FROM `entries` [0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 18ms (View: 12, DB: 3) | 200 OK [http://localhost/entries]
+
+
+Processing EntriesController#index (for 127.0.0.1 at 2009-05-11 20:28:41) [GET]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mEntry Load (0.3ms)[0m   [0;1mSELECT * FROM `entries` ORDER BY created_at desc[0m
+Rendering template within layouts/entries
+Rendering entries/index
+  [4;35;1mEntry Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `entries`[0m
+Completed in 16ms (View: 9, DB: 3) | 200 OK [http://localhost/entries]

@@ -1,5 +1,9 @@
 <h1>Internes Blog</h1>
 
+<p><%= link_to 'New entry', new_entry_path %></p>
+
+<br />
+
 <% for entry in @entries %>
 <div class="blogpost">
 <h1><%=h entry.title %></h1>
@@ -14,6 +18,3 @@
 </div>
 <% end %>
 
-<br />
-
-<%= link_to 'New entry', new_entry_path %>
