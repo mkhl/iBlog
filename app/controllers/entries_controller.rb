@@ -8,6 +8,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.atom # index.html.erb
       format.xml  { render :xml => @entries }
     end
   end

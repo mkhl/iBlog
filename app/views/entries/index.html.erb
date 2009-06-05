@@ -1,3 +1,5 @@
+<%= auto_discovery_link_tag :atom, entries_path(:atom) %>
+
 <h1>Internes Blog</h1>
 
 <p><%= link_to 'New entry', new_entry_path %></p>
@@ -9,10 +11,12 @@
 <h1><%=h entry.title %></h1>
 <p class="permalink"><%= link_to 'Permalink', entry %></p>
 <div class="excerpt"><%=h entry.excerpt %></div>
-<div class="body"><%=h entry.body %></div>
+<div class="body"><%=textilize entry.body %></div>
 <p>
-	<span class="date"><%= h entry.created_at %></span>
-	<span class="author"><%=h entry.author %></span>
+	<span class="date"><%= l entry.created_at, :format => :short %></span> |
+	<span class="author"><%=h entry.author %></span> |
+	<span class="comments">Kommentare: <%#=h entry.comments_count %></span>
+	
 </p>
 <% if entry.author == @user %><p class="edit_post"><%= link_to 'Edit', edit_entry_path(entry) %></p><% end %>
 </div>
