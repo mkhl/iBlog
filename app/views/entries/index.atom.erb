@@ -20,7 +20,27 @@
 
     <updated><%= entry.updated_at %></updated>
 
-    <summary><%= textilize entry.body %></summary>
+    <summary>
+        <![CDATA[
+		<p>
+		Folgende Dinge habe ich gestern/heute erreicht:
+		</p>
+		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+		<p>
+		Ich plane heute zu tun:
+		</p>
+		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+
+		<% if !entry.problems.nil? && entry.problems.size > 0 %>
+		<p>
+		Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
+		</p>
+
+		<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
+		<% else %>
+		Aktuell habe ich alle Probleme im Griff.
+		<% end %>]]>
+	</summary>
     <author>
         <name><%= h entry.author %></name>
         <uri>https://internal.innoq.com/iblog/</uri>
@@ -29,7 +49,26 @@
     
     
     <content type="html" xml:lang="en" xml:base="https://internal.innoq.com/iblog/">
-        <![CDATA[<%= textilize entry.body %>]]>
+        <![CDATA[
+		<p>
+		Folgende Dinge habe ich gestern/heute erreicht:
+		</p>
+		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+		<p>
+		Ich plane heute zu tun:
+		</p>
+		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+
+		<% if !entry.problems.nil? && entry.problems.size > 0 %>
+		<p>
+		Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
+		</p>
+
+		<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
+		<% else %>
+		Aktuell habe ich alle Probleme im Griff.
+		<% end %>
+]]>
     </content>
 </entry>
 <% end %>

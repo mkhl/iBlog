@@ -1,6 +1,6 @@
 <%= auto_discovery_link_tag :atom, entries_path(:atom) %>
 
-<h1>Internes Blog</h1>
+<h1>Progress, Plans, Problems Blog</h1>
 
 <p><%= link_to 'New entry', new_entry_path %></p>
 
@@ -11,7 +11,26 @@
 <h1><%=h entry.title %></h1>
 <p class="permalink"><%= link_to 'Permalink', entry %></p>
 <div class="excerpt"><%=h entry.excerpt %></div>
-<div class="body"><%=textilize entry.body %></div>
+<div class="body">
+<p>
+Folgende Dinge habe ich gestern/heute erreicht:
+</p>
+<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+<p>
+Ich plane heute zu tun:
+</p>
+<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+
+<% if !entry.problems.nil? && entry.problems.size > 0 %>
+<p>
+Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
+</p>
+
+<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
+<% else %>
+Aktuell habe ich alle Probleme im Griff.
+<% end %>
+</div>
 <p>
 	<span class="date"><%= l entry.created_at, :format => :short %></span> |
 	<span class="author"><%=h entry.author %></span> |

@@ -27,7 +27,7 @@ class EntriesController < ApplicationController
   # GET /entries/new
   # GET /entries/new.xml
   def new
-    @entry = Entry.new(:author => @user)
+    @entry = Entry.new(:author => @user, :title => "#{h(@user).capitalize}s PPP am #{ Date.today}")
 
     respond_to do |format|
       format.html { render :action => 'edit'}

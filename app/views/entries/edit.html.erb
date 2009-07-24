@@ -1,4 +1,4 @@
-<h1>Blogpost <%= @entry.id.nil? ? 'erstellen' : 'bearbeiten' %></h1>
+<h1>PPP-Eintrag <%= @entry.id.nil? ? 'erstellen' : 'bearbeiten' %></h1>
 
 <% form_for(@entry) do |f| %>
   <%= f.error_messages %>
@@ -7,15 +7,18 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>
-  <div>
-    <%= f.label :excerpt %>
-	<%= link_to_function ',', 'show_excerpt()' %><br/>
-    <%= f.text_area :excerpt , :style => "display: #{ @entry.excerpt.nil? || @entry.excerpt.empty? ? 'none' : 'block'};" %>
-  </div>
 <div>
   <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    Folgende Dinge habe ich gestern/heute erreicht:<br />
+    <%= f.text_area :progress, :cols => 80 %>
+  </p>
+  <p>
+    Ich plane heute zu tun:<br />
+    <%= f.text_area :plans, :cols => 80 %>
+  </p>
+  <p>
+    Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.<br />
+    <%= f.text_area :problems, :cols => 80 %>
   </p>
   <p>
     Author: <%= @user %> (set from login)
@@ -30,18 +33,3 @@
 <%= link_to 'Show', @entry %> |
 <% end %>
 <%= link_to 'Back', entries_path %>
-
-
-<script>
-
-function show_excerpt() {
-	
-	el = document.getElementById('entry_excerpt');
-	if ( el.style.display == 'block' ) {
-		el.style.display = 'none';
-	} else {
-		el.style.display = 'block';
-	}
-}
-
-</script>
