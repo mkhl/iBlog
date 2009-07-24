@@ -6,29 +6,41 @@
 
 <br />
 
+<% previous_date = 'abc' %>
 <% for entry in @entries %>
+
+<% if entry.created_at.to_date != previous_date %>
+<% previous_date = entry.created_at.to_date %>
+
+<div class="day_separator">
+
+<h1><%= l entry.created_at.to_date %></h1>	
+</div>
+
+<% end %>
+
 <div class="blogpost">
 <h1><%=h entry.title %></h1>
 <p class="permalink"><%= link_to 'Permalink', entry %></p>
 <div class="excerpt"><%=h entry.excerpt %></div>
 <div class="body">
-<p>
+<h2>
 Folgende Dinge habe ich gestern/heute erreicht:
-</p>
+</h2>
 <div style="margin-left: 10px;"><%= textilize entry.progress %></div>
-<p>
+<h2>
 Ich plane heute zu tun:
-</p>
+</h2>
 <div style="margin-left: 10px;"><%= textilize entry.plans %></div>
 
 <% if !entry.problems.nil? && entry.problems.size > 0 %>
-<p>
+<h2>
 Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
-</p>
+</h2>
 
 <div style="margin-left: 10px;"><%= textilize entry.problems %></div>
 <% else %>
-Aktuell habe ich alle Probleme im Griff.
+<p><strong>Aktuell habe ich alle Probleme im Griff.</strong></p>
 <% end %>
 </div>
 <p>

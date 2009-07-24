@@ -9,9 +9,15 @@
 </head>
 <body>
 
+<div class="topLevelLogo">
+<%= image_tag 'logo.gif', :alt => 'innoQ Logo' %>
+</div>
+
+<div>
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield  %>
+</div>
 
 </body>
 </html>
