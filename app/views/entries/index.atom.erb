@@ -5,7 +5,7 @@
     <link rel="alternate" type="text/html" href="<%= entries_path %>" />
     <link rel="self" type="application/atom+xml" href="<%= entries_path( :atom ) %>" />
     <id>tag:internal.innoq.com/iblog,2009:/iblog//1</id>
-    <updated><%= @entries[0].updated_at unless @entries.empty? %></updated>
+    <updated><%= @entries[0].updated_at.to_formatted_s(:atom) unless @entries.empty? %></updated>
     <subtitle>yet another internal innoQ blog</subtitle>
 
     <generator uri="https://internal.innoq.com/iblog/">i-Blogs Custom ATOM Feed Generator 1.0</generator>
@@ -16,9 +16,9 @@
     <link rel="alternate" type="text/html" href="<%= entry_path( entry )%>" />
     <id>tag:internal.innoq.com/iblog,2009:/iblog//1.<%= entry.id %></id>
 
-    <published><%= entry.created_at %></published>
+    <published><%= entry.created_at.to_formatted_s(:atom) %></published>
 
-    <updated><%= entry.updated_at %></updated>
+    <updated><%= entry.updated_at.to_formatted_s(:atom) %></updated>
 
     <summary>
         <![CDATA[
