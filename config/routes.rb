@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :blogs
+
   map.resources :entries
   map.root :controller => 'entries'   
   map.with_options :controller => 'entries' do |entries|
