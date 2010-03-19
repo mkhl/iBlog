@@ -5,10 +5,12 @@ namespace :entries do
       print "Creating ..."
       (1..100).each do |count|             
         print "."; STDOUT.flush
+        author = %w(ua ca tee me ak)[rand(4)]
         c = Entry.create({
           :plans => "Große Pläne",
           :progress => "Großartig",
-          :problems => "Überhaupt keine"
+          :problems => "Überhaupt keine",
+          :author => author
         })
       end                     
       puts "done."

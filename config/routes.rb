@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'entries'   
   map.with_options :controller => 'entries' do |entries|
     entries.home '/home', :action => 'home'
-    entries.user_home '/home/:id', :action => 'user_home'
+    entries.user_home '/home/:author', :action => 'index'
   end
   map.with_options :controller => 'admin' do |admin|
     admin.index '/admin',     :action => 'index'

@@ -4,8 +4,13 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.xml
   def index
-    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
-
+    #todo why to the the next five lines have to be so ugly?
+    options = { :page => params[:page], :order => 'created_at DESC' }
+    author = params[:author]
+    if !author.nil? 
+      options.merge! :conditions => [ "author = ?",  author]
+    end
+    @entries = Entry.paginate(options)
     respond_to do |format|
       format.html # index.html.erb
       format.atom # index.html.erb
