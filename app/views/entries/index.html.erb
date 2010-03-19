@@ -45,7 +45,9 @@ Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
 </div>
 <p>
 	<span class="date"><%= l entry.created_at, :format => :short %></span> |
-	<span class="author"><%=h entry.author %></span> |
+	<span class="author">
+	  <%=link_to entry.author, user_home_path(:author => entry.author)  %>
+	</span> |
 	<span class="comments">Kommentare: <%#=h entry.comments_count %></span>
 	
 </p>
