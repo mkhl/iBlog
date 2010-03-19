@@ -11,6 +11,8 @@ script/generate scaffold blogs name:string author:string
 
 script/generate scaffold entries title:string body:string excerpt:string author:string
 
+script/generate resource blog name:string owner:string description:text
+
 
 == Welcome to Rails
 
