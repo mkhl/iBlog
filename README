@@ -1,3 +1,10 @@
+== 
+
+See innoQ-internal-Redmine:
+
+	https://internal.innoq.com/redmine/projects/iblog
+
+
 == Git-Blog
 
 script/generate scaffold blogs name:string author:string
