@@ -9,15 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090511163322) do
+ActiveRecord::Schema.define(:version => 20090728181745) do
 
   create_table "entries", :force => true do |t|
     t.string   "title"
-    t.text     "body",       :limit => 16777215
+    t.string   "body",       :limit => 24000
     t.string   "excerpt",    :limit => 1000
     t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "progress",   :limit => 2000
+    t.string   "plans",      :limit => 1000
+    t.string   "problems",   :limit => 1000
   end
 
 end
