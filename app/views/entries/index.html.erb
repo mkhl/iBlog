@@ -52,4 +52,5 @@ Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
 <% if entry.author == @user %><p class="edit_post"><%= link_to 'Edit', edit_entry_path(entry) %></p><% end %>
 </div>
 <% end %>
+<%= will_paginate @entries %>
 
