@@ -1,11 +1,11 @@
 class EntriesController < ApplicationController
-  before_filter :set_user, :set_blog
+  before_filter :set_user, :set_blog, :only => [ :index, :show, :create, :new, :edit, :update, :destroy ]
   
   # GET /entries
   # GET /entries.xml
   def index
-    @blog_id = params[:blog_id]
-    @entries = Entry.paginate :conditions => { :blog_id => @blog_id }, :page => params[:page], :order => 'created_at DESC'
+    @entries = Entry.paginate :conditions => { :blog_id => @blog.id }, :page => params[:page], :order => 'created_at DESC'
+    @auto_discovery_url = blog_entries_path(@blog.id, :atom)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -96,6 +96,14 @@ class EntriesController < ApplicationController
   end                                               
   
   def user_home
+    @entries = Entry.paginate :conditions => { :author => params[:author] }, :page => params[:page], :order => 'created_at DESC'
+    @auto_discovery_url = user_home_path(@user)
+
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.atom # index.html.erb
+      format.xml  { render :xml => @entries }
+    end
     
   end
   
