@@ -24,5 +24,5 @@
 </p>
 
 
-<% if @entry.author == @user %><%= link_to 'Edit', edit_entry_path(@entry) %> |<% end %>
-<%= link_to 'Back', entries_path %>
+<% if @entry.author == @user %><%= link_to 'Edit', edit_blog_entry_path(@blog, @entry) %> |<% end %>
+<%= link_to 'Back', blog_entries_path( @blog ) %>

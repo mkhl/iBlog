@@ -1,10 +1,11 @@
 class EntriesController < ApplicationController
-  before_filter :set_user
+  before_filter :set_user, :set_blog
   
   # GET /entries
   # GET /entries.xml
   def index
-    @entries = Entry.paginate :conditions => { :blog_id => params[:blog_id] }, :page => params[:page], :order => 'created_at DESC'
+    @blog_id = params[:blog_id]
+    @entries = Entry.paginate :conditions => { :blog_id => @blog_id }, :page => params[:page], :order => 'created_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +28,8 @@ class EntriesController < ApplicationController
   # GET /entries/new
   # GET /entries/new.xml
   def new
-    @entry = Entry.new(:author => @user, :title => "#{h(@user).capitalize}s PPP am #{ Date.today}")
+#    @blog = Blog.find( params[:blog_id] )
+    @entry = Entry.new(:author => @user, :blog_id => @blog.id, :title => "#{h(@user).capitalize}s PPP am #{ Date.today}")
 
     respond_to do |format|
       format.html { render :action => 'edit'}
@@ -43,8 +45,11 @@ class EntriesController < ApplicationController
   # POST /entries
   # POST /entries.xml
   def create
+#    @blog = Blog.find( params[:blog_id] )
+    
     @entry = Entry.new(params[:entry])
     @entry.author = @user
+    @entry.blog_id = @blog.id
     respond_to do |format|
       if @entry.save
         flash[:notice] = 'Entry was successfully created.'
@@ -93,5 +98,11 @@ class EntriesController < ApplicationController
   def user_home
     
   end
+  
+  private
+    def set_blog
+      @blog = Blog.find( params[:blog_id] )
+    end
+  
 
 end

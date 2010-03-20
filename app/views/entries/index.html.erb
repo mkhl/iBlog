@@ -1,8 +1,8 @@
-<%= auto_discovery_link_tag :atom, entries_path(:atom) %>
+<%= auto_discovery_link_tag :atom, blog_entries_path(@blog_id, :atom) %>
 
 <h1>Progress, Plans, Problems Blog</h1>
 
-<p><%= link_to 'New entry', new_entry_path %></p>
+<p><%= link_to 'New entry', new_blog_entry_path(@blog_id) %></p>
 
 <br />
 
@@ -21,7 +21,7 @@
 
 <div class="blogpost">
 <h1><%=h entry.title %></h1>
-<p class="permalink"><%= link_to 'Permalink', entry %></p>
+<p class="permalink"><%= link_to 'Permalink', blog_entry_path( @blog_id, entry ) %></p>
 <div class="excerpt"><%=h entry.excerpt %></div>
 <div class="body">
 <h2>
@@ -49,7 +49,7 @@ Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
 	<span class="comments">Kommentare: <%#=h entry.comments_count %></span>
 	
 </p>
-<% if entry.author == @user %><p class="edit_post"><%= link_to 'Edit', edit_entry_path(entry) %></p><% end %>
+<% if entry.author == @user %><p class="edit_post"><%= link_to 'Edit', edit_blog_entry_path(@blog_id, entry) %></p><% end %>
 </div>
 <% end %>
 <%= will_paginate @entries %>

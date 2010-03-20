@@ -1,6 +1,6 @@
 <h1>PPP-Eintrag <%= @entry.id.nil? ? 'erstellen' : 'bearbeiten' %></h1>
 
-<% form_for(@entry) do |f| %>
+<% form_for([@blog, @entry]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -30,6 +30,6 @@
 <% end %>
 
 <% unless @entry.id.nil? %>
-<%= link_to 'Show', @entry %> |
+<%= link_to 'Show', blog_entry_path( @blog, @entry ) %> |
 <% end %>
-<%= link_to 'Back', entries_path %>
+<%= link_to 'Back', blog_entries_path( @blog ) %>

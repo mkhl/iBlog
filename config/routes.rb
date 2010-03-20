@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
     blog.resources :entries
   end
 
-  map.resources :entries
+#  map.resources :entries
   map.root :controller => 'blogs'   
   map.with_options :controller => 'entries' do |entries|
     entries.home '/home', :action => 'home'
