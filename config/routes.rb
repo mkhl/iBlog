@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :blogs
+  map.resources :blogs do |blog|
+    blog.resources :entries
+  end
 
   map.resources :entries
-  map.root :controller => 'entries'   
+  map.root :controller => 'blogs'   
   map.with_options :controller => 'entries' do |entries|
     entries.home '/home', :action => 'home'
     entries.user_home '/home/:id', :action => 'user_home'

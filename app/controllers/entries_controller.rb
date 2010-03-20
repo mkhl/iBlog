@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.xml
   def index
-    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+    @entries = Entry.paginate :conditions => { :blog_id => params[:blog_id] }, :page => params[:page], :order => 'created_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -94,8 +94,4 @@ class EntriesController < ApplicationController
     
   end
 
-private
-  def set_user
-    @user = request.headers['REMOTE_USER'] || 'guest'
-  end
 end
