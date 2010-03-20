@@ -1,17 +1,30 @@
 # -*- coding: utf-8 -*-
+require 'pp'
+def random_author
+  %w(ua ca tee me ak)[rand(4)]
+end
+
+def random_tags
+  result = Set.new
+  rand(3).times do 
+    result.add(Tag.new(:name => %w(programming java architecture ruby rails)[rand(4)]))
+  end
+  result
+end
+
 namespace :entries do
   namespace :testdata do
     task :create => :delete do
       print "Creating ..."
       (1..100).each do |count|             
         print "."; STDOUT.flush
-        author = %w(ua ca tee me ak)[rand(4)]
         c = Entry.create({
           :plans => "Große Pläne",
           :progress => "Großartig",
           :problems => "Überhaupt keine",
-          :author => author
+          :author => random_author
         })
+        random_tags.each { |tag| c.tags << tag }
       end                     
       puts "done."
     end

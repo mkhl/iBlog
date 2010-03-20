@@ -21,6 +21,10 @@
     <%= f.text_area :problems, :cols => 80 %>
   </p>
   <p>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags_as_string, :size => 80 %>
+  </p>
+  <p>
     Author: <%= @user %> (set from login)
   </p>
   <p>

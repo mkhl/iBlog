@@ -4,8 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :entries
   map.root :controller => 'entries'   
   map.with_options :controller => 'entries' do |entries|
-    entries.home '/home', :action => 'home'
+    entries.tag '/tags/:tag', :action => 'index'
     entries.user_home '/home/:author', :action => 'index'
+    entries.home '/home', :action => 'home'
   end
   map.with_options :controller => 'admin' do |admin|
     admin.index '/admin',     :action => 'index'
