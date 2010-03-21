@@ -5,7 +5,7 @@
 <%= will_paginate @entries %>
 
 <% if @blog != nil %>
-<p><%= link_to 'New entry', new_blog_entry_path(@blog_id) %></p>
+<p><%= link_to 'New entry', new_blog_entry_path(@blog) %></p>
 <% end %>
 
 <br />
