@@ -9,6 +9,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.atom
       format.xml  { render :xml => @blogs }
     end
   end
