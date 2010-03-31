@@ -13,13 +13,11 @@ class Entry < ActiveRecord::Base
   has_many :tags
 
   def self.page(params)
+    
     options = { :page => params[:page], :order => 'created_at DESC', :include => :tags }
 
-    author = params[:author]
-    if !author.nil? 
-      options.merge! :conditions => [ "author = ?",  author]
-    end
-    
+    mergeCondition options, :blog_id, params[:blog_id]
+    mergeCondition options, :author, params[:author]
     
     # ST: das ist mir sehr peinlich, aber ich kann halt weder AR noch SQL
     ids = if params[:tag].nil? 
@@ -40,4 +38,11 @@ class Entry < ActiveRecord::Base
     self.tags = tags_as_string.split(' ').map { |t| Tag.new(:name => t) }
   end
 
+  private
+  def self.mergeCondition options, name, value
+    unless value.nil?
+      options[ :conditions ] ||= {}
+      options[ :conditions ][ name ] = value 
+    end
+  end
 end

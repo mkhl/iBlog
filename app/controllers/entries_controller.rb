@@ -4,9 +4,14 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.xml
   def index
-    @entries = Entry.paginate :conditions => { :blog_id => @blog.id }, :page => params[:page], :order => 'created_at DESC'
-    @auto_discovery_url = blog_entries_path(@blog.id, :atom)
-
+#    @entries = Entry.paginate :conditions => { :blog_id => @blog.id }, :page => params[:page], :order => 'created_at DESC'
+    @entries = Entry.page params
+    if @blog
+      @auto_discovery_url = blog_entries_path(@blog.id, :atom) 
+    elsif params[:tag]
+      @auto_discovery_url = tag_path( params[:tag] )
+    end
+      
     respond_to do |format|
       format.html # index.html.erb
       format.atom # index.html.erb
@@ -109,7 +114,8 @@ class EntriesController < ApplicationController
   
   private
     def set_blog
-      @blog = Blog.find( params[:blog_id] )
+      blog_id = params[:blog_id]
+      @blog = Blog.find( blog_id ) unless blog_id.nil?
     end
   
 
