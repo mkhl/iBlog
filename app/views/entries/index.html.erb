@@ -2,13 +2,15 @@
 
 <h1><%= h @blog.title unless @blog == nil %></h1>
 
-<p>
-<%= link_to 'Alle Blogs', blogs_path %>
+<ul>
+<li><%= link_to 'Alle Blogs', blogs_path %></li>
 <% unless @blog.nil? %>
-|
-<%= link_to "#{@blog.owner}'s Home", user_home_path( @blog.owner ) %>
+<li><%= link_to "#{@blog.owner}'s Home", user_home_path( @blog.owner ) %></li>
 <% end %>
-</p>
+<% if @blog.nil? || @blog.owner != @user %>
+<li><%= link_to "#{@user}'s Home", user_home_path( @user ) %></li>
+<% end %>
+</ul>
 
 <%= will_paginate @entries %>
 
