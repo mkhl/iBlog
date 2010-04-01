@@ -35,7 +35,7 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: iblog
+  database: iblog2
   pool: 5
   username: iblog
   password: sushf2819s
