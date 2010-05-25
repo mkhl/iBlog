@@ -5,16 +5,19 @@ one:
   body: bflhfsdlk fdljkh ldfjfljhldfjkhldfsjk dfls
   excerpt: REST ist sooo gut
   author: st
+  blog_id: 2
 
 two:
   title: Die neuen REST-Grundlagen
   body: ljkslfjk hjlkfd ldkjldjkfh ldkjhdfs ljdhf sljdhldkhdsflkjdfldhldfhj dlfjkhl kjh ljdh l dfjhldfjkhdfl jhd 
   excerpt: REST ist geil
   author: st
+  blog_id: 1
 
 three:
   title: Ganz wichtiger Blog-Beitrag (Wird bei Veröffentlichung großartig anerkannt)
   body: ljkslfjk hjlkfd ldkjldjkfh ldkjhdfs ljdhf sljdhldkhdsflkjdfldhldfhj dlfjkhl kjh ljdh l dfjhldfjkhdfl jhd 
   excerpt: Ich bin nicht okay, Du bist nicht okay, aber das ist schon okay.
   author: pg
+  blog_id: 2
 

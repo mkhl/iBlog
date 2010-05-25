@@ -6,8 +6,8 @@ ActionController::Routing::Routes.draw do |map|
 #  map.resources :entries
   map.root :controller => 'blogs'   
   map.with_options :controller => 'entries' do |entries|
-    entries.tag '/tags/:tag', :action => 'index'
-    entries.user_home '/home/:author', :action => 'user_home'
+    entries.tag '/tags/:tag.:format', :action => 'index'
+    entries.user_home '/home/:author.:format', :action => 'user_home'
     entries.home '/home', :action => 'home'
   end
   map.with_options :controller => 'admin' do |admin|

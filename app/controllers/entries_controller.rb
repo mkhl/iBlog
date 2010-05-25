@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
     if @blog
       @auto_discovery_url = blog_entries_path(@blog.id, :atom) 
     elsif params[:tag]
-      @auto_discovery_url = tag_path( params[:tag] )
+      @auto_discovery_url = tag_path( params[:tag], :atom )
     end
       
     respond_to do |format|
@@ -98,15 +98,17 @@ class EntriesController < ApplicationController
    
   def home
     redirect_to :action => 'user_home', :id => @user
-  end                                               
+  end
   
   def user_home
+    @author = params[:author]
     @entries = Entry.paginate :conditions => { :author => params[:author] }, :page => params[:page], :order => 'created_at DESC'
-    @auto_discovery_url = user_home_path(@user)
+    @auto_discovery_url = user_home_path(@author, :atom)
 
+    
     respond_to do |format|
       format.html { render :action => 'index' }
-      format.atom # index.html.erb
+      format.atom { render :action => 'index' }
       format.xml  { render :xml => @entries }
     end
     
@@ -117,6 +119,5 @@ class EntriesController < ApplicationController
       blog_id = params[:blog_id]
       @blog = Blog.find( blog_id ) unless blog_id.nil?
     end
-  
 
 end
