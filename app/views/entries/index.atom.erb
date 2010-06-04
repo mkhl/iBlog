@@ -11,7 +11,7 @@
     <generator uri="https://internal.innoq.com/iblog/">i-Blogs Custom ATOM Feed Generator 1.0</generator>
 
 <% @entries.each do |entry| %>
-<entry>
+    <entry>
     <title><%= h entry.title %></title>
     <link rel="alternate" type="text/html" href="<%= blog_entry_path( entry.blog_id, entry )%>" />
     <id>tag:internal.innoq.com/iblog,2009:/iblog//1.<%= entry.blog_id %>.<%= entry.id %></id>
@@ -46,8 +46,8 @@
         <uri>https://internal.innoq.com/iblog/</uri>
     </author>
 
-    
-    
+
+
     <content type="html" xml:lang="en" xml:base="https://internal.innoq.com/iblog/">
         <![CDATA[
 		<p>

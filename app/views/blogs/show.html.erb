@@ -14,5 +14,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+<%= link_to image_tag('edit.png') + ' Bearbeiten', edit_blog_path(@blog) %> |
+<%= link_to image_tag('show.png') + ' Einträge anzeigen', [@blog, :entries] %> |
+<%= link_to 'Zurück', blogs_path %>

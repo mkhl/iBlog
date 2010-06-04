@@ -1,7 +1,7 @@
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
 }
@@ -59,20 +59,22 @@ a:hover { color: #fff; background-color:#000; }
   margin-bottom: 20px;
 }
 
-.blogpost h1 {
-  font-size:   1.2em;	
-}
-
 .blogpost h2 {
-  font-size:   1.1em;	
+  font-size:   1.3em;
 }
 
 .blogpost h3 {
-  font-size:   1.0em;	
+  font-size:   1.1em;
+}
+
+.blogpost h4 {
+  font-size:   1.0em;
 }
 
 .blogpost .permalink {
-  margin-top: -10px;	
+  margin-top: -10px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: .8em;
 }
 
 .blogpost .excerpt {
@@ -84,12 +86,12 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 .day_separator {
-	color: white;
-	background-color: blue;
+  color: white;
 }
 
-.day_separator h1 {
-	color: white;
-	background-color: #676767;
-	padding: 10px;
+.day_separator h2 {
+  color: white;
+  background-color: #b0b0b0;
+  padding: 10px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
 }

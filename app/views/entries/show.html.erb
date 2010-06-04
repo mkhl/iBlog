@@ -29,5 +29,8 @@
 </p>
 
 
-<% if @entry.author == @user %><%= link_to 'Edit', edit_blog_entry_path(@blog, @entry) %> |<% end %>
-<%= link_to 'Back', blog_entries_path( @blog ) %>
+<% if @entry.author == @user %>
+  <%= link_to image_tag('edit.png') +' Edit', edit_blog_entry_path(@blog, @entry) %> |
+<% end %>
+
+<%= link_to 'Back', blog_entries_path(@blog) %>

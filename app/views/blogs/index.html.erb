@@ -1,26 +1,32 @@
 <%= auto_discovery_link_tag :atom, blogs_path(:atom) %>
 
-<h1>Listing blogs</h1>
+<h2>Blogs</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Owner</th>
-    <th>Description</th>
-  </tr>
-
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%=h blog.name %></td>
-    <td><%=h blog.owner %></td>
-    <td><%=h blog.description %></td>
-    <td><%= link_to 'Show', blog_entries_path(blog) %></td>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table id="index_table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Verantwortlicher</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= link_to h(blog.name), blog %></td>
+        <td><%=h blog.owner %></td>
+        <td><%=h blog.description %></td>
+        <td><%= link_to image_tag('show.png', :title => 'Show'), blog_entries_path(blog) %></td>
+        <td><%= link_to image_tag('edit.png', :title =>  'Edit'), edit_blog_path(blog) %></td>
+        <td><%= link_to image_tag('delete.png', :title => 'Destroy'), blog, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <%= link_to image_tag('add.png') + ' New blog', new_blog_path %>
+      </td>
+    </tr>
+  </tfoot>
 </table>
-
-<br />
-
-<%= link_to 'New blog', new_blog_path %>

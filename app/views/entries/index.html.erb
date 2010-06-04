@@ -1,73 +1,69 @@
 <%= auto_discovery_link_tag :atom, @auto_discovery_url %>
 
-<h1><%= h @blog.title unless @blog == nil %></h1>
+<h2><%= h @blog ? @blog.title : 'Kein Titel' %></h2>
 
-<ul>
-<li><%= link_to 'Alle Blogs', blogs_path %></li>
-<% unless @blog.nil? %>
-<li><%= link_to "#{@blog.owner}'s Home", user_home_path( @blog.owner ) %></li>
+<% content_for :sidebar do %>
+  <ul>
+    <li><%= link_to 'Alle Blogs', blogs_path %></li>
+    <% unless @blog.nil? %>
+      <li><%= link_to "#{@blog.owner}'s Home", user_home_path(@blog.owner) %></li>
+    <% end %>
+    <% if @blog.nil? || @blog.owner != @user  and @user %>
+      <li><%= link_to "#{@user}'s Home", user_home_path(@user) %></li>
+    <% end %>
+  </ul>
 <% end %>
-<% if @blog.nil? || @blog.owner != @user %>
-<li><%= link_to "#{@user}'s Home", user_home_path( @user ) %></li>
-<% end %>
-</ul>
 
 <%= will_paginate @entries %>
 
-<% if @blog != nil %>
-<p><%= link_to 'New entry', new_blog_entry_path(@blog) %></p>
+<% if @blog %>
+  <p><%= link_to image_tag('add.png') + ' New entry', new_blog_entry_path(@blog) %></p>
 <% end %>
 
 <br />
 
 <% previous_date = 'abc' %>
-<% for entry in @entries %>
+<% @entries.each do |entry| %>
+  <% if entry.created_at.to_date != previous_date %>
+    <% previous_date = entry.created_at.to_date %>
+    <div class="day_separator">
+      <h2><%= l entry.created_at.to_date %></h2>
+    </div>
+  <% end %>
 
-<% if entry.created_at.to_date != previous_date %>
-<% previous_date = entry.created_at.to_date %>
+  <div class="blogpost">
+    <h2><%=h entry.title %></h2>
+    <p class="permalink">[<%= link_to 'Permalink', blog_entry_path( entry.blog_id, entry ) %>]</p>
 
-<div class="day_separator">
+    <div class="excerpt"><%=h entry.excerpt %></div>
+      <div class="body">
 
-<h1><%= l entry.created_at.to_date %></h1>	
-</div>
+        <h3>Folgende Dinge habe ich gestern/heute erreicht:</h3>
+        <div style="margin-left: 10px;"><%= textilize entry.progress %></div>
 
+        <h3>Ich plane heute zu tun:</h3>
+        <div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+
+        <% if !entry.problems.nil? && entry.problems.size > 0 %>
+          <h3>Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.</h3>
+          <div style="margin-left: 10px;"><%= textilize entry.problems %></div>
+        <% else %>
+          <p><strong>Aktuell habe ich alle Probleme im Griff.</strong></p>
+        <% end %>
+      </div>
+      <p>
+        <span class="date"><%= l entry.created_at, :format => :short %></span> |
+        <span class="author"><%=link_to entry.author, user_home_path(:author => entry.author) %></span> |
+        <span class="tags">Tags: <%= tags(entry) %></span>
+        <span class="comments">Kommentare: <%#=h entry.comments_count %></span>
+      </p>
+    </div>
+
+    <% if entry.author == @user -%>
+      <p class="edit_post"><%= link_to image_tag('edit.png') + ' Edit', edit_blog_entry_path(entry.blog_id, entry) %></p>
+    <% end %>
+  </div>
 <% end %>
 
-<div class="blogpost">
-<h1><%=h entry.title %></h1>
-<p class="permalink"><%= link_to 'Permalink', blog_entry_path( entry.blog_id, entry ) %></p>
-<div class="excerpt"><%=h entry.excerpt %></div>
-<div class="body">
-<h2>
-Folgende Dinge habe ich gestern/heute erreicht:
-</h2>
-<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
-<h2>
-Ich plane heute zu tun:
-</h2>
-<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
-
-<% if !entry.problems.nil? && entry.problems.size > 0 %>
-<h2>
-Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
-</h2>
-
-<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
-<% else %>
-<p><strong>Aktuell habe ich alle Probleme im Griff.</strong></p>
-<% end %>
-</div>
-<p>
-	<span class="date"><%= l entry.created_at, :format => :short %></span> |
-	<span class="author">
-	  <%=link_to entry.author, user_home_path(:author => entry.author)  %>
-	</span> |
-	<span class="tags">Tags: <%= tags(entry) %></span>
-	<span class="comments">Kommentare: <%#=h entry.comments_count %></span>
-	
-</p>
-<% if entry.author == @user %><p class="edit_post"><%= link_to 'Edit', edit_blog_entry_path(entry.blog_id, entry) %></p><% end %>
-</div>
-<% end %>
 <%= will_paginate @entries %>
 
