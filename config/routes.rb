@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
     blog.resources :entries
   end
 
+  map.connect '/index-all', :controller => 'entries', :action => 'full'
 #  map.resources :entries
   map.root :controller => 'blogs'   
   map.with_options :controller => 'entries' do |entries|

@@ -19,6 +19,13 @@ class EntriesController < ApplicationController
     end
   end
 
+  def full
+    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+    respond_to do |format|
+      format.atom # index.html.erb
+    end
+  end
+
   # GET /entries/1
   # GET /entries/1.xml
   def show
