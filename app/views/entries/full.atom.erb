@@ -23,22 +23,24 @@
     <summary>
         <![CDATA[
 		<p>
-		Folgende Dinge habe ich gestern/heute erreicht:
+		<%= @titles[:progress] %>
 		</p>
 		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
 		<p>
-		Ich plane heute zu tun:
+		<%= @titles[:plans] %>
 		</p>
 		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
 
 		<% if !entry.problems.nil? && entry.problems.size > 0 %>
 		<p>
-		Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.
+		<%= @titles[:problems] %>
 		</p>
 
 		<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
 		<% else %>
-		Aktuell habe ich alle Probleme im Griff.
+		<p>
+		<%= @titles[:no_problems] %>
+		</p>
 		<% end %>]]>
 	</summary>
     <author>

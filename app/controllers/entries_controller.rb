@@ -1,5 +1,8 @@
+# -*- coding: utf-8 -*-
 class EntriesController < ApplicationController
   before_filter :set_user, :set_blog, :only => [ :index, :show, :create, :new, :edit, :update, :destroy ]
+
+  before_filter :set_titles
   
   # GET /entries
   # GET /entries.xml
@@ -11,7 +14,7 @@ class EntriesController < ApplicationController
     elsif params[:tag]
       @auto_discovery_url = tag_path( params[:tag], :atom )
     end
-      
+
     respond_to do |format|
       format.html # index.html.erb
       format.atom # index.html.erb
@@ -125,6 +128,16 @@ class EntriesController < ApplicationController
     def set_blog
       blog_id = params[:blog_id]
       @blog = Blog.find( blog_id ) unless blog_id.nil?
+    end
+
+  private
+    def set_titles
+      @titles = {
+        :progress => 'Folgendes habe ich gestern/heute erreicht:',
+        :plans => 'Ich plane heute/morgen zu tun:',
+        :problems => 'Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann:',
+        :no_problems => 'Aktuell habe ich alle Probleme im Griff.'
+      }
     end
 
 end

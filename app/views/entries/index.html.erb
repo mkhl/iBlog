@@ -37,17 +37,17 @@
 
     <div class="excerpt"><%=h entry.excerpt %></div>
     <div class="body">
-    <h3>Folgende Dinge habe ich gestern/heute erreicht:</h3>
+    <h3><%= @titles[:progress] %></h3>
     <div style="margin-left: 10px;"><%= textilize entry.progress %></div>
 
-      <h3>Ich plane heute zu tun:</h3>
+      <h3><%= @titles[:plans] %></h3>
       <div style="margin-left: 10px;"><%= textilize entry.plans %></div>
 
       <% if !entry.problems.nil? && entry.problems.size > 0 %>
-        <h3>Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann.</h3>
+        <h3><%= @titles[:problems] %></h3>
         <div style="margin-left: 10px;"><%= textilize entry.problems %></div>
       <% else %>
-        <p><strong>Aktuell habe ich alle Probleme im Griff.</strong></p>
+        <p><strong><%= @titles[:no_problems] %></strong></p>
       <% end %>
     </div>
     <p>
