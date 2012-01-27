@@ -40,8 +40,13 @@
     <h3><%= @titles[:progress] %></h3>
     <div class="blogtext"><%= textilize entry.progress %></div>
 
-      <h3><%= @titles[:plans] %></h3>
-      <div class="blogtext"><%= textilize entry.plans %></div>
+    
+      <% if !entry.plans.nil? && entry.plans.size > 0 %>
+        <h3><%= @titles[:plans] %></h3>
+        <div class="blogtext"><%= textilize entry.plans %></div>
+      <% else %>
+        <p><strong><%= @titles[:no_plans] %></strong></p>
+      <% end %>
 
       <% if !entry.problems.nil? && entry.problems.size > 0 %>
         <h3><%= @titles[:problems] %></h3>

@@ -26,16 +26,22 @@
 		<%= @titles[:progress] %>
 		</p>
 		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+
+                <% if !entry.problems.nil? && entry.problems.size > 0 %>
 		<p>
                 <%= @titles[:plans] %>
 		</p>
 		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+                <% else %>
+                <p>
+		<%= @titles[:no_plans] %>
+                </p>
+                <% end %>
 
 		<% if !entry.problems.nil? && entry.problems.size > 0 %>
 		<p>
 		<%= @titles[:problems] %>
 		</p>
-
 		<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
 		<% else %>
                 <p>
@@ -54,10 +60,18 @@
 		<b><%= @titles[:progress] %></b>
 		</p>
 		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+
+
+		<% if !entry.plans.nil? && entry.plans.size > 0 %>
 		<p>
 		<b><%= @titles[:plans] %></b>
 		</p>
 		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+		<% else %>
+		<p>
+		<b><%= @titles[:no_plans] %></b>
+		</p>
+		<% end %>
 
 		<% if !entry.problems.nil? && entry.problems.size > 0 %>
 		<p>

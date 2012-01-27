@@ -5,8 +5,13 @@
   <h2><%= @titles[:progress] %></h2>
   <div class="blogtext"><%=textilize @entry.progress %></div>
 
-  <h2><%= @titles[:plans] %></h2>
-  <div class="blogtext"><%=textilize @entry.plans %></div>
+
+  <% if !@entry.plans.nil? && @entry.plans.size > 0 %>
+    <h2><%= @titles[:plans] %></h2>
+    <div class="blogtext"><%=textilize @entry.plans %></div>
+  <% else %>
+    <p><strong><%= @titles[:no_plans] %></strong></p>
+  <% end %>
 
   <% if !@entry.problems.nil? && @entry.problems.size > 0 %>
     <h2><%= @titles[:problems] %></h2>

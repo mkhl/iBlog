@@ -26,10 +26,15 @@
 		<%= @titles[:progress] %>
 		</p>
 		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
-		<p>
-		<%= @titles[:plans] %>
-		</p>
-		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+
+                <% if !entry.plans.nil? && entry.plans.size > 0 %>
+                <p>
+                <%= @titles[:plans] %>
+                </p>
+                <div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+                <% else %>
+                <%= @titles[:no_plans] %>
+                <% end %>
 
 		<% if !entry.problems.nil? && entry.problems.size > 0 %>
 		<p>
