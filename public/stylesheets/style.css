@@ -1,0 +1,981 @@
+/**************************************************************************************************/
+/*  General Tags                                                                                  */
+/**************************************************************************************************/
+
+body {
+    background: #c0c0c0 url(images/background.gif) repeat-x;
+    padding: 0;
+    margin: 0;
+    color: black;
+    font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 62.5%; /* set font-size to approx. 10px */
+    text-align: center;
+    min-width: 900px;
+}
+
+a {
+    color: #18485E;
+    text-decoration:none;
+}
+
+a:visited {
+    color: #9AA6A9;
+}
+
+a:hover {
+    color: #B05726;
+    text-decoration: underline;
+}
+
+a.active {
+    color: #B05726;
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 0;
+    padding: 5px 5px 5px 5px;
+    text-align: right;
+    color: #436A7B;
+}
+
+h2 {
+    color: #B05726;
+    font-family: normal Georgia,Times,"Times New Roman",serif;
+    font-size: 1.5em; /* sets to approx. 18px inside the wrapper div */
+}
+
+input, textarea, select {
+    border: 1px solid #AAA;
+    background-color: #F3F3F3;
+    /*max-width: 100%;*/
+    /*  margin: 10px 0;*/
+}
+
+#timereportentry_projectreport_id {
+    margin: 3px 0;
+    /*  width: 100%;*/
+}
+
+textarea {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 1.1em;
+}
+
+input[type=text] {
+    /*width: 100px;*/ /* maybe too general at this position */
+}
+
+label {
+    font-weight: bold;
+}
+
+/**************************************************************************************************/
+/*  General Tags End                                                                              */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/*  General Classes                                                                               */
+/**************************************************************************************************/
+
+.action {
+  background: left center no-repeat;
+  padding-left: 22px;
+}
+
+.action.edit {
+  background-image: url('icons/edit.png');
+}
+
+.action.print-page {
+  background-image: url('icons/print-page.png');
+}
+
+.action.delete {
+  background-image: url('icons/delete.png');
+}
+
+.action.back {
+  background-image: url('icons/back.png');
+}
+
+.action.pdf {
+  background-image: url('icons/pdf.png');
+}
+
+.action.cancel-invoice {
+  background-image: url('icons/cancel-invoice.png');
+}
+
+.action.show {
+  background-image: url('icons/forward.png');
+}
+
+.action.remove {
+  background-image: url('icons/remove.png');
+}
+
+.action.add {
+  background-image: url('icons/add.png');
+}
+
+.hidden-without-js {
+  display: none;
+}
+
+.auto_complete {
+    background-color: #FFF;
+    border: 1px solid #000;
+}
+
+.auto_complete ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.auto_complete li {
+    margin: 2px;
+    padding: 2px;
+    border-bottom: 1px solid #AAA;
+}
+
+.auto_complete li.selected {
+    background-color: rgb(255,255,153);
+}
+
+.hover_tip {
+    font-size: 0.9em;
+    color: #888;
+    text-align: left;
+    visibility: hidden;
+}
+
+.month,.year {
+    color: #B05726;
+    font: 1.5em Georgia, Times, "Times New Roman", serif;
+    margin: 0 30px;
+}
+
+.monthnavi {
+    text-align: center;
+    color: #888;
+}
+
+.note {
+    background-color: #FFFAB3;
+    border: thin solid yellow;
+    /*  max-width: 95%; /*for safari to avoid horizontal resizing */
+    width: 95%;
+    /*  height: 300px;*/
+    padding: 5px;
+    font-size: 1.3em;
+    font-family: "Marker Felt", "Comic Sans MS", Chalkboard, cursive;  /* Georgia, Times, "Times New Roman", serif; */
+    overflow: auto; /* Moz: vertical & horizontal scrollbars / Safari: only vertical (long words get wrapped) */
+}
+
+.hourfield {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: #AAA;
+}
+
+.add_new_project {
+    font-size: 0.8em;
+    color: #888;
+    margin: 0;
+}
+
+.timereportentry {
+    /*  height: auto;*/
+    font-size: 1em;
+    text-align: left;
+}
+
+.ajax_flash_message_sidebar {
+    font-size: 0.8em;
+    color: #AAA;
+    margin-left:3px;
+}
+
+.subtitle_like_row {
+    font-size: 0.8em;
+    color: #AAA;
+}
+
+.centered {
+    text-align: center;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
+.left-aligned {
+    text-align: left;
+}
+
+p.flash_notice {
+    color: green;
+}
+
+.index_table {
+    /*  border: thin solid black;*/
+    border-spacing: 0;
+    width: 100%;
+}
+
+
+.index_table thead th {
+    border-bottom: 1px solid black;
+}
+
+.index_table tbody td {
+    padding: 3px 2px;
+    vertical-align: bottom;
+    border-bottom: 1px solid #DFDFDF;
+}
+
+.index_table tbody tr:hover {
+  background-color: #F1F1F1;
+}
+
+.index_table tbody td {
+  vertical-align: top;
+}
+
+.tabular-subnav {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+/*   max-width: 500px; */
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tabular-subnav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.tabular-subnav li {
+  display: inline;
+  padding: 0 4px;
+  font-size: 0.8em;
+}
+
+.validation_errors {
+  border: 2px solid #D41508;
+/*   background: #FF8B8B; */
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding: 0px 15px;
+  margin-bottom: 15px;
+}
+
+.validation_errors h3 {
+    color: #333;
+    font-family: normal Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+
+
+/**************************************************************************************************/
+/*  General Classes End                                                                           */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* IDs                                                                                            */
+/**************************************************************************************************/
+
+#company_name_for_projects {
+    /*  font-size: 0.9em;
+      color: #444;*/
+}
+
+.functional_link {
+    /*  font-size: 0.8em;*/
+    /*  color: #AAA;*/
+}
+
+.payed_invoice {
+    /*  background-color: #CFC;*/
+}
+
+.hidden_form {
+    /*  display: none;*/
+}
+
+.stopwatch-time {
+    font-size: 4em;
+    color: #666;
+    /*  margin: 0;*/
+}
+
+.bookings-done.not-yet-done,
+.bookings-done .not-yet-done {
+  color: red;
+}
+
+.bookings-done td.done {
+  color: green;
+}
+
+/**************************************************************************************************/
+/* IDs End                                                                                        */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Divs                                                                                           */
+/**************************************************************************************************/
+
+/*#floater {
+  width: 140px;
+  height: 140px;
+  border: 2px solid black;
+  background-color: #AAA;
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+}*/
+
+#new_client_div {
+    border: 3px double #AAA;
+    background-color: #F5F5F5;
+    padding: 5px;
+    margin-bottom: 15px;
+    width: 554px;
+}
+
+#client {
+    font-size: 0.9em;
+    border: 3px double #AAA;
+    padding: 5px;
+    width: 164px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background-color: #F5F5F5;
+}
+
+/*#client:hover {
+  background-color: #FFFFD9;
+}*/
+
+#client h3 {
+    margin: 0;
+}
+
+#client p.company_id {
+    color: #888;
+    margin-top: 0;
+}
+
+#wrapper {
+    background-color: white;
+/*     width: 900px; */
+    margin: 30px auto;
+    padding: 0pt 15px;
+    text-align: left;
+    font-size: 1.2em; /* should be approx. 12px, according to setting in body */
+    /*			border: thin solid red;*/
+}
+
+#header {
+    width: 100%;
+}
+
+#prog_info {
+    padding: 6px 15px 8px 0px;
+    font-size: 1.9em;
+}
+
+#progname {
+    float: right;
+    text-align: right;
+    width: 200px;
+    margin-right: 0px;
+    margin-top: -25px;
+}
+
+#username {
+    font-size: 0.9em;
+    width: 200px;
+    position: relative;
+    text-align: center;
+    margin-left: 200px;
+}
+
+#dashboard {
+    width: 200px;
+    margin: 0;
+    float: left;
+}
+
+#navigation {
+    background-color: #ADBABE;
+    padding: 6px 15px 8px 0px;
+    font-size: 0.9em;
+    min-height: 13px;
+}
+
+#navigation p {
+    text-align: right;
+    margin: 0;
+}
+
+#navigation ul {
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+#navigation li {
+  display: inline;
+}
+
+#navigation ul a {
+    color: white;
+    font-weight: bold;
+    padding: 6px 15px 8px 15px;
+    text-decoration: none;
+}
+
+#navigation ul a:hover {
+    background: #1B495E;
+}
+
+#main {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    /*  background-color: white;*/
+    /*  padding: 15px 0px 15px 15px;*/
+    /*  position: relative;*/
+    /*			border: thin solid red;*/
+}
+
+#content {
+    /*			background-color: white;*/
+    /*			border: thin solid red;*/
+    margin: 0 285px 0 0;
+    /*			width: 670px; */
+    /*			padding: 15px;*/
+    /*			margin: 10px;*/
+}
+
+#content .inner {
+    margin: 15px;
+}
+
+#content .overflow {
+    overflow:auto;
+}
+
+#sidebar {
+    width: 270px;
+    float: right;
+}
+
+#sidebar .inner {
+    border: 2px solid #DFDFDF;
+    padding: 0 10px 10px 10px;
+    margin-bottom: 15px;
+    background-color: #F0F0F0;
+}
+
+#sidebar .inner ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar .select_box_client {
+    width: 90%;
+}
+
+#sidebar .select_box_project {
+    width: 100%;
+}
+
+#sidebar .inner li {
+    border-top: 1px solid #DFDFDF;
+    padding: 3px;
+}
+
+#sidebar .inner .without_border {
+    border-top: 0px;
+    padding: 3px;
+}
+
+#sidebar input[type="submit"] {
+    border: 1px solid #AAA;
+    background-color: #DFDFDF;
+    margin: 10px 0;
+}
+
+#sidebar h3 {
+    margin: 10px 0 5px 0;
+    color: #B05726;
+}
+
+#sidebar .submit_stuff {
+    text-align: right;
+}
+
+#footer {
+    border-top: 1px solid #CCCCCC;
+    padding-bottom: 30px;
+    clear: right;
+}
+
+#footer p {
+    color: #888888;
+    font-size: 0.8em;
+    font-style: normal;
+    line-height: 16px;
+    margin: 0pt 0pt 0pt 15px;
+    padding: 5px 0pt 0pt;
+}
+
+#footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #666;
+}
+
+/**************************************************************************************************/
+/*  Divs End                                                                                      */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Time Reporting Calendar                                                                        */
+/**************************************************************************************************/
+
+table.timereport,
+table.calendar {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.timereport caption,
+table.calendar caption {
+    margin-bottom: 15px;
+    color: #DDD;  /* To make sure it's not really noticable in case no link was provided for the previous month */
+}
+
+table.timereport caption a,
+table.calendar caption a {
+    color: #18485E;
+    text-decoration:none;
+}
+
+table.timereport caption a:visited,
+table.calendar caption a:visited {
+    color: #9AA6A9;
+}
+
+table.timereport caption a:hover,
+table.calendar caption a:hover {
+    color:#B05726;
+    text-decoration:underline;
+}
+
+table.timereport th,
+table.calendar th {
+    text-align: center;
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+table.timereport th {
+  border-bottom: 1px solid black;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 7px;
+}
+
+table.calendar td {
+    width: 14.3%;
+    height: 90px;
+    /*  text-align: right;*/
+    vertical-align: top;
+    border: thin solid #E5E5E5;
+    /*  border-top: thin solid grey;*/
+    font-size: 0.9em;
+    padding: 0 3px 3px 3px;
+}
+
+table.timereport td {
+    vertical-align: top;
+    border-bottom: thin solid #E5E5E5;
+    font-size: 0.9em;
+    padding: 0 3px 3px 3px;
+}
+
+table.timereport td.date {
+  width: 100px;
+}
+
+table.calendar td p.date {
+    float: right;
+    margin: 0 0 3px 3px;
+}
+
+table.timereport td.date p {
+    float: right;
+    margin: 3px 3px 3px 3px;
+}
+
+table.timereport td .timereportentry,
+table.calendar td .timereportentry {
+    margin: 4px 2px;
+}
+
+table.calendar td.off_month p,
+table.timereport tr.off_month td {
+    color: #AAA;
+/*     float: right; */
+}
+
+table.timereport td a.add_link,
+table.calendar td a.add_link {
+    font-size: 1.1em;
+    text-align: center;
+    display: block;
+    margin: 0;
+    padding: 3px 0;
+}
+
+table.timereport td span.description,
+table.calendar td span.description {
+    font-weight: bold;
+}
+
+table.calendar td span.worked_hours {
+}
+
+table.timereport tr.weekend td,
+table.calendar td.weekend {
+  background-color: #f6f6f6;
+}
+
+table.timereport tr.today td,
+table.calendar td.today {
+    background-color: #E6ECF7;
+}
+
+table.timereport tr:hover td,
+table.calendar td:hover {
+    background-color: #F1F1F1;
+}
+
+table.timereport td:hover .hover_tip,
+table.calendar td:hover .hover_tip {
+  visibility: visible;
+  /*height: 75%;
+  width: 100%;
+  display: block;*/
+}
+
+table.calendar td input[type=text], table.calendar td select {
+  width: 80px;
+  font-size: 0.9em;
+}
+
+table.calendar td select {
+  margin: 3px 0;
+  width: 80px;
+}
+
+table.calendar td input[type=submit] {
+    font-size: 0.9em;
+}
+
+table.calendar td input.worked_hours_field,
+input.worked_hours_field {
+  width: 2.5em;
+}
+
+
+form.inplaceeditor-form { /* The form */
+  font-size: 12px;
+  display: inline;
+}
+
+form.inplaceeditor-form input[type='text'] { /* Input box */
+}
+
+form.inplaceeditor-form textarea { /* Textarea, if multiple rows */
+}
+
+form.inplaceeditor-form input[type='submit'] { /* The submit button */
+  margin-left: 1em;
+}
+
+form.inplaceeditor-form a { /* The cancel link */
+  margin-left: 1em;
+}
+
+.inplaceeditor-blank {
+  font-style: italic;
+  color: #ccc;
+  font-size: smaller;
+}
+
+.inplaceeditor-saving {
+  color: #ccc;
+}
+
+.mark-project-as-booked,
+.remove-project-from-list {
+  display: inline;
+}
+
+.mark-project-as-booked button,
+.remove-project-from-list button {
+  display: inline;
+  margin: 1px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/**************************************************************************************************/
+/* Time Reporting Calendar End                                                                    */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Invoice specific stuff                                                                         */
+/**************************************************************************************************/
+table.invoice_header_data {
+  padding: 5px;
+  margin:0;
+  width: 100%;
+  border: 1px solid #AAA;
+  background-color: #EEE;
+}
+
+textarea #invoice_contact_information {
+  text-align: right;
+}
+
+/* in show action */
+#invoice_nr {
+  /*  clear: both;*/
+  margin-top: 3.1cm;
+  margin-bottom: 1.7cm;
+}
+
+/* the field for entering the number*/
+#invoice_number,
+#invoice_cancellation_number {
+  width: 110px;
+}
+
+#invoice_invoice_no_text,
+#invoice_cancellation_invoice_no_text {
+  width: 220px;
+}
+
+div.client_info {
+  padding-top: 30px;
+  /*  padding-top: 30px;*/
+  /*  padding-top: 100px;
+    margin-bottom: 30px;*/
+}
+
+div.invoice_date_and_contact {
+  float: right;
+  font-size: 0.9em;
+  /*  margin-bottom: 20px;*/
+}
+
+div.invoice_date_and_contact p {
+  text-align: left;
+  margin-top: 0;
+}
+
+p.invoice_text {
+  /*  padding: 30px 0;*/
+  text-align: justify;
+  margin: 0;
+}
+
+table.invoice_items {
+  border-spacing: 0;
+  width: 100%;
+  margin: 25px 0;
+  border-collapse: collapse;
+}
+
+table.invoice_items th {
+  text-align: center;
+}
+
+table.invoice_items td {
+  padding: 0 3px;
+}
+
+table.invoice_items td, table.invoice_items th {
+  border: 1px solid black;
+  vertical-align: top;
+}
+
+table.invoice_items input[type=text] {
+  width: 40px;
+  max-width: 100%;
+}
+
+table.invoice_items textarea {
+  width: 100%;
+}
+
+table.invoice_items td.noborder {
+  border: 0;
+}
+.inner .select_box_project {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.inner input[type=submit] {
+  border: 1px solid #AAA;
+  background-color: #DFDFDF;
+  margin: 10px 0;
+}
+#inner_h2 {
+  color: #000;
+  font-family: normal Georgia, Times, 'Times New Roman', serif;
+}
+#content h4 {
+  margin: 20px 0 15px 0;
+  color: #B05726;
+}
+.inner .price_total {
+  text-align:right;
+  margin-right:3px;
+  margin-top:10px;
+}
+
+.new-comment-container {
+  border: 2px solid #DFDFDF;
+  padding: 0 10px 0 10px;
+  margin: 15px 0;
+  background-color: #F0F0F0;
+}
+
+.hidden-for-new-comment {
+  display: none;
+}
+
+#sidebar .inner label {
+  font-weight: normal;
+  font-size: 0.8em;
+}
+
+#sidebar .inner input[type=text],
+#sidebar .inner select {
+  width: 100%;
+}
+
+.create-new-invoice .forms-container h4 {
+  background-color: #ADBABE;
+  border: thin solid #ADBABE;
+  margin: 0;
+  padding: 2px 4px;
+  border-bottom: thin #A1ADB1 solid;
+  font-size: smaller;
+  color: #fff;
+}
+
+.create-new-invoice .forms-container h4:hover {
+  background-color: #1B495E;
+  color: #fff;
+}
+
+.create-new-invoice .forms-container form {
+  margin: 0;
+  padding: 5px;
+}
+
+.create-new-invoice .effect-wrapper {
+  margin: 0;
+  padding: 0px;
+  background-color: #F3F3F3;
+  border: thin solid #ADBABE;
+}
+
+#sidebar .inner input.date,
+input.date {
+  width: 8em;
+}
+
+input.comma-number {
+  text-align: right;
+  max-width: 10em;
+}
+
+.new_invoice textarea,
+.new_invoice_cancellation textarea {
+  width: 100%;
+}
+
+
+/**************************************************************************************************/
+/* Invoice specific stuff End                                                                     */
+/**************************************************************************************************/
+
+/**************************************************************************************************/
+/* Projectreport specific stuff                                                                   */
+/**************************************************************************************************/
+
+.subtitle {
+  font-size: 1em;
+  color: #AAA;
+}
+#projectreport_submitted {
+
+  color: #436A7B;
+}
+
+.search {
+  display: inline;
+}
+
+.payment_tm {
+
+  background-color: #FFBAD2;
+}
+
+.payment_festpreis {
+  background-color: #C8CFB4;
+}
+
+/**************************************************************************************************/
+/* Projectreport specific stuff End                                                               */
+/**************************************************************************************************/
+
+
+
+@media print {
+  textarea,
+  input,
+  select {
+    background: #fff;
+    color: #000;
+    border: none;
+    overflow: visible;
+  }
+
+}
