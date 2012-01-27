@@ -1,22 +1,19 @@
-<p>
-  <b>Title:</b>
+<h1>
   <%=h @entry.title %>
-</p>
+</h1>
 
-<p>
-  <b><%= @titles[:progress] %></b>
-  <%=textilize @entry.progress %>
-</p>
+  <h2><%= @titles[:progress] %></h2>
+  <div class="blogtext"><%=textilize @entry.progress %></div>
 
-<p>
-  <b><%= @titles[:plans] %></b>
-  <%=textilize @entry.plans %>
-</p>
+  <h2><%= @titles[:plans] %></h2>
+  <div class="blogtext"><%=textilize @entry.plans %></div>
 
-<p>
-  <b><%= @titles[:problems] %></b>
-  <%=textilize @entry.problems %>
-</p>
+  <% if !@entry.problems.nil? && @entry.problems.size > 0 %>
+    <h2><%= @titles[:problems] %></h2>
+    <div class="blogtext"><%= textilize @entry.problems %></div>
+  <% else %>
+    <p><strong><%= @titles[:no_problems] %></strong></p>
+  <% end %>
 
 <p>
   <b>Tags:</b>

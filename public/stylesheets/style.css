@@ -557,6 +557,10 @@ p.flash_notice {
     color: #666;
 }
 
+div.blogtext {
+    margin-left: 10px;
+}
+
 /**************************************************************************************************/
 /*  Divs End                                                                                      */
 /**************************************************************************************************/
@@ -862,10 +866,7 @@ table.invoice_items td.noborder {
   color: #000;
   font-family: normal Georgia, Times, 'Times New Roman', serif;
 }
-#content h4 {
-  margin: 20px 0 15px 0;
-  color: #B05726;
-}
+
 .inner .price_total {
   text-align:right;
   margin-right:3px;
@@ -983,3 +984,34 @@ input.comma-number {
   }
 
 }
+
+/* Correct what others upstream have broken */
+
+.blogtext h1, .blogtext h2, .blogtext h3,
+.blogtext h4, .blogtext h5, .blogtext h6 {
+    color: #436a7b;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.blogtext h1 {
+    font-size: 200%;
+}
+.blogtext h2 {
+    font-size: 174%;
+}
+.blogtext h3 {
+    font-size: 152%;
+}
+.blogtext h4 {
+    font-size: 132%;
+}
+.blogtext h5 {
+    font-size: 115%;
+}
+/*
+.blogtext h6 {
+}
+*/
+

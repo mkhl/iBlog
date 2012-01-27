@@ -38,14 +38,14 @@
     <div class="excerpt"><%=h entry.excerpt %></div>
     <div class="body">
     <h3><%= @titles[:progress] %></h3>
-    <div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+    <div class="blogtext"><%= textilize entry.progress %></div>
 
       <h3><%= @titles[:plans] %></h3>
-      <div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+      <div class="blogtext"><%= textilize entry.plans %></div>
 
       <% if !entry.problems.nil? && entry.problems.size > 0 %>
         <h3><%= @titles[:problems] %></h3>
-        <div style="margin-left: 10px;"><%= textilize entry.problems %></div>
+        <div class="blogtext"><%= textilize entry.problems %></div>
       <% else %>
         <p><strong><%= @titles[:no_problems] %></strong></p>
       <% end %>
