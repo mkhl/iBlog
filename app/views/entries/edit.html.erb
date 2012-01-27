@@ -1,5 +1,8 @@
 <h2>PPP-Eintrag <%= @entry.id.nil? ? 'erstellen' : 'bearbeiten' %></h2>
 
+<p><a href="https://internal.innoq.com/redmine/issues/3023">Irgendwann</a> auch Markdown,
+zur Zeit nur <a href="http://redcloth.org/textile/">Redcloth</a> Markup möglich.</p>
+
 <% form_for([@blog, @entry]) do |f| %>
   <%= f.error_messages %>
 
