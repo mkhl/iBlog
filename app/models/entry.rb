@@ -28,6 +28,10 @@ class Entry < ActiveRecord::Base
   #   Entry.paginate(ids, options)
   # end
 
+  def owned_by?(user)
+    author == user
+  end
+
   def tags_as_string
     tags.map{|t| t.name}.join ' '
   end

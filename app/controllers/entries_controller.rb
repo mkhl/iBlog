@@ -1,14 +1,10 @@
-# -*- coding: utf-8 -*-
+# encoding: UTF-8
+
 class EntriesController < ApplicationController
-  before_filter :set_user, :set_blog, :only => [ :index, :show, :create, :new, :edit, :update, :destroy ]
+  before_filter :set_user, :set_blog, :except => [ :home, :user_home ]
 
-  before_filter :set_titles
-
-  # GET /entries
-  # GET /entries.xml
   def index
-#    @entries = Entry.paginate :conditions => { :blog_id => @blog.id }, :page => params[:page], :order => 'created_at DESC'
-    @entries = Entry.page(params[:page])
+    @entries = Entry.where(:blog_id => @blog.id).order('id DESC').page(params[:page])
     if @blog
       @auto_discovery_url = blog_entries_path(@blog.id, :atom)
     elsif params[:tag]
@@ -29,8 +25,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # GET /entries/1
-  # GET /entries/1.xml
   def show
     @entry = Entry.find(params[:id])
 
@@ -40,8 +34,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # GET /entries/new
-  # GET /entries/new.xml
   def new
 #    @blog = Blog.find( params[:blog_id] )
     @entry = Entry.new(:author => @user, :blog_id => @blog.id, :title => "#{h(@user).capitalize}s PPP am #{ Date.today}")
@@ -52,13 +44,10 @@ class EntriesController < ApplicationController
     end
   end
 
-  # GET /entries/1/edit
   def edit
     @entry = Entry.find(params[:id])
   end
 
-  # POST /entries
-  # POST /entries.xml
   def create
 #    @blog = Blog.find( params[:blog_id] )
 
@@ -77,8 +66,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # PUT /entries/1
-  # PUT /entries/1.xml
   def update
     @entry = Entry.find(params[:id])
 
@@ -94,8 +81,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # DELETE /entries/1
-  # DELETE /entries/1.xml
   def destroy
     @entry = Entry.find(params[:id])
     @entry.destroy
@@ -125,19 +110,7 @@ class EntriesController < ApplicationController
 
   private
     def set_blog
-      blog_id = params[:blog_id]
-      @blog = Blog.find( blog_id ) unless blog_id.nil?
-    end
-
-  private
-    def set_titles
-      @titles = {
-        :progress => 'Folgendes habe ich gestern/heute erreicht:',
-        :plans => 'Ich plane heute/morgen zu tun:',
-        :no_plans => 'Aktuell habe ich keine Pläne mitzuteilen.',
-        :problems => 'Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann:',
-        :no_problems => 'Aktuell habe ich alle Probleme im Griff.'
-      }
+      @blog = Blog.find(params[:blog_id])
     end
 
 end

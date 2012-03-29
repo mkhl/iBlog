@@ -7,14 +7,15 @@ Iblog::Application.routes.draw do
 
   root :to => 'blogs#index'
 
-  # map.with_options :controller => 'entries' do |entries|
-  #   entries.tag '/tags/:tag.:format', :action => 'index'
-  #   entries.user_home '/home/:author.:format', :action => 'user_home'
-  #   entries.home '/home', :action => 'home'
-  # end
-  # map.with_options :controller => 'admin' do |admin|
-  #   admin.index '/admin',     :action => 'index'
-  #   admin.log   '/admin/log', :action => 'log'
-  #   admin.env   '/admin/env', :action => 'env'
-  # end
+  scope '/entries' do
+    get '/tags/:tag(.:format)' => 'entries#index', :as => 'tag'
+    get '/home/:author(.:format)' => 'entries#user_home', :as => 'user_home'
+    get '/home' => 'entries#home', :as => 'home'
+  end
+
+  scope '/admin' do
+    get '/' => 'admin#index'
+    get '/log' => 'admin#log'
+    get '/env' => 'admin#env'
+  end
 end

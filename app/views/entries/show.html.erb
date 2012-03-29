@@ -1,38 +1,35 @@
-<h1>
-  <%=h @entry.title %>
-</h1>
+<h1><%= @entry.title %></h1>
 
-  <h2><%= @titles[:progress] %></h2>
-  <div class="blogtext"><%=textilize @entry.progress %></div>
+  <h2><%= t('titles.progress') %></h2>
+  <div class="blogtext"><%= textilize(@entry.progress).html_safe %></div>
 
-
-  <% if !@entry.plans.nil? && @entry.plans.size > 0 %>
-    <h2><%= @titles[:plans] %></h2>
-    <div class="blogtext"><%=textilize @entry.plans %></div>
+  <% if @entry.plans.present? %>
+    <h2><%= t('titles.plans') %></h2>
+    <div class="blogtext"><%= textilize(@entry.plans).html_safe %></div>
   <% else %>
-    <p><strong><%= @titles[:no_plans] %></strong></p>
+    <p><strong><%= t('titles.no_plans') %></strong></p>
   <% end %>
 
-  <% if !@entry.problems.nil? && @entry.problems.size > 0 %>
-    <h2><%= @titles[:problems] %></h2>
-    <div class="blogtext"><%= textilize @entry.problems %></div>
+  <% if @entry.problems.present? %>
+    <h2><%= t('titles.problems') %></h2>
+    <div class="blogtext"><%= textilize(@entry.problems).html_safe %></div>
   <% else %>
-    <p><strong><%= @titles[:no_problems] %></strong></p>
+    <p><strong><%= t('titles.no_problems') %></strong></p>
   <% end %>
 
 <p>
   <b>Tags:</b>
-  <%=h @entry.tags_as_string %>
+  <%= tags(@entry) %>
 </p>
 
 <p>
-  <b>Author:</b>
-  <%=h @entry.author %>
+  <b>Autor:</b>
+  <%= @entry.author %>
 </p>
 
 
-<% if @entry.author == @user %>
+<% if @entry.owned_by?(@user) %>
   <%= link_to image_tag('edit.png') +' Edit', edit_blog_entry_path(@blog, @entry) %> |
 <% end %>
 
-<%= link_to 'Back', blog_entries_path(@blog) %>
+<%= link_to 'Zurück', blog_entries_path(@blog) %>
