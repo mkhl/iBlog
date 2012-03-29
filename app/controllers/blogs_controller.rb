@@ -1,9 +1,7 @@
 class BlogsController < ApplicationController
-  
+
   before_filter :set_user
-  
-  # GET /blogs
-  # GET /blogs.xml
+
   def index
     @blogs = Blog.all
 
@@ -14,8 +12,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  # GET /blogs/1
-  # GET /blogs/1.xml
   def show
     @blog = Blog.find(params[:id])
 
@@ -25,25 +21,20 @@ class BlogsController < ApplicationController
     end
   end
 
-  # GET /blogs/new
-  # GET /blogs/new.xml
   def new
     @blog = Blog.new
     @blog.owner = @user
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @blog }
     end
   end
 
-  # GET /blogs/1/edit
   def edit
     @blog = Blog.find(params[:id])
   end
 
-  # POST /blogs
-  # POST /blogs.xml
   def create
     @blog = Blog.new(params[:blog])
     @blog.owner = @user
@@ -60,8 +51,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  # PUT /blogs/1
-  # PUT /blogs/1.xml
   def update
     @blog = Blog.find(params[:id])
 
@@ -77,8 +66,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  # DELETE /blogs/1
-  # DELETE /blogs/1.xml
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy

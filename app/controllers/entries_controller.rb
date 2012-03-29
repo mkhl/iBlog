@@ -3,14 +3,14 @@ class EntriesController < ApplicationController
   before_filter :set_user, :set_blog, :only => [ :index, :show, :create, :new, :edit, :update, :destroy ]
 
   before_filter :set_titles
-  
+
   # GET /entries
   # GET /entries.xml
   def index
 #    @entries = Entry.paginate :conditions => { :blog_id => @blog.id }, :page => params[:page], :order => 'created_at DESC'
-    @entries = Entry.page params
+    @entries = Entry.page(params[:page])
     if @blog
-      @auto_discovery_url = blog_entries_path(@blog.id, :atom) 
+      @auto_discovery_url = blog_entries_path(@blog.id, :atom)
     elsif params[:tag]
       @auto_discovery_url = tag_path( params[:tag], :atom )
     end
@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
   end
 
   def full
-    @entries = Entry.paginate :page => params[:page], :order => 'created_at DESC'
+    @entries = Entry.page(params[:page]).order('created_at DESC')
     respond_to do |format|
       format.atom # index.html.erb
     end
@@ -61,7 +61,7 @@ class EntriesController < ApplicationController
   # POST /entries.xml
   def create
 #    @blog = Blog.find( params[:blog_id] )
-    
+
     @entry = Entry.new(params[:entry])
     @entry.author = @user
     @entry.blog_id = @blog.id
@@ -104,26 +104,25 @@ class EntriesController < ApplicationController
       format.html { redirect_to(entries_url) }
       format.xml  { head :ok }
     end
-  end                  
-   
+  end
+
   def home
     redirect_to :action => 'user_home', :id => @user
   end
-  
+
   def user_home
     @author = params[:author]
-    @entries = Entry.paginate :conditions => { :author => params[:author] }, :page => params[:page], :order => 'created_at DESC'
+    @entries = Entry.page(params[:page]).where(:author => params[:author]).order('created_at DESC')
     @auto_discovery_url = user_home_path(@author, :atom)
 
-    
     respond_to do |format|
       format.html { render :action => 'index' }
       format.atom { render :action => 'index' }
       format.xml  { render :xml => @entries }
     end
-    
+
   end
-  
+
   private
     def set_blog
       blog_id = params[:blog_id]

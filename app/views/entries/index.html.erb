@@ -14,7 +14,7 @@
   </ul>
 <% end %>
 
-<%= will_paginate @entries %>
+<%= paginate @entries %>
 
 <% if @blog %>
   <p><%= link_to image_tag('add.png') + ' New entry', new_blog_entry_path(@blog) %></p>
@@ -40,7 +40,7 @@
     <h3><%= @titles[:progress] %></h3>
     <div class="blogtext"><%= textilize entry.progress %></div>
 
-    
+
       <% if !entry.plans.nil? && entry.plans.size > 0 %>
         <h3><%= @titles[:plans] %></h3>
         <div class="blogtext"><%= textilize entry.plans %></div>
@@ -68,5 +68,5 @@
   </div>
 <% end %>
 
-<%= will_paginate @entries %>
+<%= paginate @entries %>
 

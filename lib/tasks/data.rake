@@ -6,7 +6,7 @@ end
 
 def random_tags
   result = Set.new
-  rand(3).times do 
+  rand(3).times do
     result.add(Tag.new(:name => %w(programming java architecture ruby rails)[rand(4)]))
   end
   result
@@ -16,7 +16,7 @@ namespace :entries do
   namespace :testdata do
     task :create => :delete do
       print "Creating ..."
-      (1..100).each do |count|             
+      (1..100).each do |count|
         print "."; STDOUT.flush
         c = Entry.create({
           :plans => "Große Pläne",
@@ -25,7 +25,7 @@ namespace :entries do
           :author => random_author
         })
         random_tags.each { |tag| c.tags << tag }
-      end                     
+      end
       puts "done."
     end
     task :delete => :environment do
