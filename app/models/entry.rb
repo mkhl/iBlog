@@ -21,7 +21,7 @@ class Entry < ActiveRecord::Base
   end
 
   def tags_as_string=(tags_as_string)
-    Tag.delete_all(["entry_id = ?", id])
-    self.tags = tags_as_string.split(' ').map { |t| Tag.find_or_create_by_name(t) }
+    tags.destroy_all
+    self.tags = tags_as_string.split(' ').map { |t| Tag.new(:name => t) }
   end
 end
