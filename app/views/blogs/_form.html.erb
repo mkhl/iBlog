@@ -1,0 +1,10 @@
+<%= simple_form_for(blog) do |f| %>
+  <%= f.input :name, :input_html => { :class => "span5" } %>
+  <%= f.input :title, :input_html => { :class => "span5" } %>
+  <%= f.input :owner, :input_html => { :class => "span2" } %>
+  <%= f.input :description, :as => :text, :input_html => { :class => "span5", :rows => 3 } %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary" %>
+  </div>
+<% end %>

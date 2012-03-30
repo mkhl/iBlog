@@ -1,35 +1,3 @@
-<h1><%= @entry.title %></h1>
-
-  <h2><%= t('titles.progress') %></h2>
-  <div class="blogtext"><%= textilize(@entry.progress).html_safe %></div>
-
-  <% if @entry.plans.present? %>
-    <h2><%= t('titles.plans') %></h2>
-    <div class="blogtext"><%= textilize(@entry.plans).html_safe %></div>
-  <% else %>
-    <p><strong><%= t('titles.no_plans') %></strong></p>
-  <% end %>
-
-  <% if @entry.problems.present? %>
-    <h2><%= t('titles.problems') %></h2>
-    <div class="blogtext"><%= textilize(@entry.problems).html_safe %></div>
-  <% else %>
-    <p><strong><%= t('titles.no_problems') %></strong></p>
-  <% end %>
-
-<p>
-  <b>Tags:</b>
-  <%= tags(@entry) %>
-</p>
-
-<p>
-  <b>Autor:</b>
-  <%= @entry.author %>
-</p>
-
-
-<% if @entry.owned_by?(@user) %>
-  <%= link_to image_tag('edit.png') +' Edit', edit_blog_entry_path(@blog, @entry) %> |
-<% end %>
+<%= render @entry %>
 
 <%= link_to 'Zurück', blog_entries_path(@blog) %>

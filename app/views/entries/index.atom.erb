@@ -1,88 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>i-Blog</title>
-    <link rel="alternate" type="text/html" href="<%= blog_entries_path( @blog_id ) %>" />
+    <title>PPP - Einträge</title>
+    <% if @blog %><link rel="alternate" type="text/html" href="<%= blog_entries_path(@blog) %>" /><% end %>
     <link rel="self" type="application/atom+xml" href="<%= blog_entries_path( :atom ) %>" />
     <id>tag:internal.innoq.com/iblog,2009:/iblog//1</id>
-    <updated><%= @entries[0].updated_at.to_formatted_s(:atom) unless @entries.empty? %></updated>
+    <updated><%= l @entries.first.updated_at, :format => :atom if @entries.any? %></updated>
     <subtitle>yet another internal innoQ blog</subtitle>
 
     <generator uri="https://internal.innoq.com/iblog/">i-Blogs Custom ATOM Feed Generator 1.0</generator>
 
 <% @entries.each do |entry| %>
     <entry>
-    <title><%= h entry.title %></title>
-    <link rel="alternate" type="text/html" href="<%= blog_entry_path( entry.blog_id, entry )%>" />
+    <title><%= entry.title %></title>
+    <link rel="alternate" type="text/html" href="<%= blog_entry_path(entry.blog_id, entry)%>" />
     <id>tag:internal.innoq.com/iblog,2009:/iblog//1.<%= entry.blog_id %>.<%= entry.id %></id>
 
-    <published><%= entry.created_at.to_formatted_s(:atom) %></published>
+    <published><%= l entry.created_at, :format => :atom %></published>
 
-    <updated><%= entry.updated_at.to_formatted_s(:atom) %></updated>
+    <updated><%= l entry.updated_at, :format => :atom %></updated>
 
     <summary>
         <![CDATA[
-		<p>
-		<%= @titles[:progress] %>
-		</p>
-		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+    <p>
+    <%= t('titles.progress') %>
+    </p>
+    <div style="margin-left: 10px;"><%= textilize(entry.progress).html_safe %></div>
 
-                <% if !entry.problems.nil? && entry.problems.size > 0 %>
-		<p>
-                <%= @titles[:plans] %>
-		</p>
-		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
+                <% if entry.plans.present? %>
+    <p>
+                <%= t('titles.plans') %>
+    </p>
+    <div style="margin-left: 10px;"><%= textilize(entry.plans).html_safe %></div>
                 <% else %>
                 <p>
-		<%= @titles[:no_plans] %>
+    <%= t('titles.no_plans') %>
                 </p>
                 <% end %>
 
-		<% if !entry.problems.nil? && entry.problems.size > 0 %>
-		<p>
-		<%= @titles[:problems] %>
-		</p>
-		<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
-		<% else %>
+    <% if entry.problems.present? %>
+    <p>
+    <%= t('titles.problems') %>
+    </p>
+    <div style="margin-left: 10px;"><%= textilize(entry.problems).html_safe %></div>
+    <% else %>
                 <p>
-		<%= @titles[:no_problems] %>
+    <%= t('titles.no_problems') %>
                 </p>
-		<% end %>]]>
-	</summary>
+    <% end %>]]>
+  </summary>
     <author>
-        <name><%= h entry.author %></name>
+        <name><%= entry.author %></name>
         <uri>https://internal.innoq.com/iblog/</uri>
     </author>
 
     <content type="html" xml:lang="en" xml:base="https://internal.innoq.com/iblog/">
         <![CDATA[
-		<p>
-		<b><%= @titles[:progress] %></b>
-		</p>
-		<div style="margin-left: 10px;"><%= textilize entry.progress %></div>
+    <p>
+    <b><%= t('titles.progress') %></b>
+    </p>
+    <div style="margin-left: 10px;"><%= textilize(entry.progress).html_safe %></div>
 
 
-		<% if !entry.plans.nil? && entry.plans.size > 0 %>
-		<p>
-		<b><%= @titles[:plans] %></b>
-		</p>
-		<div style="margin-left: 10px;"><%= textilize entry.plans %></div>
-		<% else %>
-		<p>
-		<b><%= @titles[:no_plans] %></b>
-		</p>
-		<% end %>
+    <% if entry.plans.present? %>
+    <p>
+    <b><%= t('titles.plans') %></b>
+    </p>
+    <div style="margin-left: 10px;"><%= textilize(entry.plans).html_safe %></div>
+    <% else %>
+    <p>
+    <b><%= t('titles.no_plans') %></b>
+    </p>
+    <% end %>
 
-		<% if !entry.problems.nil? && entry.problems.size > 0 %>
-		<p>
-		<b><%= @titles[:problems] %></b>
-		</p>
-		<div style="margin-left: 10px;"><%= textilize entry.problems %></div>
-		<% else %>
-		<p>
-		<b><%= @titles[:no_problems] %></b>
-		</p>
-		<% end %>
+    <% if entry.problems.present? %>
+    <p>
+    <b><%= t('titles.problems') %></b>
+    </p>
+    <div style="margin-left: 10px;"><%= textilize(entry.problems).html_safe %></div>
+    <% else %>
+    <p>
+    <b><%= t('titles.no_problems') %></b>
+    </p>
+    <% end %>
 ]]>
     </content>
 </entry>

@@ -1,7 +1,11 @@
 de:
+  time:
+    formats:
+      atom: "%Y-%m-%dT%H:%M:%SZ"
+
   titles:
-    progress: "Folgendes habe ich gestern/heute erreicht:"
-    plans: "Ich plane heute/morgen zu tun:"
-    no_plans: "Aktuell habe ich keine Pläne mitzuteilen."
-    problems: "Ich habe folgende Probleme, die ich ohne Hilfe nicht lösen kann:"
-    no_problems: "Aktuell habe ich alle Probleme im Griff."
+    progress: "Erreicht"
+    plans: "Geplant"
+    no_plans: "Nichts geplant"
+    problems: "Probleme"
+    no_problems: "Keine Probleme"

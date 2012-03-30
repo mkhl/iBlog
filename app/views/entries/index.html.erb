@@ -1,69 +1,15 @@
-<%= auto_discovery_link_tag :atom, @auto_discovery_url %>
-
-<h2><%= raw @blog ? @blog.title : 'Kein Titel' %></h2>
-
-<% content_for :sidebar do %>
-  <ul>
-    <li><%= link_to 'Alle Blogs', blogs_path %></li>
-    <% unless @blog.nil? %>
-      <li><%= link_to "#{@blog.owner}'s Home", user_home_path(@blog.owner) %></li>
+<h1>
+  <%= @blog && @blog.title.present? ? @blog.title : 'Alle Einträge' %><br>
+  <small>
+    <% if @blog %>
+      <%= @blog.name %> von <%= @blog.owner %>
+    <% else %>
+      für alle Blogs <% if params[:author] %>von <%= params[:author] %><% end %>
     <% end %>
-    <% if @blog.nil? || @blog.owner != @user  and @user %>
-      <li><%= link_to "#{@user}'s Home", user_home_path(@user) %></li>
-    <% end %>
-  </ul>
-<% end %>
+  </small>
+</h1>
 
-<%= paginate @entries %>
-
-<% if @blog %>
-  <p><%= link_to image_tag('add.png') + ' New entry', new_blog_entry_path(@blog) %></p>
-<% end %>
-
-<br />
-
-<% previous_date = 'abc' %>
-<% @entries.each do |entry| %>
-  <% if entry.created_at.to_date != previous_date %>
-    <% previous_date = entry.created_at.to_date %>
-    <div class="day_separator">
-      <h2><%= l entry.created_at.to_date %></h2>
-    </div>
-  <% end %>
-
-  <div class="blogpost">
-    <h2><%=h entry.title %></h2>
-    <p class="permalink">[<%= link_to 'Permalink', blog_entry_path( entry.blog_id, entry ) %>]</p>
-
-    <!-- <div class="excerpt"><%= entry.excerpt %></div> -->
-    <div class="body">
-      <h3><%= t('titles.progress') %></h3>
-      <div class="blogtext"><%= textilize(entry.progress).html_safe %></div>
-        <% if entry.plans.present? %>
-          <h3><%= t('titles.plans') %></h3>
-          <div class="blogtext"><%= textilize(entry.plans).html_safe %></div>
-        <% else %>
-          <p><strong><%= t('titles.no_plans') %></strong></p>
-        <% end %>
-
-        <% if entry.problems.present? %>
-          <h3><%= t('titles.problems') %></h3>
-          <div class="blogtext"><%= textilize(entry.problems).html_safe %></div>
-        <% else %>
-          <p><strong><%= t('titles.no_problems') %></strong></p>
-        <% end %>
-    </div>
-    <p>
-      <span class="date"><%= l entry.created_at, :format => :short %></span> |
-      <span class="author"><%=link_to entry.author, user_home_path(:author => entry.author) %></span> |
-      <span class="tags">Tags: <%= tags(entry) %></span>
-    </p>
-
-    <% if entry.author == @user -%>
-      <p class="edit_post"><%= link_to image_tag('edit.png') + ' Edit', edit_blog_entry_path(entry.blog_id, entry) %></p>
-    <% end %>
-  </div>
-<% end %>
+<%= render @entries %>
 
 <%= paginate @entries %>
 

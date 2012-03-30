@@ -3,7 +3,11 @@ class BlogsController < ApplicationController
   before_filter :set_user
 
   def index
-    @blogs = Blog.all
+    @blogs = if params[:owner]
+      Blog.where(:owner => params[:owner])
+    else
+      Blog.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,10 +45,11 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        flash[:notice] = 'Blog was successfully created.'
-        format.html { redirect_to(@blog) }
+        flash[:success] = 'Der Blog wurde gespeichert.'
+        format.html { redirect_to blog_entries_path(@blog) }
         format.xml  { render :xml => @blog, :status => :created, :location => @blog }
       else
+        flash[:error] = 'Der Blog konnte nicht gespeichert werden.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @blog.errors, :status => :unprocessable_entity }
       end
@@ -56,10 +61,11 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
-        flash[:notice] = 'Blog was successfully updated.'
-        format.html { redirect_to(@blog) }
+        flash[:success] = 'Der Blog wurde gespeichert.'
+        format.html { redirect_to blog_entries_path(@blog) }
         format.xml  { head :ok }
       else
+        flash[:error] = 'Der Blog konnte nicht gespeichert werden.'
         format.html { render :action => "edit" }
         format.xml  { render :xml => @blog.errors, :status => :unprocessable_entity }
       end

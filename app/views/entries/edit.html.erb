@@ -1,42 +1,18 @@
-<h2>PPP-Eintrag <%= @entry.id.nil? ? 'erstellen' : 'bearbeiten' %></h2>
+<h2><%= @blog.name %></h2>
 
-<p><a href="https://internal.innoq.com/redmine/issues/3023">Irgendwann</a> auch Markdown,
-zur Zeit nur <a href="http://redcloth.org/textile/">Redcloth</a> Markup möglich.</p>
+<%= simple_form_for([@blog, @entry], :html => { :class => 'form-horizontal'}) do |f| %>
+  <legend>PPP-Eintrag <%= @entry.new_record? ? 'erstellen' : 'bearbeiten' %></legend>
+  <%= f.input :title, :input_html => { :class => "span5" } %>
 
-<% form_for([@blog, @entry]) do |f| %>
-  <%= f.error_messages %>
+  <%= f.input :progress, :label => t('titles.progress'), :as => :text, :input_html => { :rows => 6, :class => "span5" }, :hint => "Markdown" %>
+  <%= f.input :plans, :label => t('titles.plans'), :as => :text, :input_html => { :rows => 6, :class => "span5" }, :hint => "Markdown" %>
+  <%= f.input :problems, :label => t('titles.problems'), :as => :text, :input_html => { :rows => 6, :class => "span5" }, :hint => "Markdown" %>
 
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <div>
-    <p>
-      <%= f.label :progress, @titles[:progress] %><br />
-      <%= f.text_area :progress, :cols => 80 %>
-    </p>
-    <p>
-      <%= f.label :plans, @titles[:plans] %><br />
-      <%= f.text_area :plans, :cols => 80 %>
-    </p>
-    <p>
-      <%= f.label :problems, @titles[:problems] %><br />
-      <%= f.text_area :problems, :cols => 80 %>
-    </p>
-    <p>
-      <%= f.label :tags %><br />
-      <%= f.text_field :tags_as_string, :size => 80 %>
-    </p>
-    <p>
-      Author: <%= @user %> (set from login)
-    </p>
-    <p>
-      <%= f.submit( @entry.id.nil? ? 'Anlegen' : "Ändern" ) %>
-    </p>
-  <div>
+  <%= f.input :tags_as_string, :label => "Tags", :input_html => { :class => "span5" } %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to 'Löschen', blog_entry_path([@blog, @entry]), :method => :delete, :class => "btn btn-danger" unless @entry.new_record? %>
+  </div>
+
 <% end %>
-
-<% unless @entry.id.nil? %>
-<%= link_to 'Show', blog_entry_path( @blog, @entry ) %> |
-<% end %>
-<%= link_to 'Back', blog_entries_path( @blog ) %>

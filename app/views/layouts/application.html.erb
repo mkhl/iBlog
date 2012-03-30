@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Iblog</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <%= csrf_meta_tag %>
+  <title>PPP</title>
+  <%= auto_discovery_link_tag :atom, blogs_path(:atom), :title => "Blogs" %>
+  <%= auto_discovery_link_tag :atom, blog_entries_path(@blog, :atom), :title => "Einträge für Blog #{@blog.name}" if @blog %>
+  <%= auto_discovery_link_tag :atom, tag_path(@tag.name, :atom), :title => "Einträge für Tag #{@tag.name}" if @tag %>
+  <%= auto_discovery_link_tag :atom, entries_path(:atom), :title => "Alle Einträge" %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= link_to "PPP", root_path, :class => 'brand' %>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Blogs", blogs_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="span10">
+      <% flash.each do |type, msg| %>
+        <%= notification(type, msg) %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <div class="span2">
+      <div class="well" style="padding:10px 0px 10px 0px;">
+        <ul class="nav nav-list">
+          <% if @blog && !@blog.new_record? %>
+          <li class="nav-header"><%= @blog.name %></li>
+          <li><%= link_to "<i class=icon-edit></i> Neuer Eintrag".html_safe, new_blog_entry_path(@blog) %></li>
+          <% else %>
+          <li><%= link_to "<i class=icon-edit></i> Neuer Blog".html_safe, new_blog_path %></li>
+          <% end %>
+          <%= nav_side_items(@nav_side_items) %>
+          <li class="nav-header">Hilfe</li>
+          <li><a href="http://www.reactionface.info/sites/default/files/images/1287666826226.png"><i class="icon-question-sign"></i> Fehler melden</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'application' %>
 </body>
 </html>

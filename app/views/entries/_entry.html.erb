@@ -1,0 +1,35 @@
+<article class="post">
+  <h2>
+    <%= link_to entry.title, blog_entry_path(entry.blog_id, entry) %>
+    <% #if entry.owned_by?(@user) %>
+      <span class="pull-right">
+        <%= link_to glyph(:edit), edit_blog_entry_path(entry.blog_id, entry), :class => "btn" %>
+        <%= link_to glyph(:delete, true), edit_blog_entry_path(entry.blog_id, entry), :class => "btn btn-danger" %>
+      </span>
+    <% #end %>
+  </h2>
+
+  <h3><%= t('titles.progress') %></h3>
+  <%= format_entry_section(entry.progress) %>
+
+  <% if entry.plans.present? %>
+    <h3><%= t('titles.plans') %></h3>
+    <%= format_entry_section(entry.plans) %>
+  <% else %>
+    <h3><%= t('titles.no_plans') %><h3>
+  <% end %>
+
+  <% if entry.problems.present? %>
+    <h3><%= t('titles.problems') %></h3>
+    <%= format_entry_section(entry.problems) %>
+  <% else %>
+    <h3><%= t('titles.no_problems') %></h3>
+  <% end %>
+  <ul class="breadcrumb entry-meta">
+    <li><%= l entry.created_at, :format => :short %></li>
+    <li class="divider-vertical"></li>
+    <li><%=link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
+    <li class="divider-vertical"></li>
+    <li>Tags: <%= tags(entry) %></li>
+  </ul>
+</article>
