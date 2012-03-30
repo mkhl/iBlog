@@ -1,12 +1,12 @@
 <article class="post">
   <h2>
-    <%= link_to entry.title, blog_entry_path(entry.blog_id, entry) %>
-    <% #if entry.owned_by?(@user) %>
+    <%= link_to entry.title, blog_entry_path(entry.blog, entry) %>
+    <% if entry.owned_by?(@user) %>
       <span class="pull-right">
-        <%= link_to glyph(:edit), edit_blog_entry_path(entry.blog_id, entry), :class => "btn" %>
-        <%= link_to glyph(:delete, true), edit_blog_entry_path(entry.blog_id, entry), :class => "btn btn-danger" %>
+        <%= link_to glyph(:edit), edit_blog_entry_path(entry.blog, entry), :class => "btn" %>
+        <%= link_to glyph(:delete, true), [entry.blog, entry], :method => :delete, :class => "btn btn-danger" %>
       </span>
-    <% #end %>
+    <% end %>
   </h2>
 
   <h3><%= t('titles.progress') %></h3>
@@ -28,7 +28,9 @@
   <ul class="breadcrumb entry-meta">
     <li><%= l entry.created_at, :format => :short %></li>
     <li class="divider-vertical"></li>
-    <li><%=link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
+    <li><%= link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
+    <li class="divider-vertical"></li>
+    <li>Blog: <%= link_to entry.blog.name, blog_entries_path(entry.blog) %></li>
     <li class="divider-vertical"></li>
     <li>Tags: <%= tags(entry) %></li>
   </ul>

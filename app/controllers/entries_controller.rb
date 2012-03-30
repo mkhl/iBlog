@@ -77,7 +77,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.save
         flash[:success] = 'Der Eintrag wurde gespeichert.'
-        format.html { redirect_to :action => 'index' }
+        format.html { redirect_to blog_entry_url(@blog, @entry) }
         format.xml  { render :xml => @entry, :status => :created, :location => @entry }
       else
         flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
@@ -93,7 +93,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
         flash[:success] = 'Der Eintrag wurde gespeichert.'
-        format.html { redirect_to :action => 'index' }
+        format.html { redirect_to blog_entry_url(@blog, @entry) }
         format.xml  { head :ok }
       else
         flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
@@ -106,9 +106,10 @@ class EntriesController < ApplicationController
   def destroy
     @entry = Entry.find(params[:id])
     @entry.destroy
+    flash[:notice] = 'Der Eintrag wurde gelöscht.'
 
     respond_to do |format|
-      format.html { redirect_to(entries_url) }
+      format.html { redirect_to blog_entries_url(@entry.blog) }
       format.xml  { head :ok }
     end
   end
