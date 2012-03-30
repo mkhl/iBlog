@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class BlogsController < ApplicationController
 
   before_filter :set_user
@@ -75,6 +77,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy
+    flash[:notice] = 'Der Blog wurde gelöscht.'
 
     respond_to do |format|
       format.html { redirect_to(blogs_url) }
