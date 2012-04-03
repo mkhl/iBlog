@@ -13,6 +13,15 @@ def random_tags
 end
 
 namespace :entries do
+  namespace :convert do
+    desc "Converts Textile content to HTML and caches it in the appropriate *_html columns."
+    task :html => :environment do
+      Entry.find_each do |entry|
+        entry.regenerate_html
+        entry.save!
+      end
+    end
+  end
   namespace :testdata do
     task :create => :delete do
       print "Creating ..."

@@ -56,5 +56,7 @@ module Iblog
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.redcarpet_options = { :hard_wrap => true, :autolink => true, :fenced_code => true, :gh_blockcode => true }
   end
 end

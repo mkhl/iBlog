@@ -2,7 +2,7 @@ module EntriesHelper
 
   def format_entry_section(section)
     content_tag :div, :class => "post-section" do
-      auto_link(textilize(section).html_safe)
+      section.html_safe
     end
   end
 

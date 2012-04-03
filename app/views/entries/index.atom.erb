@@ -25,13 +25,13 @@
     <p>
     <%= t('titles.progress') %>
     </p>
-    <div style="margin-left: 10px;"><%= textilize(entry.progress).html_safe %></div>
+    <div style="margin-left: 10px;"><%= raw entry.progress_html %></div>
 
                 <% if entry.plans.present? %>
     <p>
                 <%= t('titles.plans') %>
     </p>
-    <div style="margin-left: 10px;"><%= textilize(entry.plans).html_safe %></div>
+    <div style="margin-left: 10px;"><%= raw entry.plans_html %></div>
                 <% else %>
                 <p>
     <%= t('titles.no_plans') %>
@@ -42,7 +42,7 @@
     <p>
     <%= t('titles.problems') %>
     </p>
-    <div style="margin-left: 10px;"><%= textilize(entry.problems).html_safe %></div>
+    <div style="margin-left: 10px;"><%= raw entry.problems_html %></div>
     <% else %>
                 <p>
     <%= t('titles.no_problems') %>
@@ -59,14 +59,14 @@
     <p>
     <b><%= t('titles.progress') %></b>
     </p>
-    <div style="margin-left: 10px;"><%= textilize(entry.progress).html_safe %></div>
+    <div style="margin-left: 10px;"><%= raw entry.progress_html %></div>
 
 
     <% if entry.plans.present? %>
     <p>
     <b><%= t('titles.plans') %></b>
     </p>
-    <div style="margin-left: 10px;"><%= textilize(entry.plans).html_safe %></div>
+    <div style="margin-left: 10px;"><%= raw entry.plans_html %></div>
     <% else %>
     <p>
     <b><%= t('titles.no_plans') %></b>
@@ -77,7 +77,7 @@
     <p>
     <b><%= t('titles.problems') %></b>
     </p>
-    <div style="margin-left: 10px;"><%= textilize(entry.problems).html_safe %></div>
+    <div style="margin-left: 10px;"><%= raw entry.problems_html %></div>
     <% else %>
     <p>
     <b><%= t('titles.no_problems') %></b>

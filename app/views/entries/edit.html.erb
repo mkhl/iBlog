@@ -4,9 +4,9 @@
   <legend>PPP-Eintrag <%= @entry.new_record? ? 'erstellen' : 'bearbeiten' %></legend>
   <%= f.input :title, :input_html => { :class => "span5" } %>
 
-  <%= f.input :progress, :label => t('titles.progress'), :as => :text, :input_html => { :rows => 6, :class => "span5" }, :hint => "Textile" %>
-  <%= f.input :plans, :label => t('titles.plans'), :as => :text, :input_html => { :rows => 6, :class => "span5" }, :hint => "Textile" %>
-  <%= f.input :problems, :label => t('titles.problems'), :as => :text, :input_html => { :rows => 6, :class => "span5" }, :hint => "Textile" %>
+  <%= f.input :progress, :label => t('titles.progress'), :as => :text, :input_html => { :rows => 6, :class => "span5" } %>
+  <%= f.input :plans, :label => t('titles.plans'), :as => :text, :input_html => { :rows => 6, :class => "span5" } %>
+  <%= f.input :problems, :label => t('titles.problems'), :as => :text, :input_html => { :rows => 6, :class => "span5" } %>
 
   <%= f.input :tags_as_string, :label => "Tags", :input_html => { :class => "span5" } %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330103628) do
+ActiveRecord::Schema.define(:version => 20120403093347) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -24,15 +24,18 @@ ActiveRecord::Schema.define(:version => 20120330103628) do
 
   create_table "entries", :force => true do |t|
     t.string   "title"
-    t.string   "body",       :limit => 24000
-    t.string   "excerpt",    :limit => 1000
+    t.string   "body",          :limit => 24000
+    t.string   "excerpt",       :limit => 1000
     t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "progress",   :limit => 2000
-    t.string   "plans",      :limit => 1000
-    t.string   "problems",   :limit => 1000
+    t.string   "progress",      :limit => 2000
+    t.string   "plans",         :limit => 1000
+    t.string   "problems",      :limit => 1000
     t.integer  "blog_id"
+    t.string   "progress_html", :limit => 2000
+    t.string   "plans_html",    :limit => 1000
+    t.string   "problems_html", :limit => 1000
   end
 
   create_table "tags", :force => true do |t|

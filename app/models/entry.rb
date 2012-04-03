@@ -12,6 +12,10 @@ class Entry < ActiveRecord::Base
   belongs_to :blog
   has_many :tags
 
+  before_save do |entry|
+    regenerate_html
+  end
+
   def owned_by?(user)
     author == user
   end
@@ -23,5 +27,14 @@ class Entry < ActiveRecord::Base
   def tags_as_string=(tags_as_string)
     tags.destroy_all
     self.tags = tags_as_string.split(' ').map { |t| Tag.new(:name => t) }
+  end
+
+  def regenerate_html
+    options = Rails.application.config.redcarpet_options
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
+
+    self.progress_html = markdown.render(progress)
+    self.plans_html    = markdown.render(plans)
+    self.problems_html = markdown.render(problems)
   end
 end

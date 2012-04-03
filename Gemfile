@@ -5,7 +5,7 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'rails-i18n'
-gem 'rails_autolink'
+gem 'redcarpet'
 gem 'RedCloth'
 gem 'simple_form'
 
