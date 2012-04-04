@@ -2,7 +2,7 @@ module EntriesHelper
 
   def format_entry_section(section)
     content_tag :div, :class => "post-section" do
-      section.html_safe
+      raw section
     end
   end
 
