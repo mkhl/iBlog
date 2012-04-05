@@ -9,6 +9,10 @@ gem 'redcarpet'
 gem 'RedCloth'
 gem 'simple_form'
 
+group :development do
+  gem 'puma'
+end
+
 group :development, :test do
   gem 'awesome_print'
 end

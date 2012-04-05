@@ -1,0 +1,16 @@
+<p><%= t('titles.progress') %></p>
+<div style="margin-left: 10px;"><%= raw entry.progress_html %></div>
+
+<% if entry.plans.present? %>
+<p><%= t('titles.plans') %></p>
+<div style="margin-left: 10px;"><%= raw entry.plans_html %></div>
+<% else %>
+<p><%= t('titles.no_plans') %></p>
+<% end %>
+
+<% if entry.problems.present? %>
+<p><%= t('titles.problems') %></p>
+<div style="margin-left: 10px;"><%= raw entry.problems_html %></div>
+<% else %>
+<p><%= t('titles.no_problems') %></p>
+<% end %>
