@@ -47,6 +47,10 @@
           <li><%= link_to "<i class=icon-edit></i> Neuer Blog".html_safe, new_blog_path %></li>
           <% end %>
           <%= nav_side_items(@nav_side_items) %>
+
+          <li class="nav-header">RSS Feed</li>
+          <li><%= link_to "<i class=icon-share></i>Alle Einträge".html_safe, entries_path(:atom) %></li>
+
           <li class="nav-header">Hilfe</li>
           <li><a href="https://internal.innoq.com/redmine/projects/iblog/issues/new"><i class="icon-question-sign"></i> Fehler melden</a></li>
         </ul>
