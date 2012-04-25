@@ -3,7 +3,7 @@ Iblog::Application.routes.draw do
     resources :entries
   end
 
-  get '/index-all' => 'entries#full', :as => 'entries'
+  get '/index-all(.:format)' => 'entries#full', :as => 'entries'
 
   root :to => 'blogs#index'
 
@@ -20,5 +20,4 @@ Iblog::Application.routes.draw do
   end
 
   get '/blogs/by/:owner(.:format)' => 'blogs#index', :as => 'blogs_by_owner'
-
 end
