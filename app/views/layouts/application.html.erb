@@ -44,7 +44,7 @@
           <li class="nav-header"><%= @blog.name %></li>
           <li><%= link_to "<i class=icon-edit></i> Neuer Eintrag".html_safe, new_blog_entry_path(@blog) %></li>
           <% else %>
-          <li><%= link_to "<i class=icon-edit></i> Neuer Blog".html_safe, new_blog_path %></li>
+          <li><%= link_to "<i class=icon-edit></i> Neues Blog".html_safe, new_blog_path %></li>
           <% end %>
           <%= nav_side_items(@nav_side_items) %>
           <li class="nav-header">Hilfe</li>
