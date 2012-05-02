@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_nav_items, :set_user
@@ -31,6 +33,20 @@ class ApplicationController < ActionController::Base
             :icon    => "fire",
             :title   => "Letzte",
             :active? => params[:controller] == "entries" && params[:action] == "full"
+          }
+        ],
+        "Feeds" => [
+          {
+            :path    => blogs_path(:format => :atom),
+            :icon    => "fire",
+            :title   => "Blogs",
+            :active? => false
+          },
+          {
+            :path    => entries_path(:format => :atom),
+            :icon    => "fire",
+            :title   => "Einträge",
+            :active? => false
           }
         ]
       }
