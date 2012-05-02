@@ -7,6 +7,7 @@ https://wiki.innoq.com/display/innoq/iBlog
 
 # Getting Started
 
-* create `config/database.yml` based on `config/database.template.yml`
+* create `config/database.yml` based on `config/database.template.yml` or
+  `config/database.template_sqlite.yml`
 * set up database: `bundle exec rake db:drop db:create db:migrate db:seed`
 * launch server: `rails server`

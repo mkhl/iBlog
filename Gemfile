@@ -9,12 +9,13 @@ gem 'redcarpet'
 gem 'RedCloth'
 gem 'simple_form'
 
-group :development do
-  gem 'puma'
+group :development, :test do
+  gem 'sqlite3'
+  gem 'awesome_print'
 end
 
-group :development, :test do
-  gem 'awesome_print'
+group :development do
+  gem 'puma'
 end
 
 group :assets do
