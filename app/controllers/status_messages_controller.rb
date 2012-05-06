@@ -4,7 +4,6 @@ class StatusMessagesController < ApplicationController
 
   def index
     @messages = StatusMessage.order("updated_at DESC").page(params[:page])
-    render :text => @messages.map { |msg| "[#{msg.updated_at}] #{msg.author}: #{msg.body}" }.join("\n<hr>\n") # XXX: DEBUG
   end
 
   def create
