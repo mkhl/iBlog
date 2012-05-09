@@ -48,6 +48,14 @@ class ApplicationController < ActionController::Base
             :title   => "Einträge",
             :active? => false
           }
+        ],
+        "Status-Nachrichten" => [
+          {
+            :path    => status_messages_path,
+            :icon    => "headphones",
+            :title   => "Letzte",
+            :active? => params[:controller] == "status_messages" && params[:action] == "index"
+          }
         ]
       }
     end
