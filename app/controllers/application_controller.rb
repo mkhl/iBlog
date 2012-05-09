@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
             :path    => Proc.new { blog_entries_by_author_path(@user) },
             :icon    => "user",
             :title   => "Meine",
-            :active? => params[:controller] == "entries" && params[:action] == "by_author" && params[:author]
+            :active? => params[:controller] == "entries" && params[:action] == "user_home" && params[:author]
           },
           {
             :path    => entries_path,
