@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403093347) do
+ActiveRecord::Schema.define(:version => 20120502151303) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(:version => 20120403093347) do
     t.string   "progress_html", :limit => 2000
     t.string   "plans_html",    :limit => 1000
     t.string   "problems_html", :limit => 1000
+  end
+
+  create_table "status_messages", :force => true do |t|
+    t.string   "author"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tags", :force => true do |t|

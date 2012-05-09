@@ -1,0 +1,27 @@
+.status_messages {
+  margin-left: 0;
+  list-style-type: none;
+}
+
+.status_messages li {
+  clear: left;
+  margin-left: 24px; /* corresponds to avatar width */
+}
+
+.status_messages small {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.status_messages .avatar {
+  display: block;
+  float: left;
+  width: 24px;
+  overflow: hidden;
+  margin-left: -24px; /* corresponds to width */
+  margin-right: 0.5em;
+}
+
+.status_messages p {
+  overflow: auto; /* block formatting context; ensures consistent indentation WRT avatar */
+}
