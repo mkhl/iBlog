@@ -3,6 +3,8 @@
 Simple internal blogging/PPP solution, originally developed by the masters of disasters, PG & ST. 
 iBlog is currently maintained by robertg.
 
+## Deployment
+
 https://wiki.innoq.com/display/innoq/iBlog
 
 ## Getting Started
