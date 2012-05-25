@@ -1,6 +1,16 @@
 git pull origin master
-bundle install --deployment
+
+echo "------> [Deploy] Bundling gems"
+bundle install --deployment --quiet --without development test
+
+echo "------> [Deploy] Running migrations"
 bundle exec rake db:migrate RAILS_ENV=production
+
+echo "------> [Deploy] Precompiling assets"
 bundle exec rake assets:precompile
+
+echo "------> [Deploy] Setting permissions"
 chmod -R 755 public/assets
-touch ./tmp/restart.txt
+
+echo "------> [Deploy] Restarting"
+mkdir -p tmp && touch tmp/restart.txt
