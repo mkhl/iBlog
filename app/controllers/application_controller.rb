@@ -50,14 +50,6 @@ class ApplicationController < ActionController::Base
           :active? => false
         }
       ]
-      @nav_side_items["Status-Nachrichten"] = [
-        {
-          :path    => status_messages_path,
-          :icon    => "headphones",
-          :title   => "Letzte",
-          :active? => params[:controller] == "status_messages" && params[:action] == "index"
-        }
-      ]
       @nav_side_items
     end
 
