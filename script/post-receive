@@ -1,0 +1,38 @@
+echo "------"
+echo "------  [Deploy] ENTERING POST RECEIVE HOOK FOR: /home/iblog/iblog"
+echo "------"
+
+cd ..
+GIT_DIR='.git'
+
+while read oldrev newrev refname
+do
+  # Reset so we dont have unstaged changes... and then checkout the pushed ref
+  echo "------> [Deploy] Doing a hard reset and checking out $refname since thats what you pushed"
+  git reset --hard HEAD
+  git checkout $refname
+done
+
+# echo "------> [Deploy] Sourcing RVM"
+# source "/usr/local/rvm/scripts/rvm"
+
+# echo "------> [Deploy] Switching Ruby"
+# rvm use 1.9.3
+
+echo "------> [Deploy] Bundling gems"
+bundle install --deployment --quiet --without development test
+
+echo "------> [Deploy] Running migrations"
+bundle exec rake db:migrate RAILS_ENV=production
+
+# echo "------> [Deploy] Generating seed data"
+# bundle exec rake db:seed RAILS_ENV=production
+
+echo "------> [Deploy] Precompiling assets"
+bundle exec rake assets:precompile
+
+echo "------> [Deploy] Setting permissions"
+chmod -R 755 public/assets
+
+echo "------> [Deploy] Restarting"
+mkdir -p tmp && touch tmp/restart.txt
