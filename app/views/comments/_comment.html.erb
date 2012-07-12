@@ -1,4 +1,4 @@
 <li class="comment" id="comment-<%= comment.id %>">
-  <%= avatar(@user) %><span class="author"><%= @user %></span>
+  <%= avatar(comment.author) %><span class="author"><%= comment.author %></span>
   <p><%= raw comment.content %></p>
 </li>
