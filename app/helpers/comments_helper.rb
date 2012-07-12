@@ -1,5 +1,5 @@
 module CommentsHelper
   def avatar(user)
-    image_tag("https://internal.innoq.com/iqumf/images/users/thm-robertg.jpg", :class => "avatar")
+    image_tag("https://internal.innoq.com/iqumf/images/users/thm-#{user}.jpg", :class => "avatar")
   end
 end
