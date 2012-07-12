@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     blog = Blog.find(params[:blog_id])
     entry = Entry.find(params[:entry_id])
     comment = entry.comments.new(params[:comment])
+    comment.author = @user
 
     if comment.save(params[:comment])
       flash[:success] = "Der Kommentar wurde gespeichert."
