@@ -48,6 +48,12 @@ class ApplicationController < ActionController::Base
           :icon    => "fire",
           :title   => "Einträge",
           :active? => false
+        },
+        {
+          :path    => comments_path(:format => :atom),
+          :icon    => "fire",
+          :title   => "Kommentare",
+          :active? => false
         }
       ]
       @nav_side_items

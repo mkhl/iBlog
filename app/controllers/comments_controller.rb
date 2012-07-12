@@ -1,4 +1,14 @@
 class CommentsController < ApplicationController
+  def index
+    ## TODO
+    # Feeds for: blog comments, entry comments
+    @comments = Comment.order("id ASC")
+
+    respond_to do |format|
+      format.atom
+    end
+  end
+
   def create
     blog = Blog.find(params[:blog_id])
     entry = Entry.find(params[:entry_id])
