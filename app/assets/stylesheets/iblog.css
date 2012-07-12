@@ -48,3 +48,25 @@ span.label a, a:hover, a:active {
   display: inline-block;
   margin-top: -4px;
 }
+
+.comment {
+  margin-top: 25px;
+  overflow: auto;
+}
+
+.comment .author {
+  font-weight: bold;
+}
+
+.comment p {
+  margin-bottom: 0;
+}
+
+.avatar {
+  padding: 3px;
+  border-radius: 3px;
+  border: 1px solid #E6E6E6;
+  margin: 4px 10px 0 0;
+  width: 24px;
+  float: left;
+}

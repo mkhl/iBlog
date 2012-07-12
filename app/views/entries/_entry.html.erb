@@ -36,6 +36,8 @@
     <li class="divider-vertical"></li>
     <li>Blog: <%= link_to entry.blog.name, blog_entries_path(entry.blog) %></li>
     <li class="divider-vertical"></li>
+    <li>Kommentare: <%= link_to entry.comments.count, blog_entry_path(entry.blog, entry) %></li>
+    <li class="divider-vertical"></li>
     <li>Tags: <%= tags(entry) %></li>
   </ul>
 </article>

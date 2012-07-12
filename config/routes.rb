@@ -1,6 +1,8 @@
 Iblog::Application.routes.draw do
   resources :blogs do
-    resources :entries
+    resources :entries do
+      resources :comments
+    end
   end
 
   resources :status_messages

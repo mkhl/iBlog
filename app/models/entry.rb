@@ -3,6 +3,7 @@ class Entry < ActiveRecord::Base
 
   belongs_to :blog
   has_many :tags
+  has_many :comments, :dependent => :destroy
 
   before_save do |entry|
     regenerate_html
