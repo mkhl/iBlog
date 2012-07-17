@@ -2,8 +2,10 @@ body {
   padding-top: 60px;
 }
 
-td div.btn-toolbar {
-  margin:0;
+td {
+  div.btn-toolbar {
+    margin:0;
+  }
 }
 
 h1 {
@@ -12,31 +14,31 @@ h1 {
   margin-bottom: 20px;
 }
 
-h2 a, a:hover, a:active {
-  color: inherit;
+h2 {
+  a, a:hover, a:active {
+    color: inherit;
+  }
 }
 
 .entry-meta {
   margin-top: 10px;
   padding: 0;
   padding: 5px 5px 3px 10px;
-}
-
-.entry-meta .divider-vertical {
-  height:10px;
-  width:1px;
-  margin:0 9px;
-  overflow:hidden;
-  background-color:#999;
-  border-right:0px;
-}
-
-article h2 {
-  margin-bottom: 15px;
+  &.divider-vertical {
+    height:10px;
+    width:1px;
+    margin:0 9px;
+    overflow:hidden;
+    background-color:#999;
+    border-right:0px;
+  }
 }
 
 article {
   margin-bottom: 50px;
+  h2 {
+    margin-bottom: 15px;
+  }
 }
 
 span.label a, a:hover, a:active {
@@ -52,14 +54,12 @@ span.label a, a:hover, a:active {
 .comment {
   margin-top: 25px;
   overflow: auto;
-}
-
-.comment .author {
-  font-weight: bold;
-}
-
-.comment p {
-  margin-bottom: 0;
+  &.author {
+    font-weight: bold;
+  }
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .avatar {
