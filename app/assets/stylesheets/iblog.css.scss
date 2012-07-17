@@ -39,6 +39,18 @@ article {
   h2 {
     margin-bottom: 15px;
   }
+  .entry-section {
+    padding-left: 15px;
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      padding: 0;
+      border: none;
+      text-decoration: none;
+    }
+    h1 { font-size: 16px; }
+    h2 { font-size: 14px; }
+    h3 { font-size: 13px; }
+  }
 }
 
 span.label a, a:hover, a:active {
