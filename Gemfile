@@ -6,7 +6,6 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'rails-i18n'
 gem 'redcarpet'
-gem 'RedCloth'
 gem 'simple_form'
 
 group :development, :test do
