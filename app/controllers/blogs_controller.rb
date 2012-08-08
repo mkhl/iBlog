@@ -43,7 +43,6 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(params[:blog])
-    @blog.owner = @user
 
     respond_to do |format|
       if @blog.save
