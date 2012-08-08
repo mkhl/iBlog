@@ -5,7 +5,7 @@ atom_feed do |feed|
   feed.generator "i-Blogs Custom ATOM Feed Generator 1.0", :uri => root_url
 
   @blogs.each do |blog|
-    feed.entry(blog) do |entry|
+    feed.entry(blog, :url => blog_entries_path(blog)) do |entry|
       entry.title blog.title.presence || "-kein Name-"
       entry.summary :type => "html" do |html|
         html.cdata!("<p>Blog #{blog.title} created.</p>")
