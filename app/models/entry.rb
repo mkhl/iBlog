@@ -24,7 +24,7 @@ class Entry < ActiveRecord::Base
 
   def regenerate_html
     options = Rails.application.config.redcarpet_options
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => true), options)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => false), options)
 
     self.progress_html = markdown.render(progress)
     self.plans_html    = markdown.render(plans)
