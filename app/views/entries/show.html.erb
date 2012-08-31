@@ -1,6 +1,5 @@
 <%= render @entry %>
-<%= render 'comments/new', :blog => @blog, :entry => @entry, :comment => Comment.new %>
-
 <ol class="comments unstyled">
   <%= render @comments %>
 </ol>
+<%= render 'comments/new', :blog => @blog, :entry => @entry, :comment => Comment.new %>
