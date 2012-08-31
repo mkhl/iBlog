@@ -1,0 +1,8 @@
+jQuery(document).ready(function($) {
+
+  // fix 404 avatar images
+  $("img.avatar").error(function() {
+    $(this).attr("src", "<%= asset_path("avatar.png") %>");
+  });
+
+});
