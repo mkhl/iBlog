@@ -56,8 +56,11 @@ class EntriesController < ApplicationController
   end
 
   def new
-#    @blog = Blog.find( params[:blog_id] )
-    @entry = Entry.new(:author => @user, :blog_id => @blog.id, :title => "#{@user.capitalize}s PPP am #{ Date.today}")
+    @entry = Entry.new do |entry|
+      entry.author = @user
+      entry.blog_id = @blog.id
+      entry.title = "PPP von #{@user} am #{Date.today}"
+    end
 
     respond_to do |format|
       format.html { render :action => 'edit'}
