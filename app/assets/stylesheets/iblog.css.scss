@@ -71,7 +71,7 @@ span.label a, a:hover, a:active {
 .comment {
   margin-top: 25px;
   overflow: auto;
-  &.author {
+  .author {
     font-weight: bold;
   }
   p {
