@@ -19,6 +19,7 @@ end
 
 group :assets do
   gem 'sass-rails'
+  gem 'bourbon'
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer'
 end

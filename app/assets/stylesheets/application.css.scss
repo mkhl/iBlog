@@ -1,5 +1,7 @@
 /*
 *= require bootstrap.min
-*= require iblog
 *= require bootstrap-responsive.min
 */
+
+@import "bourbon";
+@import "iblog";

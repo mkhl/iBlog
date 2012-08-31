@@ -40,12 +40,13 @@ article {
     margin-bottom: 15px;
   }
   h3 {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
     padding: 2px 5px;
     background-color: #F5F5F5;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    @include border-radius(3px);
   }
   .entry-section {
-    padding-left: 15px;
+    padding: 15px;
     h1, h2, h3, h4, h5, h6 {
       margin: 0;
       padding: 0;
@@ -81,9 +82,7 @@ span.label a, a:hover, a:active {
 
 .avatar {
   padding: 3px;
-  webkit-border-radius: 3px;
-     moz-border-radius: 3px;
-         border-radius: 3px;
+  @include border-radius(3px);
   border: 1px solid #E6E6E6;
   margin: 4px 10px 0 0;
   width: 24px;
