@@ -3,7 +3,7 @@
   // fix 404 avatar images
   $("img.avatar").each(function() {
     if ((typeof this.naturalWidth != "undefined" && this.naturalWidth == 0) || this.readyState == 'uninitialized' ) {
-      $(this).attr("src", "<%= asset_path("avatar.png") %>");
+      $(this).attr("src", "<%= image_path("avatar.png") %>");
     }
   });
 
