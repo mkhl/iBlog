@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
   // fix 404 avatar images
   $("img.avatar").error(function() {
-    $(this).attr("src", "<%= asset_path("avatar.png") %>");
+    $(this).attr("src", "<%= image_url("avatar.png") %>");
   });
 
 });
