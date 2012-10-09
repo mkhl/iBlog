@@ -1,8 +1,10 @@
-jQuery(document).ready(function($) {
+(function($) {
 
   // fix 404 avatar images
-  $("img.avatar").error(function() {
-    $(this).attr("src", "<%= image_url("avatar.png") %>");
+  $("img.avatar").each(function() {
+    if ((typeof this.naturalWidth != "undefined" && this.naturalWidth == 0) || this.readyState == 'uninitialized' ) {
+      $(this).attr("src", "<%= asset_path("avatar.png") %>");
+    }
   });
 
-});
+}(jQuery));
