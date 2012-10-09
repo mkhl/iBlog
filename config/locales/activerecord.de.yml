@@ -1,0 +1,6 @@
+de:
+  activerecord:
+    models:
+      entry:
+        one: "Eintrag"
+        other: "Einträge"
