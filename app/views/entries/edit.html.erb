@@ -1,5 +1,9 @@
 <h2><%= @blog.name %></h2>
 
+<% if @preview %>
+  <%= render @entry %>
+<% end %>
+
 <%= simple_form_for([@blog, @entry], :html => { :class => 'form-horizontal'}) do |f| %>
   <legend>PPP-Eintrag <%= @entry.new_record? ? 'erstellen' : 'bearbeiten' %></legend>
   <%= f.input :title, :input_html => { :class => "span5" } %>
@@ -11,6 +15,7 @@
   <%= f.input :tags_as_string, :label => "Tags", :input_html => { :class => "span5" } %>
 
   <div class="form-actions">
+    <%= f.button :submit, :value => 'Vorschau', :class => 'preview' %>
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to 'Löschen', [@blog, @entry], :method => :delete, :class => "btn btn-danger" unless @entry.new_record? %>
   </div>
