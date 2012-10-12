@@ -1,4 +1,7 @@
 <li class="comment" id="comment-<%= comment.id %>">
-  <p><%= avatar(comment.author) %><span class="author"><%= comment.author %></span></p>
+  <p>
+    <%= avatar(comment.author) %><span class="author"><%= comment.author %></span>
+    <span class="comment-timestamp">vor <%= time_ago_in_words(comment.created_at) %></span>
+  </p>
   <p><%= raw comment.content %></p>
 </li>
