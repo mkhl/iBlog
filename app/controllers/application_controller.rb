@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
           :active? => params[:controller] == "blogs" && params[:action] == "index" && !params[:owner]
         }
       ]
-      @nav_side_items["Posts"] = [
+      @nav_side_items["Einträge"] = [
         {
           :path    => Proc.new { blog_entries_by_author_path(@user) },
           :icon    => "user",
