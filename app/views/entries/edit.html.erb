@@ -15,8 +15,8 @@
   <%= f.input :tags_as_string, :label => "Tags", :input_html => { :class => "span5" } %>
 
   <div class="form-actions">
-    <%= f.button :submit, :value => 'Vorschau', :class => 'preview' %>
     <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.button :submit, :value => 'Vorschau', :class => 'btn-info' %>
     <%= link_to 'Löschen', [@blog, @entry], :method => :delete, :class => "btn btn-danger" unless @entry.new_record? %>
   </div>
 
