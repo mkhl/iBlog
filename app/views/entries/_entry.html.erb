@@ -26,13 +26,13 @@
     <h3><%= t('titles.no_problems') %></h3>
   <% end %>
   <ul class="breadcrumb entry-meta">
+    <li><%= avatar(entry.author) %><%= link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
     <li>Erstellt am <%= l entry.created_at, :format => :short %></li>
     <li class="divider-vertical"></li>
     <% if entry.created_at != entry.updated_at %>
       <li><strong>Geändert am <%= l entry.updated_at, :format => :short %></strong></li>
       <li class="divider-vertical"></li>
     <% end %>
-    <li><%= link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
     <li class="divider-vertical"></li>
     <li>Blog: <%= link_to entry.blog.name, blog_entries_path(entry.blog) %></li>
     <li class="divider-vertical"></li>
