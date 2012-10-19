@@ -79,14 +79,20 @@ class EntriesController < ApplicationController
     @entry.author = @user
     @entry.blog_id = @blog.id
     respond_to do |format|
-      if @entry.save
-        flash[:success] = 'Der Eintrag wurde gespeichert.'
-        format.html { redirect_to blog_entry_url(@blog, @entry) }
-        format.xml  { render :xml => @entry, :status => :created, :location => @entry }
-      else
-        flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
+      if params[:commit] == "Vorschau"
+        @entry.regenerate_html
+        @preview = true
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+      else
+        if @entry.save
+          flash[:success] = 'Der Eintrag wurde gespeichert.'
+          format.html { redirect_to blog_entry_url(@blog, @entry) }
+          format.xml  { render :xml => @entry, :status => :created, :location => @entry }
+        else
+          flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -95,14 +101,21 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
 
     respond_to do |format|
-      if @entry.update_attributes(params[:entry])
-        flash[:success] = 'Der Eintrag wurde gespeichert.'
-        format.html { redirect_to blog_entry_url(@blog, @entry) }
-        format.xml  { head :ok }
-      else
-        flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
+      if params[:commit] == "Vorschau"
+        @entry.assign_attributes(params[:entry])
+        @entry.regenerate_html
+        @preview = true
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+      else
+        if @entry.update_attributes(params[:entry])
+          flash[:success] = 'Der Eintrag wurde gespeichert.'
+          format.html { redirect_to blog_entry_url(@blog, @entry) }
+          format.xml  { head :ok }
+        else
+          flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
