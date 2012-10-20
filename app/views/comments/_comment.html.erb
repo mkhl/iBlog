@@ -3,5 +3,5 @@
     <%= avatar(comment.author) %><span class="author"><%= comment.author %></span>
     <%= link_to "vor " + time_ago_in_words(comment.created_at), blog_entry_path(comment.entry.blog, comment.entry, :anchor => "comment-#{comment.id}"), :class => "comment-timestamp" %></span>
   </p>
-  <p><%= raw comment.content %></p>
+  <p><%= raw comment.content_html %></p>
 </li>
