@@ -1,13 +1,12 @@
+require "modules/markdown"
 class Entry < ActiveRecord::Base
+  include Markdown
+
   validates_presence_of :progress
 
   belongs_to :blog
   has_many :tags
   has_many :comments, :dependent => :destroy
-
-  before_save do |entry|
-    regenerate_html
-  end
 
   def owned_by?(user)
     author == user
@@ -22,12 +21,11 @@ class Entry < ActiveRecord::Base
     self.tags = tags_as_string.split(' ').map { |t| Tag.new(:name => t) }
   end
 
-  def regenerate_html
-    options = Rails.application.config.redcarpet_options
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => false), options)
+  before_save :regenerate_html
 
-    self.progress_html = markdown.render(progress)
-    self.plans_html    = markdown.render(plans)
-    self.problems_html = markdown.render(problems)
+  def regenerate_html
+    self.progress_html = md_to_html(progress)
+    self.plans_html    = md_to_html(plans)
+    self.problems_html = md_to_html(problems)
   end
 end
