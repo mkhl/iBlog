@@ -57,6 +57,9 @@ article {
     h2 { font-size: 14px; }
     h3 { font-size: 13px; background-color: #fff !important; }
   }
+  img {
+    max-width: 800px;
+  }
 }
 
 span.label a, a:hover, a:active {
