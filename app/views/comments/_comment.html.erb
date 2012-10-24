@@ -1,7 +1,14 @@
 <li class="comment" id="comment-<%= comment.id %>">
-  <p>
-    <%= avatar(comment.author) %><span class="author"><%= comment.author %></span>
-    <%= link_to "vor " + time_ago_in_words(comment.created_at), blog_entry_path(comment.entry.blog, comment.entry, :anchor => "comment-#{comment.id}"), :class => "comment-timestamp" %></span>
-  </p>
-  <p><%= raw comment.content %></p>
+  <a href="<%= blog_entry_path(comment.entry.blog, comment.entry, :anchor => "comment-#{comment.id}")%>" class="comment-meta">
+  <ul class="breadcrumb">
+    <li><%= avatar(comment.author) %><span class="author"><%= comment.author%></span></li>
+    <li>Erstellt am <%= l comment.created_at, :format => :short %></li>
+    <li class="divider-vertical"></li>
+    <% if comment.created_at != comment.updated_at %>
+      <li><strong>Geändert am <%= l comment.updated_at, :format => :short %></strong></li>
+      <li class="divider-vertical"></li>
+    <% end %>
+  </ul>
+  </a>
+  <p><%= raw comment.content_html %></p>
 </li>

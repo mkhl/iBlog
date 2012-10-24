@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712095251) do
+ActiveRecord::Schema.define(:version => 20121020011733) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -26,15 +26,16 @@ ActiveRecord::Schema.define(:version => 20120712095251) do
     t.integer  "entry_id"
     t.string   "author"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "content_html"
   end
 
   add_index "comments", ["entry_id"], :name => "index_comments_on_entry_id"
 
   create_table "entries", :force => true do |t|
     t.string   "title"
-    t.string   "body",          :limit => 24000
+    t.text     "body",          :limit => 16777215
     t.string   "excerpt",       :limit => 1000
     t.string   "author"
     t.datetime "created_at"
