@@ -78,11 +78,13 @@ span.label a, a:hover, a:active {
   .author {
     font-weight: bold;
   }
-  .comment-meta {
-    color: #333333;
-    :hover, :hover * {
+  a.comment-timestamp {
+    &:hover {
       text-decoration: underline;
     }
+  }
+  .comment-timestamp {
+    color: #B3B3B3;
   }
 }
 
