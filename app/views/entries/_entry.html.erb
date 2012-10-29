@@ -1,7 +1,7 @@
-  <% if @preview %>
+<% if @preview %>
   <article class="post preview">
-    <h2 class=><%= entry.title %></h2>
-  <% else %>
+    <h2><%= entry.title %></h2>
+<% else %>
   <article class="post">
     <h2>
       <%= link_to entry.title, blog_entry_path(entry.blog, entry) %>
@@ -12,7 +12,7 @@
         </span>
       <% end %>
     </h2>
-  <% end %>
+<% end %>
 
   <h3><%= t('titles.progress') %></h3>
   <%= format_entry_section(entry.progress_html) %>
@@ -31,7 +31,7 @@
     <h3><%= t('titles.no_problems') %></h3>
   <% end %>
 
-  <% if ! @preview %>
+  <% unless @preview %>
     <ul class="breadcrumb entry-meta">
       <li><%= avatar(entry.author) %><%= link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
       <li>Erstellt am <%= l entry.created_at, :format => :short %></li>
