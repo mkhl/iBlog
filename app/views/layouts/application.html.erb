@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <%= csrf_meta_tag %>
-  <title>PPP</title>
+  <title><% if content_for? :title %><%= content_for :title %> – <% end %>PPP</title>
   <%= auto_discovery_link_tag :atom, blogs_path(:atom), :title => "Blogs" %>
   <%= auto_discovery_link_tag :atom, blog_entries_path(@blog, :atom), :title => "Einträge für Blog #{@blog.name}" if @blog && !@blog.new_record? %>
   <%= auto_discovery_link_tag :atom, tag_path(@tag.name, :atom), :title => "Einträge für Tag #{@tag.name}" if @tag %>

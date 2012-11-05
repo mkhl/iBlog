@@ -1,7 +1,9 @@
+<%= content_for :title, "Alle Blogs" %>
 <h1>
   Blogs
   <small>
     <% if params[:owner] %>
+    <%= content_for :title, " von #{params[:owner]}" %>
     von <%= params[:owner] %>
     <% else %>
     alle

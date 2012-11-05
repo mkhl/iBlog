@@ -2,9 +2,11 @@
   <%= @blog && @blog.title.present? ? @blog.title : 'Alle Einträge' %><br>
   <small>
     <% if @blog %>
+      <%= content_for :title, "Alle Einträge in \"#{@blog.name}\"" %>
       <%= @blog.name %> von <%= @blog.owner %>
     <% else %>
-      für alle Blogs <% if params[:author] %>von <%= params[:author] %><% end %>
+      <%= content_for :title, "Alle Einträge in allen Blogs" %>
+      für alle Blogs <% if params[:author] %>von <%= params[:author] %><%= content_for :title, " von #{params[:author]}" %><% end %>
     <% end %>
   </small>
 </h1>
