@@ -8,10 +8,10 @@ atom_feed do |feed|
     feed.entry(comment, :url => blog_entry_url(comment.entry.blog, comment.entry, :anchor => "comment-#{comment.id}")) do |entry|
       entry.title "Kommentar von #{comment.author} zu #{comment.entry.title}"
       entry.summary :type => "html" do |html|
-        html.cdata! raw(comment.content)
+        html.cdata! raw(comment.content_html)
       end
       entry.content :type => "html" do |html|
-        html.cdata! raw(comment.content)
+        html.cdata! raw(comment.content_html)
       end
       entry.author do |author|
         author.name comment.author
