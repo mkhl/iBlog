@@ -1,0 +1,6 @@
+<%= content_for :title, "Alle Kommentare" %>
+<h1>Alle Kommentare</h1>
+
+<ol class="comments unstyled">
+  <%= render @comments, :show_entry => true %>
+</ol>

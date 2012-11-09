@@ -84,12 +84,14 @@ span.label a, a:hover, a:active {
     font-weight: bold;
   }
   a.comment-timestamp {
+    float: inherit;
     &:hover {
       text-decoration: underline;
     }
   }
   .comment-timestamp {
     color: $light-grey;
+    float: right;
   }
 }
 

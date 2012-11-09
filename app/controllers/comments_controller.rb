@@ -2,10 +2,21 @@ class CommentsController < ApplicationController
   def index
     ## TODO
     # Feeds for: blog comments, entry comments
-    @comments = Comment.order("id ASC")
+    @comments = Comment.includes(:entry => :blog)
 
     respond_to do |format|
-      format.atom
+      format.html do
+        @comments = @comments.order("id DESC")
+        if @author = params[:author]
+          @comments = @comments.where(:author => params[:author])
+          render "comments/index/by_author"
+        else
+          render "comments/index/all"
+        end
+      end
+      format.atom do
+        @comments = @comments.order("id ASC")
+      end
     end
   end
 
