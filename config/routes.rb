@@ -7,8 +7,6 @@ Iblog::Application.routes.draw do
     end
   end
 
-  resources :status_messages
-
   get '/index-all(.:format)' => 'entries#full', :as => 'entries'
 
   root :to => 'blogs#index'
