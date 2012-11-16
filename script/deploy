@@ -1,6 +1,9 @@
 git checkout .
 git pull origin master
 
+echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
+bundle exec rake backup_production
+
 echo "------> [Deploy] Bundling gems"
 bundle install --deployment --quiet --without development test
 
