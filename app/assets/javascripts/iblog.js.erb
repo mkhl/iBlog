@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(document).ready(function() {
   // fix 404 avatar images
   $("img.avatar").each(function() {
     if (
@@ -16,5 +16,4 @@ $(window).load(function() {
       var time = moment($(item).attr('datetime')).local();
       $(item).attr("title", time.format("dddd, Do MMMM YYYY [um] HH:mm:ss")).text(time.fromNow());
   });
-
 });
