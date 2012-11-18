@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  // fix 404 avatar images
+// fix 404 avatar images
+$(window).on("load", function() {
   $("img.avatar").each(function() {
     if (
       (
@@ -10,7 +10,9 @@ $(document).ready(function() {
       $(this).attr("src", "<%= image_path("avatar.png") %>");
     }
   });
+});
 
+$(document).ready(function() {
   moment.lang('de');
   $('.comment-timestamp time[datetime]').each(function (idx, item) {
       var time = moment($(item).attr('datetime')).local();
