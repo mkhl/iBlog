@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CommentsController < ApplicationController
   def index
     ## TODO
@@ -31,11 +32,22 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "Der Kommentar konnte nicht gespeichert werden."
     end
-
     redirect_to blog_entry_url(blog, entry, :anchor => "comment-#{comment.id}")
   end
 
   def destroy
     comment = Comment.find(params[:id])
+    entry = comment.entry
+    blog = entry.blog
+    if comment.owned_by?(@user)
+      comment.destroy
+      redirect_to blog_entry_url(blog, entry)
+    else
+      # The user was clever enough to rig up this request
+      # without aid of our UI,
+      # so he might be clever enough to interpret the answer
+      # without UI aid as well.
+      head :unauthorized
+    end
   end
 end

@@ -1,5 +1,5 @@
 Iblog::Application.routes.draw do
-  resources :comments, :only => [:index]
+  resources :comments
 
   resources :blogs do
     resources :entries do

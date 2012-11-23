@@ -10,8 +10,8 @@
     <% end %>
     <% if comment.owned_by?(@user) %>
       <span class="pull-right">
-      <%= link_to glyph(:edit), "http://localhost/huba", :class => "btn btn-mini" %>
-      <%= link_to glyph(:delete, true), "http://localhost/buba", :method => :delete, :class => "btn btn-danger btn-mini" %>
+      <%= link_to glyph(:edit), edit_comment_path(comment), :class => "btn btn-mini" %>
+      <%= link_to glyph(:delete, true), comment, :method => :delete, :class => "btn btn-danger btn-mini" %>
       </span>
     <% end %>
   </p>
