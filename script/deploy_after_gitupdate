@@ -1,0 +1,46 @@
+#!/bin/bash
+
+echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
+if ! bundle exec rake backup_production
+then
+  echo >&2 ERROR backing up production database.
+  exit 10
+fi
+
+echo "------> [Deploy] Bundling gems"
+if ! bundle install --deployment --quiet --without development test
+then
+  echo >&2 ERROR blundling gems
+  exit 11
+fi
+
+echo "------> [Deploy] Running migrations"
+if ! bundle exec rake db:migrate RAILS_ENV=production
+then
+  echo >&2 ERROR running migrations
+  exit 12
+fi
+
+echo "------> [Deploy] Precompiling assets"
+if ! bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=/blogging
+then
+  echo >&2 ERROR precompiling assets
+  exit 13
+fi
+
+# This following step is probably not needed
+# as passenger runs the iBlog application as the same user
+# that owns the files and runs this script.
+# On the other hand, it doesn't hurt.
+echo "------> [Deploy] allowing world to read the assets"
+chmod -R 755 public/assets
+
+echo "------> [Deploy] Restarting"
+mkdir tmp
+touch tmp/restart.txt
+if test \! -f tmp/restart.txt
+then
+  echo >&2 ERROR writing tmp/restart.txt '(to restart the application)'
+  exit 14
+fi
+

@@ -1,20 +1,59 @@
-git checkout .
-git pull origin master
+#!/bin/bash
 
-echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
-bundle exec rake backup_production
+# Check we are in the right directory
 
-echo "------> [Deploy] Bundling gems"
-bundle install --deployment --quiet --without development test
+# generate a script in the tmp directory
+# that does the git update
+# (there should be no content in the tmp directory
+# that's being changed by the git update)
 
-echo "------> [Deploy] Running migrations"
-bundle exec rake db:migrate RAILS_ENV=production
+# and give control to the (freshly updated)
+# script/deploy_after_gitupdate
 
-echo "------> [Deploy] Precompiling assets"
-bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=/blogging
+mkdir tmp
+if test -d script -a -d tmp -a -x script/deploy_after_gitupdate
+then
+  rm -f tmp/gitupdate_and_deploy
+  if test -f tmp/gitupdate_and_deploy
+  then
+    echo >&2 ERROR removing: tmp/gitupdate_and_deploy
+    exit 2
+  fi
+  cat <<'END' > tmp/gitupdate_and_deploy
+#!/bin/bash
 
-echo "------> [Deploy] Setting permissions"
-chmod -R 755 public/assets
+if ! git checkout .
+then
+  echo >&2 ERROR: git checkout .
+  exit 3
+fi
 
-echo "------> [Deploy] Restarting"
-mkdir -p tmp && touch tmp/restart.txt
+if ! git pull origin master
+then
+  echo >&2 ERROR: git pull origin master
+  exit 4
+fi
+
+# This is already the new version, after the update:
+exec script/deploy_after_gitupdate
+echo >&2 ERROR handing over to: script/deploy_after_gitupdate
+exit 5
+END
+  
+  chmod a+x tmp/gitupdate_and_deploy
+  if test ! -x tmp/gitupdate_and_deploy
+  then
+    echo >&2 ERROR cannot write or chmod: tmp/gitupdate_and_deploy
+    exit 6
+  fi
+
+  exec tmp/gitupdate_and_deploy
+  
+  echo >&2 ERROR handing over to: tmp/gitupdate_and_deploy
+  exit 7
+
+else
+  echo >&2 ERROR: subdirs script and tmp or file script/deploy_after_gitupdate not found.
+  echo >&2 '(Did you call this from the iblog to directory?)'
+  exit 1
+fi
