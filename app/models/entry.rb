@@ -1,16 +1,14 @@
 require "modules/markdown"
+require "modules/authored"
 class Entry < ActiveRecord::Base
   include Markdown
+  include Authored
 
   validates_presence_of :progress
 
   belongs_to :blog
   has_many :tags
   has_many :comments, :dependent => :destroy
-
-  def owned_by?(user)
-    author == user
-  end
 
   def tags_as_string
     tags.map { |t| t.name }.join(' ')

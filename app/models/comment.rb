@@ -1,6 +1,8 @@
 require "modules/markdown"
+require "modules/authored"
 class Comment < ActiveRecord::Base
   include Markdown
+  include Authored
 
   belongs_to :entry
 
