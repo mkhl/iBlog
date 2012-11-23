@@ -47,7 +47,8 @@ class EntriesController < ApplicationController
 
   def show
     @entry = Entry.find(params[:id])
-    @comments = @entry.comments.order("id ASC")
+    @edit_comment = @entry.comments.new
+    @comments = @entry.comments
 
     respond_to do |format|
       format.html # show.html.erb

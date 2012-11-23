@@ -1,6 +1,9 @@
 <%= content_for :title, @entry.title %>
 <%= render @entry %>
 <ol class="comments unstyled">
-  <%= render @comments %>
+  <% @comments.each do |comment| %>
+     <%= render :partial => 'comments/comment', 
+         :locals => {:comment => comment, :edit_comment => @edit_comment} 
+%>
+  <% end %>
 </ol>
-<%= render 'comments/new', :blog => @blog, :entry => @entry, :comment => Comment.new %>

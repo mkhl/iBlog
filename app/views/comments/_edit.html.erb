@@ -1,0 +1,26 @@
+<%if @comment_preview %>
+  <div class="preview">
+    <%= render :partial => 'comments/show', 
+        :locals => {:this_is_preview => 1, :comment => edit_comment} %>
+  </div>
+<% end %>
+<%=  # Wanted to use simple_from_for, but could not figure out how to do anchors
+  form_tag({
+      :controller => :comments,
+      :action => (edit_comment.new_record? ? :create : :update),
+      :anchor => "comment-#{@commentid}"
+    },
+    :method => (edit_comment.new_record? ? :post : :put)) do %>
+  <%= hidden_field_tag(:entry_id, edit_comment.entry.id) %>
+  <%= text_area_tag(:content, @edit_comment.content, :class => "span6", :rows => 4) %>
+  <div>
+    <% if edit_comment.new_record? %>
+      <%= submit_tag('Kommentar abgeben', :class => 'btn-primary btn-mini') %>
+      <%= submit_tag('Vorschau', :class => 'btn-info btn-mini') %>
+    <% else %>
+      <%= submit_tag('Kommentar ändern', :class => 'btn-primary btn-mini') %>
+      <%= submit_tag('Vorschau', :class => 'btn-info btn-mini') %>
+      <%= link_to('Löschen', edit_comment, :method => :delete, :class => 'btn btn-danger btn-mini') unless edit_comment.new_record? %>
+    <% end %>
+  </div>
+<% end %>

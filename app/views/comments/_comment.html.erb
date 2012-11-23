@@ -1,19 +1,10 @@
-<li class="comment" id="comment-<%= comment.id %>">
-  <p>
-    <%= avatar(comment.author) %><span class="author"><%= comment.author %></span>
-    <a href="<%= blog_entry_path(comment.entry.blog, comment.entry, :anchor => "comment-#{comment.id}")%>" class="comment-timestamp">
-      <time datetime="<%= comment.created_at.to_s(:rfc822) %>">am <%= l(comment.created_at, :format => :short) %></time>
-    </a>
-    <% if defined?(show_entry) %> in <%= link_to comment.entry.title, blog_entry_path(comment.entry.blog, comment.entry) %><% end %>
-    <% if comment.created_at != comment.updated_at %>
-      <span class="comment-timestamp">geändert <time datetime="<%= comment.updated_at.to_s(:rfc822) %>">am <%= l(comment.updated_at, :format => :short) %></time></span>
-    <% end %>
-    <% if comment.owned_by?(@user) %>
-      <span class="pull-right">
-      <%= link_to glyph(:edit), edit_comment_path(comment), :class => "btn btn-mini" %>
-      <%= link_to glyph(:delete, true), comment, :method => :delete, :class => "btn btn-danger btn-mini" %>
-      </span>
-    <% end %>
-  </p>
-  <p><%= raw comment.content_html %></p>
+<% @commentid = comment.new_record? ? "new" : "#{comment.id}" %>
+<li class="comment" id="comment-<%= @commentid %>">
+<% if not defined?(edit_comment) or (not comment.id.nil? and edit_comment.id != comment.id) %>
+  <%= render :partial => 'comments/show',
+      :locals => {:comment => comment, :this_is_preview => nil} %>
+<% else %>
+  <%= render :partial => 'comments/edit', 
+      :locals => {:edit_comment => edit_comment} %>
+<% end %>
 </li>
