@@ -1,5 +1,4 @@
 Iblog::Application.routes.draw do
-  resources :comments, :only => [:index]
 
   resources :blogs do
     resources :entries do
@@ -7,9 +6,15 @@ Iblog::Application.routes.draw do
     end
   end
 
+  resources :comments
+
   get '/index-all(.:format)' => 'entries#full', :as => 'entries'
 
   root :to => 'blogs#index'
+
+  resources :entries do
+    resources :comments
+  end
 
   scope '/entries' do
     get '/tags/:tag(.:format)' => 'entries#by_tag', :as => 'tag'
