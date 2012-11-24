@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CommentsController < ApplicationController
   def index
     ## TODO
@@ -20,22 +21,76 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @edit_comment = Comment.find(params[:id])
+    @entry = @edit_comment.entry
+    @comments = @entry.comments
+    @blot = @entry.blog
+    render 'entries/show'
+  end
+
+  def update
+    @edit_comment = Comment.find(params[:id])
+    @entry = @edit_comment.entry
+    @blog = @entry.blog
+    if @edit_comment.owned_by?(@user)
+      @edit_comment.content= params[:content]
+      if params[:commit] == "Kommentar ändern"
+        @edit_comment.save
+        redirect_to blog_entry_url(@blog, @entry, :anchor => "comment-#{@edit_comment.id}")
+      else
+        # Preview only
+        @edit_comment.regenerate_html
+        @comments = @entry.comments
+        @comment_preview = 1
+        render 'entries/show'
+      end
+    else
+      # The user was clever enough to rig up this request
+      # without aid of our UI,
+      # so he might be clever enough to interpret the answer
+      # without UI aid as well.
+      head :unauthorized
+    end
+  end
+
   def create
-    blog = Blog.find(params[:blog_id])
     entry = Entry.find(params[:entry_id])
-    comment = entry.comments.new(params[:comment])
+    blog = entry.blog
+    comment = entry.comments.new(:content => params[:content])
     comment.author = @user
 
-    if comment.save(params[:comment])
-      flash[:success] = "Der Kommentar wurde gespeichert."
+    if params[:commit] == "Vorschau"
+      comment.regenerate_html
+      @edit_comment = comment
+      @blog = blog
+      @entry = entry
+      @comments = entry.comments
+      @comment_preview = 1
+      render 'entries/show'
     else
-      flash[:error] = "Der Kommentar konnte nicht gespeichert werden."
+      if comment.save
+        flash[:success] = "Der Kommentar wurde gespeichert."
+      else
+        flash[:error] = "Der Kommentar konnte nicht gespeichert werden."
+      end
+      redirect_to blog_entry_url(blog, entry, :anchor => "comment-#{comment.id}")
     end
-
-    redirect_to blog_entry_url(blog, entry, :anchor => "comment-#{comment.id}")
   end
 
   def destroy
     comment = Comment.find(params[:id])
+    entry = comment.entry
+    blog = entry.blog
+    if comment.owned_by?(@user)
+      comment.destroy
+      redirect_to blog_entry_url(blog, entry)
+    else
+      # The user was clever enough to rig up this request
+      # without aid of our UI,
+      # so he might be clever enough to interpret the answer
+      # without UI aid as well.
+      head :unauthorized
+    end
   end
 end

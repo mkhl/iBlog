@@ -47,7 +47,8 @@ class EntriesController < ApplicationController
 
   def show
     @entry = Entry.find(params[:id])
-    @comments = @entry.comments.order("id ASC")
+    @edit_comment = @entry.comments.new
+    @comments = @entry.comments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -122,12 +123,19 @@ class EntriesController < ApplicationController
 
   def destroy
     @entry = Entry.find(params[:id])
-    @entry.destroy
-    flash[:notice] = 'Der Eintrag wurde gelöscht.'
-
-    respond_to do |format|
-      format.html { redirect_to blog_entries_url(@entry.blog) }
-      format.xml  { head :ok }
+    if @entry.owned_by?(@user)
+      @entry.destroy
+      flash[:notice] = 'Der Eintrag wurde gelöscht.'
+      respond_to do |format|
+        format.html { redirect_to blog_entries_url(@entry.blog) }
+        format.xml  { head :ok }
+      end
+    else
+      # The user was clever enough to rig up this request
+      # without aid of our UI,
+      # so he might be clever enough to interpret the answer
+      # without UI aid as well.
+      head :unauthorized
     end
   end
 

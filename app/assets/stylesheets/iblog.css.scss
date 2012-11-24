@@ -1,3 +1,7 @@
+
+// If this stuff does not work, try
+// bundle exec rake assets:precompile:all RAILS_ENV=development
+
 $light-grey: #B3B3B3;
 
 body {
@@ -92,6 +96,15 @@ span.label a, a:hover, a:active {
   .comment-timestamp {
     color: $light-grey;
     float: right;
+  }
+  a.btn-mini {
+    margin-bottom: 9px; 
+  }
+  .preview-notice {
+    margin-left: 3em;
+    font-size: 140%;
+    font-weight: bold;
+    color: #dd1144; // same color is used for code presently.
   }
 }
 
