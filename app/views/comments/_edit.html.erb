@@ -12,7 +12,7 @@
     },
     :method => (edit_comment.new_record? ? :post : :put)) do %>
   <%= hidden_field_tag(:entry_id, edit_comment.entry.id) %>
-  <%= text_area_tag(:content, @edit_comment.content, :class => "span6", :rows => 4) %>
+  <%= text_area_tag(:content, @edit_comment.content, :class => "span10", :rows => 4) %>
   <div>
     <% if edit_comment.new_record? %>
       <%= submit_tag('Kommentar abgeben', :class => 'btn-primary btn-mini') %>
