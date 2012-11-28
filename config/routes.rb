@@ -7,6 +7,8 @@ Iblog::Application.routes.draw do
   end
 
   resources :comments
+  post '/comments' => 'comments#create', :as => 'create_comment'
+  put '/comments/:id' => 'comments#update', :as => 'update_comment'
 
   get '/index-all(.:format)' => 'entries#full', :as => 'entries'
 

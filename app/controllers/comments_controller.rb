@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
     @entry = @edit_comment.entry
     @blog = @entry.blog
     if @edit_comment.owned_by?(@user)
-      @edit_comment.content = params[:content]
+      @edit_comment.content = params[:comment][:content]
       if params[:commit] == "Kommentar ändern"
         @edit_comment.save
         redirect_to blog_entry_url(@blog, @entry, :anchor => "comment-#{@edit_comment.id}")
@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
   def create
     entry = Entry.find(params[:entry_id])
     blog = entry.blog
-    comment = entry.comments.new(:content => params[:content])
+    comment = entry.comments.new(:content => params[:comment][:content])
     comment.author = @user
 
     if params[:commit] == "Vorschau"
