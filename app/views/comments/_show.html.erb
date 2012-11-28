@@ -8,7 +8,7 @@
     </a>
     <% if defined?(show_entry) %> in <%= link_to comment.entry.title, [comment.entry.blog, comment.entry] %><% end %>
     <% if comment.created_at != comment.updated_at %>
-      <span class="comment-timestamp">, geändert <time datetime="<%= comment.updated_at.to_s(:rfc822) %>">am <%= l(comment.updated_at, :format => :short) %></time></span>
+      <span class="comment-timestamp"> – geändert <time datetime="<%= comment.updated_at.to_s(:rfc822) %>">am <%= l(comment.updated_at, :format => :short) %></time></span>
     <% end %>
     <% if comment.owned_by?(@user) %>
       <span class="pull-right">
