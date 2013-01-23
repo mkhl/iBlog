@@ -1,17 +1,17 @@
 #!/bin/bash
 
-echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
-if ! bundle exec rake backup_production
-then
-  echo >&2 ERROR backing up production database.
-  exit 10
-fi
-
 echo "------> [Deploy] Bundling gems"
 if ! bundle install --deployment --quiet --without development test
 then
   echo >&2 ERROR blundling gems
   exit 11
+fi
+
+echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
+if ! bundle exec rake backup_production
+then
+  echo >&2 ERROR backing up production database.
+  exit 10
 fi
 
 echo "------> [Deploy] Running migrations"
