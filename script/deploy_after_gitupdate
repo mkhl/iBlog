@@ -7,13 +7,6 @@ then
   exit 11
 fi
 
-echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
-if ! bundle exec rake backup_production
-then
-  echo >&2 ERROR backing up production database.
-  exit 10
-fi
-
 echo "------> [Deploy] Running migrations"
 if ! bundle exec rake db:migrate RAILS_ENV=production
 then

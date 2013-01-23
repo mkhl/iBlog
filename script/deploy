@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
+if ! bundle exec rake backup_production
+then
+  echo >&2 ERROR backing up production database.
+  exit 10
+fi
+
 # Check we are in the right directory
 
 # generate a script in the tmp directory
@@ -39,7 +46,7 @@ exec script/deploy_after_gitupdate
 echo >&2 ERROR handing over to: script/deploy_after_gitupdate
 exit 5
 END
-  
+
   chmod a+x tmp/gitupdate_and_deploy
   if test ! -x tmp/gitupdate_and_deploy
   then
@@ -48,7 +55,7 @@ END
   fi
 
   exec tmp/gitupdate_and_deploy
-  
+
   echo >&2 ERROR handing over to: tmp/gitupdate_and_deploy
   exit 7
 
