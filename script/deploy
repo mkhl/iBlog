@@ -1,13 +1,8 @@
 #!/bin/bash
 
-echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
-if ! bundle exec rake backup_production
-then
-  echo >&2 ERROR backing up production database.
-  exit 10
-fi
-
 # Check we are in the right directory
+
+# do a backup of the database
 
 # generate a script in the tmp directory
 # that does the git update
@@ -17,9 +12,17 @@ fi
 # and give control to the (freshly updated)
 # script/deploy_after_gitupdate
 
-mkdir tmp
+mkdir -p tmp
 if test -d script -a -d tmp -a -x script/deploy_after_gitupdate
 then
+
+  echo "------> [Deploy] creating a temporary (4 weeks) backup of production"
+  if ! bundle exec rake backup_production
+  then
+    echo >&2 ERROR backing up production database.
+    exit 10
+  fi
+
   rm -f tmp/gitupdate_and_deploy
   if test -f tmp/gitupdate_and_deploy
   then
