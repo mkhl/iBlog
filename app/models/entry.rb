@@ -4,7 +4,7 @@ class Entry < ActiveRecord::Base
   include Markdown
   include Authored
 
-  validates_presence_of :progress
+  validates_presence_of :title, :progress
 
   belongs_to :blog
   has_many :tags
