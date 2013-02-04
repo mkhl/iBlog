@@ -4,6 +4,7 @@ de:
       atom: "%Y-%m-%dT%H:%M:%SZ"
 
   titles:
+    title: "Titel"
     progress: "Erreicht"
     plans: "Geplant"
     no_plans: "Nichts geplant"
