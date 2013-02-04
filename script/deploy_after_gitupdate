@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "------> [Deploy] Protecting config/database.yml"
+test -e config/database.yml && chmod u=rw,g=,o= config/database.yml
+
 echo "------> [Deploy] Bundling gems"
 if ! bundle install --deployment --quiet --without development test
 then
