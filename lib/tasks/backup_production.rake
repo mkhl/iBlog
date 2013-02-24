@@ -24,8 +24,8 @@ task :backup_production do
   filename = "#{dir}/#{database}-backup-#{t}-sql.bz2"
 
   puts "#{database} backup to #{filename}"
-  Dir.mkdir(dir) unless Dir.exists?(dir)
-  raise "Could not create #{dir} - so cannot backup." unless Dir.exists?(dir)
+  Dir.mkdir(dir) unless File.directory?(dir)
+  raise "Could not create #{dir} - so cannot backup." unless File.directory?(dir)
 
   # Fire up a bzip2 into the background
   # (monitor its success later)
