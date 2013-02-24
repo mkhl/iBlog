@@ -23,7 +23,6 @@ task :backup_production do
   dir = "../#{database}-backups"
   filename = "#{dir}/#{database}-backup-#{t}-sql.bz2"
 
-  puts "#{database} backup to #{filename}"
   Dir.mkdir(dir) unless File.directory?(dir)
   raise "Could not create #{dir} - so cannot backup." unless File.directory?(dir)
 
@@ -87,6 +86,7 @@ HINT
   if at_pid.nil?
     wr_at.close
     $stdin.reopen(rd_at)
+    $stderr.reopen("/dev/null") # sigh...
     exec "at", "now", "+", "4", "weeks"
     raise "Cannot schedule cleanup via at: $!";
   end
