@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 gem 'mysql2'
 gem 'jquery-rails'
 gem 'kaminari'
@@ -19,7 +19,7 @@ end
 
 group :assets do
   gem 'sass-rails'
-  gem 'bourbon'
+  gem 'bourbon', '~> 2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer'
 end
