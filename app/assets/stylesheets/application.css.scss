@@ -1,4 +1,10 @@
 @import "bourbon";
 @import "bootstrap";
+
+// To use a fixed navbar at the top a top-padding has to be added to the body. Duh!
+// Important note here: If the top-padding is applied _after_ bootstrap-responsive
+// it can't get overwritten. See http://stackoverflow.com/a/10185435 for a detailed explaination.
+body { padding-top: 60px; }
+
 @import "bootstrap-responsive";
 @import "iblog";
