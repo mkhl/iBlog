@@ -1,17 +1,15 @@
 # iBlog
 
-Simple internal blogging/PPP solution, originally developed by the masters of disasters, PG & ST. 
-iBlog is currently maintained by robertg.
+Simple internal blogging/PPP solution, originally developed by @stilkov and @pgh.
+iBlog is currently maintained by @mrreynolds.
+
+## Security note
 
 Authors have full control of the HTML of their
-individual blog post.  There is no protection
+individual blog post. There is no protection
 against, e.g.,
 [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 attacks. If you don't trust your authors, don't use this software.
-
-## Deployment
-
-https://wiki.innoq.com/display/innoq/iBlog
 
 ## Getting Started
 
