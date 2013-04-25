@@ -4,6 +4,7 @@ tmp/*
 public/assets
 config/database.yml
 .bundle
-vendor
 .DS_Store
+.ruby
+.ruby-version
 
