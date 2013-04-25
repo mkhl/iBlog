@@ -4,7 +4,9 @@ class Entry < ActiveRecord::Base
   include Markdown
   include Authored
 
-  validates_presence_of :title, :progress
+  attr_protected :blog_id, :author
+
+  validates :title, :progress, :blog_id, :presence => true
 
   belongs_to :blog
   has_many :tags

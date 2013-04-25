@@ -9,7 +9,7 @@
   <%= auto_discovery_link_tag :atom, blogs_path(:atom), :title => "Blogs" %>
   <%= auto_discovery_link_tag :atom, blog_entries_path(@blog, :atom), :title => "Einträge für Blog #{@blog.name}" if @blog && !@blog.new_record? %>
   <%= auto_discovery_link_tag :atom, tag_path(@tag.name, :atom), :title => "Einträge für Tag #{@tag.name}" if @tag %>
-  <%= auto_discovery_link_tag :atom, entries_path(:atom), :title => "Alle Einträge" %>
+  <%= auto_discovery_link_tag :atom, all_entries_path(:atom), :title => "Alle Einträge" %>
   <%= auto_discovery_link_tag :atom, comments_path(:atom), :title => "Alle Kommentare" %>
 </head>
 <body>
@@ -45,6 +45,7 @@
           <li class="nav-header"><%= @blog.name %></li>
           <li><%= link_to "<i class=icon-edit></i> Neuer Eintrag".html_safe, new_blog_entry_path(@blog) %></li>
           <% else %>
+          <li><%= link_to "<i class=icon-edit></i> Neuer Eintrag".html_safe, new_entry_path %></li>
           <li><%= link_to "<i class=icon-edit></i> Neues Blog".html_safe, new_blog_path %></li>
           <% end %>
           <%= nav_side_items(@nav_side_items) %>
