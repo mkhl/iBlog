@@ -19,6 +19,7 @@ end
 
 group :assets do
   gem 'sass-rails'
+  gem 'bourbon', '~> 2.1'
   gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer'
