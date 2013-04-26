@@ -10,13 +10,13 @@ Iblog::Application.routes.draw do
   post '/comments' => 'comments#create', :as => 'create_comment'
   put '/comments/:id' => 'comments#update', :as => 'update_comment'
 
-  get '/index-all(.:format)' => 'entries#full', :as => 'entries'
-
-  root :to => 'blogs#index'
-
   resources :entries do
     resources :comments
   end
+
+  get '/index-all(.:format)' => 'entries#full', :as => 'all_entries'
+
+  root :to => 'blogs#index'
 
   scope '/entries' do
     get '/tags/:tag(.:format)' => 'entries#by_tag', :as => 'tag'

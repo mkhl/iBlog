@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
           :active? => params[:controller] == "entries" && params[:action] == "user_home" && params[:author]
         },
         {
-          :path    => entries_path,
+          :path    => all_entries_path,
           :icon    => "fire",
           :title   => "Letzte",
           :active? => params[:controller] == "entries" && params[:action] == "full"
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
           :active? => false
         },
         {
-          :path    => entries_path(:format => :atom),
+          :path    => all_entries_path(:format => :atom),
           :icon    => "fire",
           :title   => "Einträge",
           :active? => false
@@ -74,6 +74,6 @@ class ApplicationController < ActionController::Base
     end
 
     def set_user
-      @user = request.headers['REMOTE_USER'] || 'guest'
+      @user = request.headers['REMOTE_USER'] || 'robertg'
     end
 end

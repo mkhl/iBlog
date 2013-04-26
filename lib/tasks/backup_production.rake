@@ -20,9 +20,11 @@ task :backup_production do
   end
 
   t = Time.now.strftime "%Y-%m-%dT%H%M%S"
-  filename = "../#{database}-backup-#{t}-sql.bz2"
+  dir = "../#{database}-backups"
+  filename = "#{dir}/#{database}-backup-#{t}-sql.bz2"
 
-  puts "#{database} backup to #{filename}"
+  Dir.mkdir(dir) unless File.directory?(dir)
+  raise "Could not create #{dir} - so cannot backup." unless File.directory?(dir)
 
   # Fire up a bzip2 into the background
   # (monitor its success later)
@@ -84,6 +86,7 @@ HINT
   if at_pid.nil?
     wr_at.close
     $stdin.reopen(rd_at)
+    $stderr.reopen("/dev/null") # sigh...
     exec "at", "now", "+", "4", "weeks"
     raise "Cannot schedule cleanup via at: $!";
   end

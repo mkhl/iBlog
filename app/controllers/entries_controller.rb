@@ -1,9 +1,10 @@
 # encoding: UTF-8
 
 class EntriesController < ApplicationController
-  before_filter :set_blog, :except => [ :home, :user_home, :full, :by_author, :by_tag ]
+  # before_filter :set_blog, :except => [ :home, :user_home, :full, :by_author, :by_tag ]
 
   def index
+    @blog = Blog.find(params[:blog_id])
     @entries = Entry.where(:blog_id => @blog.id).order('id DESC')
 
     respond_to do |format|
@@ -46,6 +47,7 @@ class EntriesController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:blog_id])
     @entry = Entry.find(params[:id])
     @edit_comment = @entry.comments.new
     @comments = @entry.comments
@@ -57,9 +59,13 @@ class EntriesController < ApplicationController
   end
 
   def new
+    if params[:blog_id]
+      @blog = Blog.find(params[:blog_id])
+    end
+
     @entry = Entry.new do |entry|
       entry.author = @user
-      entry.blog_id = @blog.id
+      entry.blog_id = @blog.id if @blog
       entry.title = "PPP von #{@user} am #{Date.today}"
     end
 
@@ -74,11 +80,16 @@ class EntriesController < ApplicationController
   end
 
   def create
-#    @blog = Blog.find( params[:blog_id] )
+    if params[:entry] && params[:entry][:blog_id].present?
+      @blog = Blog.find(params[:entry][:blog_id])
+    end
+
+    params[:entry].delete(:blog_id)
 
     @entry = Entry.new(params[:entry])
     @entry.author = @user
-    @entry.blog_id = @blog.id
+    @entry.blog = @blog
+
     respond_to do |format|
       if params[:commit] == "Vorschau"
         @entry.regenerate_html
@@ -154,10 +165,4 @@ class EntriesController < ApplicationController
     end
 
   end
-
-  private
-    def set_blog
-      @blog = Blog.find(params[:blog_id])
-    end
-
 end
