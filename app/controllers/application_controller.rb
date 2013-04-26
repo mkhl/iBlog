@@ -74,6 +74,6 @@ class ApplicationController < ActionController::Base
     end
 
     def set_user
-      @user = request.headers['REMOTE_USER'] || 'robertg'
+      @user = request.headers['REMOTE_USER'] || 'guest'
     end
 end
