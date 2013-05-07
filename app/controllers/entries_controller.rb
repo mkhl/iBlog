@@ -134,7 +134,7 @@ class EntriesController < ApplicationController
       else
         if @entry.update_attributes(params[:entry])
           flash[:success] = 'Der Eintrag wurde gespeichert.'
-          format.html { redirect_to blog_entry_url(@blog, @entry) }
+          format.html { redirect_to blog_entry_url(@entry.blog, @entry) }
           format.xml  { head :ok }
         else
           flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
