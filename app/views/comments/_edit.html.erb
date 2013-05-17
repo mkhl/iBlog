@@ -11,11 +11,11 @@
   <%= f.input :content, :label => false, :input_html => { :rows => 4, :class => "span10" } %>
   <div>
     <% if edit_comment.new_record? %>
-      <%= submit_tag 'Kommentar abgeben', :class => 'btn-primary' %>
-      <%= submit_tag 'Vorschau', :class => 'btn-info' %>
+      <%= submit_tag 'Kommentar abgeben', :class => 'btn btn-primary' %>
+      <%= submit_tag 'Vorschau', :class => 'btn btn-info' %>
     <% else %>
-      <%= submit_tag 'Kommentar ändern', :class => 'btn-primary btn-mini' %>
-      <%= submit_tag 'Vorschau', :class => 'btn-info btn-mini' %>
+      <%= submit_tag 'Kommentar ändern', :class => 'btn btn-primary btn-mini' %>
+      <%= submit_tag 'Vorschau', :class => 'btn btn-info btn-mini' %>
       <%= link_to 'Löschen', edit_comment, :method => :delete, :class => 'btn btn-danger btn-mini' %>
     <% end %>
   </div>
