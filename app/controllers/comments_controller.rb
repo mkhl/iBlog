@@ -16,8 +16,7 @@ class CommentsController < ApplicationController
   def index
     ## TODO
     # Feeds for: blog comments, entry comments
-    @comments = Comment.includes(:entry => :blog).
-        where(:updated_at => 40.days.ago.to_date..Date.tomorrow)
+    @comments = Comment.includes(:entry => :blog)
 
     respond_to do |format|
       format.html do
@@ -30,7 +29,9 @@ class CommentsController < ApplicationController
         end
       end
       format.atom do
-        @comments = @comments.order("id ASC")
+        @comments = @comments.
+          where(:updated_at => 40.days.ago.to_date..Date.tomorrow).
+          order("id ASC")
       end
     end
   end
