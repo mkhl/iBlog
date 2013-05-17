@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     ## TODO
     # Feeds for: blog comments, entry comments
     @comments = Comment.includes(:entry => :blog).
-        where(:updated_at => 40.days.ago..Time.now)
+        where(:updated_at => 40.days.ago.to_date..Date.today)
 
     respond_to do |format|
       format.html do
