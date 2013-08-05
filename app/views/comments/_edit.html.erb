@@ -4,10 +4,10 @@
         :locals => { :this_is_preview => 1, :comment => edit_comment } %>
   </div>
 <% end %>
-<% anchor = "comment-#{@comment_id}" %>
-<% path = edit_comment.new_record? ? create_comment_path(:anchor => anchor) : update_comment_path(edit_comment, :anchor => anchor) %>
+
+<% path = edit_comment.new_record? ? create_comment_path : update_comment_path %>
 <%= simple_form_for edit_comment, :url => path do |f| %>
-  <%= hidden_field_tag :entry_id, edit_comment.entry.id %>
+  <%#= hidden_field_tag :owner_id, edit_comment.owner.id %>
   <%= f.input :content, :label => false, :input_html => { :rows => 4, :class => "span10" } %>
   <div>
     <% if edit_comment.new_record? %>

@@ -38,27 +38,48 @@ class CommentsController < ApplicationController
 
   def edit
     @edit_comment = Comment.find(params[:id])
-    @entry = @edit_comment.entry
-    @comments = @entry.comments
-    @blot = @entry.blog
-    render 'entries/show'
+
+    if @edit_comment.owner.is_a?(Entry)
+      @entry = @edit_comment.owner
+      @blog = @entry.blog
+      @comments = @entry.comments
+      tpl = 'entries/show'
+    elsif @edit_comment.owner.is_a?(WeeklyStatus)
+      @status = @edit_comment.owner
+      @comments = @status.comments
+      tpl = 'weekly_statuses/show'
+    end
+
+    render tpl
   end
 
   def update
     @edit_comment = Comment.find(params[:id])
-    @entry = @edit_comment.entry
-    @blog = @entry.blog
+
+    anchor = "comment-#{@edit_comment.id}"
+
+    if @edit_comment.owner.is_a?(Entry)
+      @entry = @edit_comment.owner
+      @blog = @entry.blog
+      tpl = 'entries/show'
+      back_to = return_path(@entry, @edit_comment)
+    elsif @edit_comment.owner.is_a?(WeeklyStatus)
+      @status = @edit_comment.owner
+      tpl = 'weekly_statuses/show'
+      back_to = return_path(@status, @edit_comment)
+    end
+
     if @edit_comment.owned_by?(@user)
       @edit_comment.content = params[:comment][:content]
       if params[:commit] == "Kommentar ändern"
         @edit_comment.save
-        redirect_to blog_entry_url(@blog, @entry, :anchor => "comment-#{@edit_comment.id}")
+        redirect_to back_to
       else
         # Preview only
         @edit_comment.regenerate_html
-        @comments = @entry.comments
+        @comments = @edit_comment.owner.comments
         @comment_preview = 1
-        render 'entries/show'
+        render tpl
       end
     else
       # The user was clever enough to rig up this request
@@ -70,42 +91,64 @@ class CommentsController < ApplicationController
   end
 
   def create
-    entry = Entry.find(params[:entry_id])
-    blog = entry.blog
-    comment = entry.comments.new(:content => params[:comment][:content])
+    owner = if params[:entry_id]
+      Entry.find(params[:entry_id])
+    elsif params[:weekly_status_id]
+      WeeklyStatus.find(params[:weekly_status_id])
+    else
+      raise "no owner given"
+    end
+
+    comment = owner.comments.new(:content => params[:comment][:content])
     comment.author = @user
 
     if params[:commit] == "Vorschau"
       comment.regenerate_html
-      @edit_comment = comment
-      @blog = blog
-      @entry = entry
-      @comments = entry.comments
+      @comments = owner.comments
       @comment_preview = 1
-      render 'entries/show'
+      @edit_comment = comment
+      if owner.is_a?(Entry)
+        @blog = owner.blog
+        @entry = owner
+        render 'entries/show'
+      elsif owner.is_a?(WeeklyStatus)
+        @status = owner
+        render 'weekly_statuses/show'
+      end
     else
       if comment.save
         flash[:success] = "Der Kommentar wurde gespeichert."
       else
         flash[:error] = "Der Kommentar konnte nicht gespeichert werden."
       end
-      redirect_to blog_entry_url(blog, entry, :anchor => "comment-#{comment.id}")
+
+      redirect_to return_path(owner, comment)
     end
   end
 
   def destroy
     comment = Comment.find(params[:id])
-    entry = comment.entry
-    blog = entry.blog
+
     if comment.owned_by?(@user)
       comment.destroy
-      redirect_to blog_entry_url(blog, entry)
+      redirect_to return_path(comment.owner)
     else
       # The user was clever enough to rig up this request
       # without aid of our UI,
       # so he might be clever enough to interpret the answer
       # without UI aid as well.
       head :unauthorized
+    end
+  end
+
+  private
+  def return_path(owner, comment = nil)
+    anchor = "comment-#{comment.id}" if comment
+
+    if owner.is_a?(Entry)
+      blog_entry_url(owner.blog, owner, :anchor => anchor)
+    elsif owner.is_a?(WeeklyStatus)
+      weekly_status_path(owner, :anchor => anchor)
     end
   end
 end

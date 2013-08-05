@@ -17,7 +17,7 @@ class Comment < ActiveRecord::Base
   include Markdown
   include Authored
 
-  belongs_to :entry
+  belongs_to :owner, :polymorphic => true
 
   before_save :regenerate_html
 

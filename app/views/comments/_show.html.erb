@@ -3,10 +3,10 @@
   <% if 1 == this_is_preview %>
     <span class="preview-notice">Vorschau.</span>
   <% else %>
-    <a href="<%= blog_entry_path(comment.entry.blog, comment.entry, :anchor => "comment-#{comment.id}")%>" class="comment-timestamp">
+    <%= link_to url_for(:anchor => "comment-#{comment.id}"), :class => 'comment-timestamp' do %>
       <time datetime="<%= comment.created_at.to_s(:rfc822) %>">am <%= l(comment.created_at, :format => :short) %></time>
-    </a>
-    <% if defined?(show_entry) %> in <%= link_to comment.entry.title, [comment.entry.blog, comment.entry] %><% end %>
+    <% end %>
+    <% if defined?(show_owner) %> in <%= owner_link %><% end %>
     <% if comment.created_at != comment.updated_at %>
       <span class="comment-timestamp"> – geändert <time datetime="<%= comment.updated_at.to_s(:rfc822) %>">am <%= l(comment.updated_at, :format => :short) %></time></span>
     <% end %>

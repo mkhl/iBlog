@@ -2,8 +2,12 @@
 <%= render @entry %>
 <ol class="comments unstyled">
   <% @comments.each do |comment| %>
-     <%= render :partial => 'comments/comment', 
-         :locals => {:comment => comment, :edit_comment => @edit_comment} 
+     <%= render :partial => 'comments/comment',
+         :locals => { :comment => comment,
+                      :edit_comment => @edit_comment,
+                      :owner_path => [@entry.blog, @entry],
+                      :create_comment_path => blog_entry_comments_path(@entry.blog, @entry),
+                      :update_comment_path => (comment.new_record? ? nil : blog_entry_comment_path(@entry.blog, @entry, comment, :anchor => "comment-#{comment.id}")) }
 %>
   <% end %>
 </ol>

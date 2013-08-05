@@ -1,16 +1,4 @@
-# Copyright 2013 innoQ Deutschland GmbH
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-#     http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -23,33 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107145831) do
+ActiveRecord::Schema.define(:version => 20130805095507) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
     t.string   "owner"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "title"
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "entry_id"
+    t.integer  "owner_id"
     t.string   "author"
     t.text     "content"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.text     "content_html"
+    t.string   "owner_type"
   end
 
-  add_index "comments", ["entry_id"], :name => "index_comments_on_entry_id"
+  add_index "comments", ["owner_id", "owner_type"], :name => "index_comments_on_owner_id_and_owner_type"
+  add_index "comments", ["owner_id"], :name => "index_comments_on_entry_id"
 
   create_table "entries", :force => true do |t|
     t.string   "title"
     t.string   "author"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "progress"
     t.text     "plans"
     t.text     "problems"
@@ -69,6 +59,14 @@ ActiveRecord::Schema.define(:version => 20121107145831) do
   create_table "tags", :force => true do |t|
     t.string  "name"
     t.integer "entry_id"
+  end
+
+  create_table "weekly_statuses", :force => true do |t|
+    t.string   "author"
+    t.text     "status"
+    t.text     "status_html"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

@@ -14,7 +14,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'puma'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :assets do

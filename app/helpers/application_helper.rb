@@ -35,25 +35,22 @@ module ApplicationHelper
     @glyphs[name.to_sym]
   end
 
-  def nav_side_items(items)
-    html = ActiveSupport::SafeBuffer.new
+  def nav_item(title, path = nil, &block)
+    css_class = []
+    css_class << 'active' if path && current_page?(path)
+    css_class << 'dropdown' if block_given?
 
-    items.each do |key, values|
-      html << content_tag(:li, key, :class => 'nav-header')
-      values.each do |value|
-        css_class = value[:active?] ? "active" : ""
-        path = value[:path].respond_to?(:call) ? value[:path].call : value[:path]
-        title = if value[:icon]
-          content_tag(:i, nil, :class => "icon-#{value[:icon]}") + value[:title]
-        else
-          value[:title]
-        end
-
-        html << content_tag(:li, link_to(title.html_safe, path), :class => css_class)
+    content = if block_given?
+      link_to('#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'}) do
+        title.html_safe + ' ' + content_tag(:b, nil, :class => 'caret')
+      end + content_tag(:ul, :class => 'dropdown-menu') do
+        yield
       end
+    else
+      link_to(title, path)
     end
 
-    html
+    content_tag :li, content, :class => css_class
   end
 
 end

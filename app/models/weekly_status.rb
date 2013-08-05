@@ -11,35 +11,30 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 # encoding: UTF-8
-require "modules/markdown"
-require "modules/authored"
-class Entry < ActiveRecord::Base
+
+require 'modules/markdown'
+require 'modules/authored'
+
+class WeeklyStatus < ActiveRecord::Base
   include Markdown
   include Authored
 
-  attr_protected :blog_id, :author
+  attr_accessible :status, :status_html
 
-  validates :title, :progress, :blog_id, :presence => true
-
-  belongs_to :blog
-  has_many :tags
   has_many :comments, :as => :owner, :dependent => :destroy
 
-  def tags_as_string
-    tags.map { |t| t.name }.join(' ')
-  end
-
-  def tags_as_string=(tags_as_string)
-    tags.destroy_all
-    self.tags = tags_as_string.split(/[, ]+/).map { |t| Tag.new(:name => t) }
-  end
+  validates :status, :presence => true
 
   before_save :regenerate_html
 
+  def title
+    timestamp = created_at? ? created_at : Time.now
+    "Wochenstatus KW #{timestamp.strftime('%W')} von #{author}"
+  end
+
   def regenerate_html
-    self.progress_html = md_to_html(progress)
-    self.plans_html    = md_to_html(plans)
-    self.problems_html = md_to_html(problems)
+    self.status_html = md_to_html(status)
   end
 end

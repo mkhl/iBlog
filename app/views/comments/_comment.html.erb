@@ -2,9 +2,11 @@
 <li class="comment" id="comment-<%= @comment_id %>">
 <% if not defined?(edit_comment) or (not comment.id.nil? and edit_comment.id != comment.id) %>
   <%= render :partial => 'comments/show',
-      :locals => { :comment => comment, :this_is_preview => nil } %>
+      :locals => { :comment => comment, :this_is_preview => nil, :owner_path => owner_path } %>
 <% else %>
   <%= render :partial => 'comments/edit',
-      :locals => { :edit_comment => edit_comment } %>
+      :locals => { :edit_comment => edit_comment,
+                   :create_comment_path => create_comment_path,
+                   :update_comment_path => update_comment_path } %>
 <% end %>
 </li>

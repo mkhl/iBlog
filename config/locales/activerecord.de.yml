@@ -2,5 +2,5 @@ de:
   activerecord:
     models:
       entry:
-        one: "Eintrag"
-        other: "Einträge"
+        one: "PPP-Eintrag"
+        other: "PPP-Einträge"

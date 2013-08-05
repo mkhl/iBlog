@@ -1,0 +1,13 @@
+<%= content_for :title, @status.title %>
+<%= render @status %>
+
+<ol class="comments unstyled">
+  <% @comments.each do |comment| %>
+    <%= render :partial => 'comments/comment',
+      :locals => { :comment => comment,
+                   :edit_comment => @edit_comment,
+                   :owner_path => @status,
+                   :create_comment_path => weekly_status_comments_path(@status, :anchor => "comment-#{@comment_id}"),
+                   :update_comment_path => (comment.new_record? ? nil : weekly_status_comment_path(@status, comment, :anchor => "comment-#{@comment_id}")) } %>
+  <% end %>
+</ol>

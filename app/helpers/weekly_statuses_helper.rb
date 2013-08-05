@@ -1,0 +1,2 @@
+module WeeklyStatusesHelper
+end

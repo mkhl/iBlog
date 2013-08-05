@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 Iblog::Application.routes.draw do
+  resources :weekly_statuses do
+    resources :comments
+  end
+
+  get '/weekly_statuses/by/:author' => 'weekly_statuses#by_author',
+    :as => 'weekly_statuses_by_author'
 
   resources :blogs do
     resources :entries do
@@ -20,8 +26,6 @@ Iblog::Application.routes.draw do
   end
 
   resources :comments
-  post '/comments' => 'comments#create', :as => 'create_comment'
-  put '/comments/:id' => 'comments#update', :as => 'update_comment'
 
   resources :entries do
     resources :comments
