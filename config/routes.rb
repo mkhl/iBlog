@@ -33,7 +33,7 @@ Iblog::Application.routes.draw do
 
   get '/index-all(.:format)' => 'entries#full', :as => 'all_entries'
 
-  root :to => 'blogs#index'
+  root :to => 'entries#full'
 
   scope '/entries' do
     get '/tags/:tag(.:format)' => 'entries#by_tag', :as => 'tag'
