@@ -15,4 +15,24 @@ module CommentsHelper
   def avatar(user)
     image_tag("https://intern.innoq.com/liqid/users/#{user}/avatar/64x64", :class => "avatar", :alt => "#{user}")
   end
+
+  def comment_owner_path(comment)
+    anchor = "comment-#{comment.id}"
+
+    if comment.owner.is_a?(Entry)
+      blog_entry_path(comment.owner.blog, comment.owner, :anchor => anchor)
+    elsif comment.owner.is_a?(WeeklyStatus)
+      weekly_status_path(comment.owner, :anchor => anchor)
+    end
+  end
+
+  def comment_owner_url(comment)
+    anchor = "comment-#{comment.id}"
+
+    if comment.owner.is_a?(Entry)
+      blog_entry_url(comment.owner.blog, comment.owner, :anchor => anchor)
+    elsif comment.owner.is_a?(WeeklyStatus)
+      weekly_status_url(comment.owner, :anchor => anchor)
+    end
+  end
 end

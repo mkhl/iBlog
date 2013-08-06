@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title "PPP - Einträge"
+  feed.title "PPPs"
   feed.updated @entries.first.updated_at if @entries.first
   feed.subtitle "yet another internal innoQ blog"
   feed.generator "i-Blogs Custom ATOM Feed Generator 1.0", :uri => root_url

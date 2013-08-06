@@ -6,7 +6,7 @@
     <%= link_to url_for(:anchor => "comment-#{comment.id}"), :class => 'comment-timestamp' do %>
       <time datetime="<%= comment.created_at.to_s(:rfc822) %>">am <%= l(comment.created_at, :format => :short) %></time>
     <% end %>
-    <% if defined?(show_owner) %> in <%= owner_link %><% end %>
+    <% if show_owner %> in <%= link_to(comment.owner.title, comment_owner_path(comment)) %><% end %>
     <% if comment.created_at != comment.updated_at %>
       <span class="comment-timestamp"> – geändert <time datetime="<%= comment.updated_at.to_s(:rfc822) %>">am <%= l(comment.updated_at, :format => :short) %></time></span>
     <% end %>

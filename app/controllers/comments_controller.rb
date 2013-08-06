@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   def index
     ## TODO
     # Feeds for: blog comments, entry comments
-    @comments = Comment.includes(:entry => :blog)
+    @comments = Comment.scoped
 
     respond_to do |format|
       format.html do
