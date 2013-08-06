@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
           @comments = @comments.where(:author => params[:author])
           render "comments/index/by_author"
         else
+          @comments = @comments.page(params[:page]).per(40)
           render "comments/index/all"
         end
       end
