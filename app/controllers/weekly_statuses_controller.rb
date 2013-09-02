@@ -1,6 +1,6 @@
 class WeeklyStatusesController < ApplicationController
   def index
-    @statuses = WeeklyStatus.page(params[:page])
+    @statuses = WeeklyStatus.recent.page(params[:page])
 
     respond_to do |format|
       format.html
@@ -9,7 +9,7 @@ class WeeklyStatusesController < ApplicationController
   end
 
   def by_author
-    @statuses = WeeklyStatus.where(:author => params[:author]).order('id DESC')
+    @statuses = WeeklyStatus.where(:author => params[:author]).recent
 
     respond_to do |format|
       format.html do

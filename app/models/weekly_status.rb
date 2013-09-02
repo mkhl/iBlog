@@ -29,6 +29,10 @@ class WeeklyStatus < ActiveRecord::Base
 
   before_save :regenerate_html
 
+  def self.recent
+    order('id DESC')
+  end
+
   def title
     timestamp = created_at? ? created_at : Time.now
     "Wochenstatus KW #{timestamp.strftime('%W')} von #{author}"
