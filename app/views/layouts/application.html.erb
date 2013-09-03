@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tag %>
-  <title><% if content_for? :title %><%= content_for :title %> – <% end %>PPP</title>
+  <title><% if content_for? :title %><%= content_for :title %> – <% end %>iBlog</title>
   <%= auto_discovery_link_tag :atom, blogs_path(:atom), :title => "PPP-Blogs" %>
   <%= auto_discovery_link_tag :atom, blog_entries_path(@blog, :atom), :title => "PPPs für Blog #{@blog.name}" if @blog && !@blog.new_record? %>
   <%= auto_discovery_link_tag :atom, tag_path(@tag.name, :atom), :title => "PPPs für Tag #{@tag.name}" if @tag %>
@@ -38,6 +38,7 @@
             <%= nav_item "Wochenstatus" do %>
               <%= nav_item "Neuer Eintrag", new_weekly_status_path %>
               <li class="divider"></li>
+              <%= nav_item "Diese Woche", weekly_statuses_by_week_path(Time.now.strftime('%W')) %>
               <%= nav_item "Alle Einträge", weekly_statuses_path %>
               <%= nav_item "Meine Einträge", weekly_statuses_by_author_path(@user) %>
             <% end %>

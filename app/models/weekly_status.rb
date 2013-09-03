@@ -33,6 +33,12 @@ class WeeklyStatus < ActiveRecord::Base
     order('id DESC')
   end
 
+  def self.by_week(week)
+    start_time = (Time.now.beginning_of_year + week.to_i.weeks).beginning_of_week
+    where('created_at >= :start AND created_at <= :end',
+      { start: start_time, end: start_time.end_of_week })
+  end
+
   def title
     timestamp = created_at? ? created_at : Time.now
     "Wochenstatus KW #{timestamp.strftime('%W')} von #{author}"

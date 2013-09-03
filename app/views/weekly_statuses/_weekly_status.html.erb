@@ -1,17 +1,13 @@
 <% if @preview %>
   <article class="post preview">
-    <h2><%= weekly_status.title %></h2>
 <% else %>
   <article class="post">
-    <h2>
-      <%= link_to weekly_status.title, weekly_status %>
       <% if weekly_status.owned_by?(@user) %>
         <span class="pull-right">
           <%= link_to glyph(:edit), edit_weekly_status_path(weekly_status), :class => "btn" %>
           <%= link_to glyph(:delete, true), weekly_status, :method => :delete, :class => "btn btn-danger" %>
         </span>
       <% end %>
-    </h2>
 <% end %>
 
   <%= format_entry_section(weekly_status.status_html) %>

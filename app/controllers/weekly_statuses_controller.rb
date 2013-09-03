@@ -20,6 +20,14 @@ class WeeklyStatusesController < ApplicationController
     end
   end
 
+  def by_week
+    @statuses = WeeklyStatus.by_week(params[:week]).recent
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def show
     @status = WeeklyStatus.find(params[:id])
     @edit_comment = @status.comments.new

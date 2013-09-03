@@ -18,6 +18,8 @@ Iblog::Application.routes.draw do
 
   get '/weekly_statuses/by/:author' => 'weekly_statuses#by_author',
     :as => 'weekly_statuses_by_author'
+  get '/weekly_statuses/week/:week' => 'weekly_statuses#by_week',
+    :as => 'weekly_statuses_by_week'
 
   resources :blogs do
     resources :entries do
