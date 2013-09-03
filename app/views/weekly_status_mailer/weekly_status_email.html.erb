@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  	</head>
+  	<body>
+    	<h1>Wochenstatus KW <%= @week %></h1>
+		<% @statuses.each do |status| %>
+		<div class="status">	
+			<p><%= avatar(status.author) %></p>
+			<p><%= link_to status.author, weekly_statuses_by_author_path(:author => status.author) %> </p>
+			<p><%= l status.created_at, :format => :default %></p>
+			<%= format_entry_section(status.status_html) %> 
+		</div>
+		<% end %>
+	</body>
+</html>	
