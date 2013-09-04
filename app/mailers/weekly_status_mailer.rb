@@ -1,6 +1,6 @@
 class WeeklyStatusMailer < ActionMailer::Base
   helper :comments, :entries
-  default {:from => 'notifications@innoq.com'}
+  default :from => 'notifications@innoq.com'
 
   def weekly_status_email(recipient)
   	@week = Time.now.strftime('%W')
