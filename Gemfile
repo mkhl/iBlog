@@ -12,6 +12,8 @@ gem 'simple_form'
 group :development, :test do
   gem 'sqlite3'
   gem 'awesome_print'
+  gem 'letter_opener'
+  gem 'addressable'
 end
 
 group :development do
