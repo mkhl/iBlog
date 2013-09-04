@@ -1,7 +1,11 @@
 Wochenstatus KW <%= @week %>
-==================
+**************************************************
 
 <% @statuses.each do |status| %>
-<% status.author %>, <%= l status.created_at, :format => :default %>
-<%= status.status %> 
+==================================================
+<%= status.author %>, <%= l status.created_at %>
+--------------------------------------------------
+<%= status.status %>
+--------------------------------------------------
+
 <% end %>

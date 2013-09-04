@@ -2,15 +2,40 @@
 <html>
 	<head>
     	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    	<style type="text/css">
+    		body {
+    			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    		}
+
+    		.status {
+    			border: 1px Solid #ccc;
+    			padding: 10px 10px 10px 10px;
+    			margin-bottom: 1.0em;
+    		}
+    		p.meta {
+    			font-size: 0.8em;
+    			margin-bottom: 0.5em;
+    		}
+		    h1 { font-size: 16px; }
+    		h2 { font-size: 14px; }
+    		h3 { font-size: 13px; }
+
+    	</style>
   	</head>
   	<body>
     	<h1>Wochenstatus KW <%= @week %></h1>
+    	<p>Eine Übersicht über das, was in dieser Woche bei innoQ passiert, automatisch generiert aus den
+    	   Wochenstatus.</p>
 		<% @statuses.each do |status| %>
 		<div class="status">	
-			<p><%= avatar(status.author) %></p>
-			<p><%= link_to status.author, weekly_statuses_by_author_path(:author => status.author) %> </p>
-			<p><%= l status.created_at, :format => :default %></p>
-			<%= format_entry_section(status.status_html) %> 
+			<p class="meta">
+				<%= avatar(status.author) %>
+				<%= link_to status.author, weekly_statuses_by_author_path(:author => status.author) %>	
+				<%= l status.created_at, :format => :default %>
+			</p>
+			<div class="content">
+				<%= format_entry_section(status.status_html) %> 
+			</div>
 		</div>
 		<% end %>
 	</body>
