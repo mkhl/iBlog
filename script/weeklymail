@@ -5,4 +5,4 @@ die () {
 }
 
 [ "$#" -eq 1 ] || die "Usage: $0 <emailaddress>"
-bundle exec rails r "WeeklyStatusMailer.weekly_status_email('$1').deliver"
+bundle exec rake weeklymail:deliver["$1"]
