@@ -5,6 +5,6 @@ class WeeklyStatusMailer < ActionMailer::Base
   def weekly_status_email(recipient)
   	@week = Time.now.strftime('%W')
     @statuses = WeeklyStatus.by_week(@week).recent
-    mail(to: recipient, subject: 'Wochenstatus')
+    mail({:to => recipient, :subject => 'Wochenstatus'})
   end
 end
