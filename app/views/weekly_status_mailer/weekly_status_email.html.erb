@@ -31,7 +31,7 @@
 			<p class="meta">
 				<%= avatar(status.author) %>
 				<%= link_to status.author, weekly_statuses_by_author_path(:author => status.author) %>	
-				<%= l status.created_at, :format => :default %>
+				<%= link_to l(status.created_at, :format => :default), status %>
 			</p>
 			<div class="content">
 				<%= format_entry_section(status.status_html) %> 
