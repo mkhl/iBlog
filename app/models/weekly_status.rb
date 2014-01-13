@@ -38,6 +38,10 @@ class WeeklyStatus < ActiveRecord::Base
       { :start => start_time, :end => start_time.end_of_week })
   end
 
+  def self.search(query)
+    where('status LIKE ?', "%#{query}%")
+  end
+
   def title
     timestamp = created_at? ? created_at : Time.now
     "Wochenstatus KW #{timestamp.strftime('%W')} von #{author}"

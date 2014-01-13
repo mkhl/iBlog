@@ -1,4 +1,5 @@
-# Copyright 2014 innoQ Deutschland GmbH
+# encoding: UTF-8
+# Copyright 2013 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,21 +12,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-require "modules/markdown"
-require "modules/authored"
-class Comment < ActiveRecord::Base
-  include Markdown
-  include Authored
 
-  belongs_to :owner, :polymorphic => true
+class SearchController < ApplicationController
 
-  before_save :regenerate_html
+  def index
+    @query = params[:q]
 
-  def self.search(query)
-    where('content LIKE ?', "%#{query}%")
+    if @query
+      @entries = Entry.search(@query)
+      @statuses = WeeklyStatus.search(@query)
+      @comments = Comment.search(@query)
+    end
+
+    respond_to do |format|
+      format.html
+      # TODO: Atom and/or JSON
+    end
   end
 
-  def regenerate_html
-    self.content_html = md_to_html(content)
-  end
 end

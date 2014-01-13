@@ -26,6 +26,13 @@ class Entry < ActiveRecord::Base
   has_many :tags
   has_many :comments, :as => :owner, :dependent => :destroy
 
+  def self.search(query)
+    slots = ['title', 'progress', 'plans', 'problems']
+    conditions = slots.map { |slot| "#{slot} LIKE ?" }
+    params = slots.map { |slot| "%#{query}%" }
+    where(conditions.join(' OR '), *params)
+  end
+
   def tags_as_string
     tags.map { |t| t.name }.join(' ')
   end
