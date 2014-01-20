@@ -123,6 +123,14 @@ blockquote {
   }
 }
 
-.nav-iblog {
-  padding: 10px 0px 10px 0px;
+.navbar .nav {
+  float: none; /* override Bootstrap to avoid shrink-wrapping */
+}
+
+.navbar .nav li.search {
+  float: right;
+}
+
+.nav .search form {
+  margin-bottom: 0;
 }

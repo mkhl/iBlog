@@ -1,0 +1,31 @@
+<h1>
+  Suchergebnisse
+  <small><%= @query %></small>
+</h1>
+
+<ul>
+  <% if @entries.length > 0 %>
+  <li><a href="#ppp">PPP-Einträge</a></li>
+  <% end %>
+  <% if @statuses.length > 0 %>
+  <li><a href="#statuses">Wochenstatus</a></li>
+  <% end %>
+  <% if @comments.length > 0 %>
+  <li><a href="#comments">Kommentare</a></li>
+  <% end %>
+</ul>
+
+<% if @entries.length > 0 %>
+<h2 id="ppp">PPP-Einträge</h2>
+<%= render @entries %>
+<% end %>
+
+<% if @statuses.length > 0 %>
+<h2 id="statuses">Wochenstatus</h2>
+<%= render @statuses %>
+<% end %>
+
+<% if @comments.length > 0 %>
+<h2 id="comments">Kommentare</h2>
+<%= render @comments %>
+<% end %>

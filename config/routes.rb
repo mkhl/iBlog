@@ -50,4 +50,6 @@ Iblog::Application.routes.draw do
   end
 
   get '/blogs/by/:owner(.:format)' => 'blogs#index', :as => 'blogs_by_owner'
+
+  get '/search' => 'search#index'
 end
