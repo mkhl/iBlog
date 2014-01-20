@@ -132,5 +132,6 @@ blockquote {
 }
 
 .nav .search form {
+  margin-top: 5px; /* XXX: magic number */
   margin-bottom: 0;
 }
