@@ -3,7 +3,7 @@ class WeeklyStatusMailer < ActionMailer::Base
   default :from => 'notifications@innoq.com'
 
   def weekly_status_email(recipient)
-  	@week = Time.now.strftime('%W')
+    @week = Time.now.strftime('%W')
     @statuses = WeeklyStatus.by_week(@week).recent
     mail({:to => recipient, :subject => "innoQ Wochenstatus (KW #{@week})"})
   end
