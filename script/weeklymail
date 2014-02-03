@@ -4,5 +4,5 @@ die () {
     exit 1
 }
 
-[ "$#" -eq 1 ] || die "Usage: $0 <emailaddress>"
-bundle exec rake weeklymail:deliver["$1"]
+[ "$#" -eq 2 ] || die "Usage: $0 <emailaddress> <hosturl>"
+bundle exec rake weeklymail:deliver["$1","$2"]
