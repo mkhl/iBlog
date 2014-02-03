@@ -15,7 +15,10 @@
   <% unless @preview %>
     <ul class="breadcrumb entry-meta">
       <li><%= avatar(weekly_status.author) %><%= link_to weekly_status.author, weekly_statuses_by_author_path(:author => weekly_status.author) %></li>
-      <li>Erstellt am <%= l weekly_status.created_at, :format => :short %></li>
+      <li>
+        Erstellt am
+        <%= link_to l(weekly_status.created_at, :format => :short), weekly_status_path(weekly_status) %>
+      </li>
       <li class="divider-vertical"></li>
       <% if weekly_status.created_at != weekly_status.updated_at %>
         <li><strong>Geändert am <%= l weekly_status.updated_at, :format => :short %></strong></li>
