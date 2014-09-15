@@ -80,6 +80,9 @@ span.label a, a:hover, a:active {
 .comment {
   margin-top: 25px;
   overflow: auto;
+  &.is-focused {
+    background-color: #EBF2F9; // borrowed from Confluence
+  }
   .author {
     font-weight: bold;
   }
