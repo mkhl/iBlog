@@ -119,6 +119,7 @@ class CommentsController < ApplicationController
     else
       if comment.save
         flash[:success] = "Der Kommentar wurde gespeichert."
+        notify(comment, owner) # NB: no notifications for edits
       else
         flash[:error] = "Der Kommentar konnte nicht gespeichert werden."
       end
@@ -143,6 +144,22 @@ class CommentsController < ApplicationController
   end
 
   private
+  def notify(comment, owner)
+    commenters = owner.comments.select(:author).map(&:author)
+    users = [owner.author].concat(commenters).uniq
+
+    subject = if owner.is_a?(Entry)
+      owner.title
+    elsif owner.is_a?(WeeklyStatus)
+      "Wochenstatus von #{owner.author}" # TODO: resolve full name
+    end
+
+    url = url_for(owner) # TODO: use comment's URL (=> frag ID)
+    body = "neuer Kommentar von #{comment.author}:\n#{url}"
+
+    Notifier.dispatch(users, subject, body)
+  end
+
   def return_path(owner, comment = nil)
     anchor = "comment-#{comment.id}" if comment
 
