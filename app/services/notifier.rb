@@ -22,7 +22,8 @@ class Notifier
       "body" => body
     })
 
-    res = http.request(req)
+    http.read_timeout = 1
+    res = http.request(req) rescue OpenStruct.new
     return res.code == "202"
   end
 
