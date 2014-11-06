@@ -23,8 +23,8 @@ class Notifier
     })
 
     http.read_timeout = 1
-    res = http.request(req) rescue OpenStruct.new
-    return res.code == "202"
+    res = http.request(req) rescue nil
+    return res.try(:code) == "202"
   end
 
 end
