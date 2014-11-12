@@ -10,6 +10,7 @@ class Notifier
 
     naveed = URI.parse(naveed)
     http = Net::HTTP.new(naveed.host, naveed.port)
+    http.use_ssl = true if naveed.scheme == "https"
 
     req = Net::HTTP::Post.new(naveed.request_uri)
     req.add_field("Authorization", "Bearer #{token}")
