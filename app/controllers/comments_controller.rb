@@ -157,7 +157,7 @@ class CommentsController < ApplicationController
     url = url_for(owner) # TODO: use comment's URL (=> frag ID)
     body = "neuer Kommentar von #{comment.author}:\n\n#{comment.content}\n\n#{url}"
 
-    Notifier.dispatch(users, "[iBlog] #{subject}", body)
+    Notifier.dispatch(comment.author, users, "[iBlog] #{subject}", body)
   end
 
   def return_path(owner, comment = nil)

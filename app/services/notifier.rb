@@ -3,7 +3,7 @@ require "uri"
 
 class Notifier
 
-  def self.dispatch(recipients, subject, body)
+  def self.dispatch(sender, recipients, subject, body)
     naveed = ENV["IBLOG_NAVEED_URL"]
     token = ENV["IBLOG_NAVEED_TOKEN"]
     return false unless naveed && token
@@ -15,6 +15,7 @@ class Notifier
     req = Net::HTTP::Post.new(naveed.request_uri)
     req.add_field("Authorization", "Bearer #{token}")
     req.set_form_data({
+      "sender" => sender,
       "recipient" => recipients,
       "subject" => subject,
       "body" => body
