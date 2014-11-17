@@ -145,8 +145,11 @@ class CommentsController < ApplicationController
 
   private
   def notify(comment, owner)
+    author = comment.author
+
     commenters = owner.comments.select(:author).map(&:author)
     users = [owner.author].concat(commenters).uniq
+    users.delete(author)
 
     subject = if owner.is_a?(Entry)
       owner.title
@@ -155,9 +158,9 @@ class CommentsController < ApplicationController
     end
 
     url = url_for(owner) # TODO: use comment's URL (=> frag ID)
-    body = "neuer Kommentar von #{comment.author}:\n\n#{comment.content}\n\n#{url}"
+    body = "neuer Kommentar von #{author}:\n\n#{comment.content}\n\n#{url}"
 
-    Notifier.dispatch(comment.author, users, "[iBlog] #{subject}", body)
+    Notifier.dispatch(author, users, "[iBlog] #{subject}", body)
   end
 
   def return_path(owner, comment = nil)
