@@ -146,10 +146,13 @@ class CommentsController < ApplicationController
   private
   def notify(comment, owner)
     author = comment.author
+    comments = owner.comments.select([:author, :content]) # XXX: inefficient
 
-    commenters = owner.comments.select(:author).map(&:author)
+    commenters = comments.map(&:author)
     users = [owner.author].concat(commenters).uniq
     users.delete(author)
+
+    preceding_comment = comments[-2]
 
     subject = if owner.is_a?(Entry)
       owner.title
@@ -158,7 +161,20 @@ class CommentsController < ApplicationController
     end
 
     url = url_for(owner) # TODO: use comment's URL (=> frag ID)
-    body = "neuer Kommentar von #{author}:\n\n#{comment.content}\n\n#{url}"
+    body = <<-EOS
+neuer Kommentar von #{author}:
+"""
+#{comment.content}
+"""
+#{url}
+    EOS
+
+    body += <<-EOS if preceding_comment
+\nvorhergehender Kommentar von #{preceding_comment.author}:
+"""
+#{preceding_comment.content}
+"""
+    EOS
 
     Notifier.dispatch(author, users, "[iBlog] #{subject}", body)
   end
