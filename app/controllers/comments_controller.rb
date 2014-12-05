@@ -154,13 +154,14 @@ class CommentsController < ApplicationController
 
     preceding_comment = comments[-2]
 
-    subject = if owner.is_a?(Entry)
-      owner.title
+    if owner.is_a?(Entry)
+      subject = owner.title
+      url = blog_entry_url(owner.blog, owner)
     elsif owner.is_a?(WeeklyStatus)
-      "Wochenstatus von #{owner.author}" # TODO: resolve full name
+      subject = "Wochenstatus von #{owner.author}"
+      url = weekly_status_url(owner)
     end
 
-    url = url_for(owner) # TODO: use comment's URL (=> frag ID)
     body = <<-EOS
 neuer Kommentar von #{author}:
 """
