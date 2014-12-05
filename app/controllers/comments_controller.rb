@@ -156,10 +156,10 @@ class CommentsController < ApplicationController
 
     if owner.is_a?(Entry)
       subject = owner.title
-      url = blog_entry_url(owner.blog, owner)
+      url = blog_entry_url(owner.blog, owner, anchor: "comment-#{comment.id}")
     elsif owner.is_a?(WeeklyStatus)
       subject = "Wochenstatus von #{owner.author}"
-      url = weekly_status_url(owner)
+      url = weekly_status_url(owner, anchor: "comment-#{comment.id}")
     end
 
     body = <<-EOS
