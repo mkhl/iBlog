@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(:version => 20130805095507) do
     t.string   "name"
     t.string   "owner"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "title"
   end
 
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20130805095507) do
   create_table "entries", :force => true do |t|
     t.string   "title"
     t.string   "author"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.text     "progress"
     t.text     "plans"
     t.text     "problems"
