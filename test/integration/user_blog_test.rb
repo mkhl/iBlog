@@ -1,6 +1,6 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), '../integration_test_helper')
 
-class BlogTest < ActionDispatch::IntegrationTest
+class UserBlogTest < ActionDispatch::IntegrationTest
   test 'blog creation' do
     visit new_blog_path
     assert_content 'Neues Blog'

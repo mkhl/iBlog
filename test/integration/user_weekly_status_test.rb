@@ -2,7 +2,7 @@
 
 require File.join(File.expand_path(File.dirname(__FILE__)), '../integration_test_helper')
 
-class WeeklyStatusTest < ActionDispatch::IntegrationTest
+class UserWeeklyStatusTest < ActionDispatch::IntegrationTest
   test 'weekly status creation' do
     visit new_weekly_status_path
 

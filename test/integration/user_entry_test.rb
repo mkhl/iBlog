@@ -1,6 +1,6 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), '../integration_test_helper')
 
-class EntryTest < ActionDispatch::IntegrationTest
+class UserEntryTest < ActionDispatch::IntegrationTest
   test 'entry creation' do
     blog = Blog.create(name: 'guest blog', owner: 'guest')
 
