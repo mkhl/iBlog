@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 class Blog < ActiveRecord::Base
+  attr_accessible :name, :title, :owner, :description
+
   has_many :entries, :dependent => :destroy
 
   validates :name, :presence => true
