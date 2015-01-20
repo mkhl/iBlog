@@ -45,8 +45,8 @@ class Entry < ActiveRecord::Base
   before_save :regenerate_html
 
   def regenerate_html
-    self.progress_html = md_to_html(progress)
-    self.plans_html    = md_to_html(plans)
-    self.problems_html = md_to_html(problems)
+    self.progress_html = md_to_html(progress) if progress
+    self.plans_html    = md_to_html(plans) if plans
+    self.problems_html = md_to_html(problems) if problems
   end
 end

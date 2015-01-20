@@ -48,6 +48,6 @@ class WeeklyStatus < ActiveRecord::Base
   end
 
   def regenerate_html
-    self.status_html = md_to_html(status)
+    self.status_html = md_to_html(status) if status
   end
 end

@@ -26,6 +26,6 @@ class Comment < ActiveRecord::Base
   end
 
   def regenerate_html
-    self.content_html = md_to_html(content)
+    self.content_html = md_to_html(content) if content
   end
 end
