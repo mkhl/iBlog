@@ -6,7 +6,7 @@
 
 <%= simple_form_for(@status) do |f| %>
   <legend>Wochenstatus <%= @status.new_record? ? 'erstellen' : 'bearbeiten' %></legend>
-  <%= f.input :status, :label => "Status", :as => :text, :input_html => { :rows => 10, :class => "span7" } %>
+  <%= f.input :status, :label => "Status", :as => :text, :input_html => { :rows => 10, :class => "col-md-7" } %>
 
   <div class="form-actions">
     <%= f.button :submit, :value => 'Speichern', :class => 'btn btn-primary' %>
