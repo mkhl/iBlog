@@ -35,7 +35,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li><%= link_to glyph(:edit), edit_blog_path(blog) %></li>
-                <li><%= link_to glyph(:delete), blog, :confirm => "Bist Du sicher?", :method => :delete %></li>
+                <li><%= link_to glyph(:delete), blog, data: { confirm: "Bist Du sicher?"}, :method => :delete %></li>
               </ul>
             </div>
           </div>

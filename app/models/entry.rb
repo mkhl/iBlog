@@ -12,13 +12,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-require 'concerns/markdown'
-require 'concerns/authored'
 class Entry < ActiveRecord::Base
   include Markdown
   include Authored
 
-  attr_protected :blog_id, :author
+  attr_accessible :title, :progress, :plans, :problems, :tags_as_string
 
   validates :title, :progress, :blog_id, :presence => true
 

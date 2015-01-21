@@ -11,11 +11,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-require 'concerns/markdown'
-require 'concerns/authored'
 class Comment < ActiveRecord::Base
   include Markdown
   include Authored
+
+  attr_accessible :content
 
   belongs_to :owner, :polymorphic => true
 
