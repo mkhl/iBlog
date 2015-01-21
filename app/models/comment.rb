@@ -15,6 +15,8 @@ class Comment < ActiveRecord::Base
   include Markdown
   include Authored
 
+  attr_accessible :content
+
   belongs_to :owner, :polymorphic => true
 
   before_save :regenerate_html
