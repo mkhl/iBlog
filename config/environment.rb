@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# Load the rails application
+# Load the Rails application.
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
