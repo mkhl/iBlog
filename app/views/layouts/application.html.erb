@@ -14,47 +14,8 @@
   <%= auto_discovery_link_tag :atom, comments_path(:atom), :title => "Alle Kommentare" %>
 </head>
 <body>
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <%= link_to "iBlog", root_path, :class => 'brand' %>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <%= nav_item "PPPs" do %>
-              <%= nav_item "Neuer Eintrag", new_entry_path %>
-              <%= nav_item "Neues Blog", new_blog_path %>
-              <li class="divider"></li>
-              <%= nav_item "Alle Einträge", all_entries_path %>
-              <%= nav_item "Meine Einträge", blog_entries_by_author_path(@user) %>
-              <li class="divider"></li>
-              <%= nav_item "Alle Blogs", blogs_path %>
-              <%= nav_item "Meine Blogs", blogs_by_owner_path(@user) %>
-            <% end %>
-            <%= nav_item "Wochenstatus" do %>
-              <%= nav_item "Neuer Eintrag", new_weekly_status_path %>
-              <li class="divider"></li>
-              <%= nav_item "Diese Woche", weekly_statuses_by_week_path(Time.now.strftime('%W')) %>
-              <%= nav_item "Alle Einträge", weekly_statuses_path %>
-              <%= nav_item "Meine Einträge", weekly_statuses_by_author_path(@user) %>
-            <% end %>
-            <%= nav_item "Kommentare", comments_path %>
-            <li class="divider-vertical"></li>
-            <%= nav_item "Fehler melden", "https://github.com/innoq/iBlog/issues" %>
-            <li class="search">
-              <form method="get" action="<%= search_path %>" class="form-horizontal">
-                <input type="search" name="q" class="form-control" placeholder="Suche">
-              </form>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<%= render 'layouts/navigation' %>
+
 <div class="container">
   <div class="row">
     <div class="span12">
