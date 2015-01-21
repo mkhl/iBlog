@@ -7,7 +7,7 @@
       <%= link_to entry.title, blog_entry_path(entry.blog, entry) %>
       <% if entry.owned_by?(@user) %>
         <span class="pull-right">
-          <%= link_to glyph(:edit), edit_blog_entry_path(entry.blog, entry), :class => "btn" %>
+          <%= link_to glyph(:edit), edit_blog_entry_path(entry.blog, entry), :class => "btn btn-default" %>
           <%= link_to glyph(:delete, true), [entry.blog, entry], :method => :delete, :class => "btn btn-danger" %>
         </span>
       <% end %>
