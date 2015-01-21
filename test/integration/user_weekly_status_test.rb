@@ -23,4 +23,14 @@ class UserWeeklyStatusTest < ActionDispatch::IntegrationTest
     assert_content 'Der Eintrag wurde geändert.'
     assert_content 'my awesome weekly status'
   end
+
+  test 'weekly status by author' do
+    st_status = WeeklyStatus.new(status: 'sts current status').tap do |w|
+      w.author = 'st'
+      w.save
+    end
+
+    visit weekly_statuses_by_author_path(st_status.author)
+    assert_content 'sts current status'
+  end
 end

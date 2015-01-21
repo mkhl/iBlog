@@ -38,4 +38,17 @@ class UserEntryTest < ActionDispatch::IntegrationTest
     assert_content 'awesome-guest-problems'
     assert_content 'awesome-tag1'
   end
+
+  test 'entries by author' do
+    blog = Blog.create(name: 'sts blog')
+    entry = Entry.new(title: 'sts sample ppp', progress: 'sts sample progress').tap do |e|
+      e.author = 'st'
+      e.blog = blog
+      e.save
+    end
+
+    visit blog_entries_by_author_path(entry.author)
+    assert_content 'sts sample ppp'
+  end
+
 end
