@@ -126,10 +126,6 @@ blockquote {
   }
 }
 
-.navbar .nav {
-  float: none; /* override Bootstrap to avoid shrink-wrapping */
-}
-
 .navbar .nav li.search {
   float: right;
 }
