@@ -1,7 +1,7 @@
 <p>
   <%= avatar(comment.author) %><span class="author"><%= comment.author %></span>
   <% if 1 == this_is_preview %>
-    <span class="preview-notice">Vorschau.</span>
+    <span class="label label-info">Vorschau</span>
   <% else %>
     <%= link_to url_for(:anchor => "comment-#{comment.id}"), :class => 'comment-timestamp' do %>
       <time datetime="<%= comment.created_at.to_s(:rfc822) %>">am <%= l(comment.created_at, :format => :short) %></time>
