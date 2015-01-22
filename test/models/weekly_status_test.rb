@@ -11,9 +11,18 @@ class WeeklyStatusTest < ActiveSupport::TestCase
     refute status.save
   end
 
-  test 'markdown rendering' do
-    status = WeeklyStatus.new
-    assert status.respond_to?('md_to_html'), 'should respond to md_to_html()'
-    assert status.md_to_html('# Headline').include? '<h1>Headline</h1>'
+  test 'attribute markdown conversion' do
+    status = WeeklyStatus.new(status: '# My weekly status')
+    status.regenerate_html
+
+    assert status.status_html.include?('<h1>My weekly status</h1>')
+  end
+
+  test 'automatic attribute markdown conversion' do
+    status = WeeklyStatus.create(status: 'My awesome weekly status with **strong** test')
+
+    # attribute conversion should be triggered on `save`
+    status.save
+    assert status.status_html.include?('<p>My awesome weekly status with <strong>strong</strong> test</p>')
   end
 end
