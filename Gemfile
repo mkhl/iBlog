@@ -26,7 +26,6 @@ group :development do
 end
 
 gem 'sass-rails', '~> 5.0'
-gem 'bourbon', '~> 2.1'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer'
