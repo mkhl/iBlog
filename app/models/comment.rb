@@ -17,6 +17,8 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :content
 
+  validates :content, :owner_id, :owner_type, :presence => true
+
   belongs_to :owner, :polymorphic => true
 
   before_save :regenerate_html
