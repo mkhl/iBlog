@@ -16,6 +16,8 @@
 module ApplicationHelper
 
   def notification(type, message)
+    type = :danger if type == 'error'
+
     content_tag :div, :class => "alert alert-#{type}" do
       content = ActiveSupport::SafeBuffer.new
       content << link_to("&times;".html_safe, "", :class => "close", :"data-dismiss" => "alert")

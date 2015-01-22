@@ -7,7 +7,7 @@
       <%= link_to entry.title, blog_entry_path(entry.blog, entry) %>
       <% if entry.owned_by?(@user) %>
         <span class="pull-right">
-          <%= link_to glyph(:edit), edit_blog_entry_path(entry.blog, entry), :class => "btn" %>
+          <%= link_to glyph(:edit), edit_blog_entry_path(entry.blog, entry), :class => "btn btn-default" %>
           <%= link_to glyph(:delete, true), [entry.blog, entry], :method => :delete, :class => "btn btn-danger" %>
         </span>
       <% end %>
@@ -21,7 +21,7 @@
     <h3><%= t('titles.plans') %></h3>
     <%= format_entry_section(entry.plans_html) %>
   <% else %>
-    <h3><%= t('titles.no_plans') %><h3>
+    <h3><%= t('titles.no_plans') %></h3>
   <% end %>
 
   <% if entry.problems.present? %>
@@ -35,16 +35,11 @@
     <ul class="breadcrumb entry-meta">
       <li><%= avatar(entry.author) %><%= link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
       <li>Erstellt am <%= l entry.created_at, :format => :short %></li>
-      <li class="divider-vertical"></li>
       <% if entry.created_at != entry.updated_at %>
         <li><strong>Geändert am <%= l entry.updated_at, :format => :short %></strong></li>
-        <li class="divider-vertical"></li>
       <% end %>
-      <li class="divider-vertical"></li>
       <li>Blog: <%= link_to entry.blog.name, blog_entries_path(entry.blog) %></li>
-      <li class="divider-vertical"></li>
       <li>Kommentare: <%= link_to entry.comments.count, blog_entry_path(entry.blog, entry) %></li>
-      <li class="divider-vertical"></li>
       <li>Tags: <%= tags(entry) %></li>
     </ul>
   <% end %>

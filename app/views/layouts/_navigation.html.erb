@@ -1,0 +1,47 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "iBlog", root_path, class: 'navbar-brand' %>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <%= nav_item "PPPs" do %>
+          <%= nav_item "Neuer Eintrag", new_entry_path %>
+          <%= nav_item "Neues Blog", new_blog_path %>
+          <li class="divider"></li>
+          <%= nav_item "Alle Einträge", all_entries_path %>
+          <%= nav_item "Meine Einträge", blog_entries_by_author_path(@user) %>
+          <li class="divider"></li>
+          <%= nav_item "Alle Blogs", blogs_path %>
+          <%= nav_item "Meine Blogs", blogs_by_owner_path(@user) %>
+        <% end %>
+
+        <%= nav_item "Wochenstatus" do %>
+          <%= nav_item "Neuer Eintrag", new_weekly_status_path %>
+          <li class="divider"></li>
+          <%= nav_item "Diese Woche", weekly_statuses_by_week_path(Time.now.strftime('%W')) %>
+          <%= nav_item "Alle Einträge", weekly_statuses_path %>
+          <%= nav_item "Meine Einträge", weekly_statuses_by_author_path(@user) %>
+        <% end %>
+
+        <%= nav_item "Kommentare", comments_path %>
+        <li class="divider-vertical"></li>
+        <%= nav_item "Fehler melden", "https://github.com/innoq/iBlog/issues" %>
+      </ul>
+
+      <form method="get" action="<%= search_path %>" class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="search" name="q" class="form-control" placeholder="Suche">
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

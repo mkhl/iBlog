@@ -21,7 +21,7 @@ module EntriesHelper
 
   def tags(entry)
     entry.tags.map { |tag|
-      content_tag :span, :class => "label tag" do
+      content_tag :span, :class => "label label-default tag" do
         link_to tag.name, tag_path(:tag => tag.name)
       end
     }.join(' ').html_safe

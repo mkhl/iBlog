@@ -1,4 +1,4 @@
-@import "bourbon";
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 // To use a fixed navbar at the top a top-padding has to be added to the body. Duh!
@@ -6,5 +6,4 @@
 // it can't get overwritten. See http://stackoverflow.com/a/10185435 for a detailed explaination.
 body { padding-top: 60px; }
 
-@import "bootstrap-responsive";
 @import "iblog";

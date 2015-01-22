@@ -4,7 +4,7 @@
   <article class="post">
       <% if weekly_status.owned_by?(@user) %>
         <span class="pull-right">
-          <%= link_to glyph(:edit), edit_weekly_status_path(weekly_status), :class => "btn" %>
+          <%= link_to glyph(:edit), edit_weekly_status_path(weekly_status), :class => "btn btn-default" %>
           <%= link_to glyph(:delete, true), weekly_status, :method => :delete, :class => "btn btn-danger" %>
         </span>
       <% end %>
@@ -19,12 +19,9 @@
         Erstellt am
         <%= link_to l(weekly_status.created_at, :format => :short), weekly_status_path(weekly_status) %>
       </li>
-      <li class="divider-vertical"></li>
       <% if weekly_status.created_at != weekly_status.updated_at %>
         <li><strong>Geändert am <%= l weekly_status.updated_at, :format => :short %></strong></li>
-        <li class="divider-vertical"></li>
       <% end %>
-      <li class="divider-vertical"></li>
       <li>Kommentare: <%= link_to weekly_status.comments.count, weekly_status %></li>
     </ul>
   <% end %>

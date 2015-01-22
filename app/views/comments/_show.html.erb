@@ -1,7 +1,7 @@
 <p>
   <%= avatar(comment.author) %><span class="author"><%= comment.author %></span>
   <% if 1 == this_is_preview %>
-    <span class="preview-notice">Vorschau.</span>
+    <span class="label label-info">Vorschau</span>
   <% else %>
     <%= link_to url_for(:anchor => "comment-#{comment.id}"), :class => 'comment-timestamp' do %>
       <time datetime="<%= comment.created_at.to_s(:rfc822) %>">am <%= l(comment.created_at, :format => :short) %></time>
@@ -12,8 +12,8 @@
     <% end %>
     <% if comment.owned_by?(@user) %>
       <span class="pull-right">
-      <%= link_to glyph(:edit), edit_comment_path(comment, :anchor => "comment-#{@comment_id}"), :class => "btn btn-mini" %>
-      <%= link_to glyph(:delete, true), comment, :method => :delete, :class => "btn btn-danger btn-mini" %>
+      <%= link_to glyph(:edit), edit_comment_path(comment, :anchor => "comment-#{@comment_id}"), :class => "btn btn-default btn-xs" %>
+      <%= link_to glyph(:delete, true), comment, :method => :delete, :class => "btn btn-danger btn-xs" %>
       </span>
     <% end %>
   <% end %>
