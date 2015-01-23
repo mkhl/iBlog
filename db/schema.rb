@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150121132524) do
     t.text     "problems_html", limit: 65535
   end
 
-  add_index "entries", ["blog_id"], name: "fk_rails_60c6189354", using: :btree
+  add_index "entries", ["blog_id"], name: "fk_rails_7620fad3ba", using: :btree
 
   create_table "status_messages", force: :cascade do |t|
     t.string   "author",     limit: 255
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150121132524) do
     t.integer "entry_id", limit: 4
   end
 
-  add_index "tags", ["entry_id"], name: "fk_rails_afdbd3665f", using: :btree
+  add_index "tags", ["entry_id"], name: "fk_rails_3af1930765", using: :btree
 
   create_table "weekly_statuses", force: :cascade do |t|
     t.string   "author",      limit: 255
