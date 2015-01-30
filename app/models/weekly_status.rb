@@ -13,12 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'concerns/markdown'
-require 'concerns/authored'
-
 class WeeklyStatus < ActiveRecord::Base
-  include Markdown
-  include Authored
+  include MarkdownExtension
+  include AuthorExtension
 
   attr_accessible :status, :status_html
 
