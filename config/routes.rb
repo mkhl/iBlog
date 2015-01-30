@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-Iblog::Application.routes.draw do
+Rails.application.routes.draw do
   resources :weekly_statuses do
     resources :comments
   end
