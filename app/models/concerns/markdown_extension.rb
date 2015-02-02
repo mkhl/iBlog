@@ -11,10 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-module Authored
 
-  def owned_by?(user)
-    author == user
+module MarkdownExtension
+  extend ActiveSupport::Concern
+
+  included do
+    attr_reader :_markdown_engine
   end
 
+  def md_to_html(markdown)
+    # Some objects have more than one field to render as html.
+    # For those, cache the markup engine.
+    if @_markdown_engine.nil?
+      options = Rails.application.config.redcarpet_options
+      @_markdown_engine = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:hard_wrap => false), options)
+    end
+    @_markdown_engine.render(markdown)
+  end
 end

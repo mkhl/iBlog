@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 class Comment < ActiveRecord::Base
-  include Markdown
-  include Authored
+  include MarkdownExtension
+  include AuthorExtension
 
   attr_accessible :content
 
