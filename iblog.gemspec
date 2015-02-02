@@ -1,9 +1,9 @@
 $:.push File.expand_path("../lib", __FILE__)
-require "i_blog/version"
+require "iblog/version"
 
 Gem::Specification.new do |s|
-  s.name        = "i_blog"
-  s.version     = IBlog::VERSION
+  s.name        = "iblog"
+  s.version     = Iblog::VERSION
   s.authors     = ["Marc Jansing"]
   s.email       = ["marc.jansing@innoq.com"]
   s.homepage    = "https://github.com/innoq/iblog"

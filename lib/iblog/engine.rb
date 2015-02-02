@@ -13,7 +13,7 @@ require 'uglifier'
 require 'therubyracer'
 require 'coffee-rails'
 
-module IBlog
+module Iblog
   class Engine < ::Rails::Engine
   end
 end

@@ -1,3 +1,3 @@
-module IBlog
+module Iblog
   VERSION = "1.0.0"
 end
