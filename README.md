@@ -1,5 +1,7 @@
 # iBlog
 
+[![Build Status](https://travis-ci.org/innoq/iBlog.svg?branch=master)](https://travis-ci.org/innoq/iBlog)
+
 Simple internal blogging/PPP solution, originally developed by @stilkov and @pgh.
 iBlog is currently maintained by @mrreynolds.
 
