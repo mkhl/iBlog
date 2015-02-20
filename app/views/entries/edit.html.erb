@@ -24,7 +24,7 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.button :submit, :class => 'btn btn-primary' %>
-      <%= f.button :submit, :value => 'Vorschau', :class => 'btn btn-info' %>
+      <%= f.button :submit, :value => 'Vorschau', :class => 'btn btn-default' %>
       <%= link_to 'Löschen', [@blog, @entry], :method => :delete, :class => "btn btn-danger" unless @entry.new_record? %>
     </div>
   </div>
