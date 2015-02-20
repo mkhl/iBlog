@@ -11,26 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-class AdminController < ApplicationController
+class StatusController < ApplicationController
   def index
-  end
-
-  def log
-    if params[:lines].nil?
-      @lines = 10
-    else
-      @lines = params[:lines].to_i
+    @headers = request.headers
+    ["HTTP_AUTHORIZATION", "action_dispatch.secret_key_base", "action_dispatch.secret_token", "PASSENGER_CONNECT_PASSWORD"].each do |k|
+      @headers[k] = "*REMOVED*" if @headers[k].present?
     end
-    @log = ''
-    File.open(File.join(RAILS_ROOT, "log/#{RAILS_ENV}.log")) do |f|
-      f.readlines[-@lines, @lines].each do |line|
-        @log << line
-      end
-    end
+    @log = `tail -n 50 #{Rails.root.join('log', "#{Rails.env}.log")}`
   end
-
-  def env
-    @request = request
-  end
-
 end

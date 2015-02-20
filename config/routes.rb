@@ -43,11 +43,7 @@ Rails.application.routes.draw do
     get '/home' => 'entries#home', :as => 'home'
   end
 
-  scope '/admin' do
-    get '/' => 'admin#index'
-    get '/log' => 'admin#log'
-    get '/env' => 'admin#env'
-  end
+  get 'status' => 'status#index'
 
   get '/blogs/by/:owner(.:format)' => 'blogs#index', :as => 'blogs_by_owner'
 
