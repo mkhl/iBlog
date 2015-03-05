@@ -15,5 +15,11 @@ require 'coffee-rails'
 
 module Iblog
   class Engine < ::Rails::Engine
+
+    initializer 'load_migrations' do |app|
+      # load migrations into host applications
+      app.config.paths['db/migrate'].concat(Iblog::Engine.paths['db/migrate'].existent)
+    end
+
   end
 end
