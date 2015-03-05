@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305084100) do
+ActiveRecord::Schema.define(version: 20150305084633) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "owner",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 4294967295
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "title",       limit: 255
   end
 
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 20150305084100) do
   create_table "entries", force: :cascade do |t|
     t.string   "title",         limit: 255
     t.string   "author",        limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.text     "progress",      limit: 65535
-    t.text     "plans",         limit: 65535
-    t.text     "problems",      limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.text     "progress",      limit: 4294967295
+    t.text     "plans",         limit: 4294967295
+    t.text     "problems",      limit: 4294967295
     t.integer  "blog_id",       limit: 4
-    t.text     "progress_html", limit: 65535
-    t.text     "plans_html",    limit: 65535
-    t.text     "problems_html", limit: 65535
+    t.text     "progress_html", limit: 4294967295
+    t.text     "plans_html",    limit: 4294967295
+    t.text     "problems_html", limit: 4294967295
   end
 
   add_index "entries", ["blog_id"], name: "fk_rails_56330946fe", using: :btree
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 20150305084100) do
 
   create_table "weekly_statuses", force: :cascade do |t|
     t.string   "author",      limit: 255
-    t.text     "status",      limit: 65535
-    t.text     "status_html", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "status",      limit: 16777215
+    t.text     "status_html", limit: 16777215
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_foreign_key "entries", "blogs", on_update: :cascade, on_delete: :cascade
