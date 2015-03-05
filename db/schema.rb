@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121132524) do
+ActiveRecord::Schema.define(version: 20150305084100) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20150121132524) do
   create_table "comments", force: :cascade do |t|
     t.integer  "owner_id",     limit: 4
     t.string   "author",       limit: 255
-    t.text     "content",      limit: 65535
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.text     "content_html", limit: 65535
+    t.text     "content",      limit: 16777215
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.text     "content_html", limit: 16777215
     t.string   "owner_type",   limit: 255
   end
 
@@ -49,21 +49,14 @@ ActiveRecord::Schema.define(version: 20150121132524) do
     t.text     "problems_html", limit: 65535
   end
 
-  add_index "entries", ["blog_id"], name: "fk_rails_7620fad3ba", using: :btree
-
-  create_table "status_messages", force: :cascade do |t|
-    t.string   "author",     limit: 255
-    t.text     "body",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
+  add_index "entries", ["blog_id"], name: "fk_rails_56330946fe", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name",     limit: 255
     t.integer "entry_id", limit: 4
   end
 
-  add_index "tags", ["entry_id"], name: "fk_rails_3af1930765", using: :btree
+  add_index "tags", ["entry_id"], name: "fk_rails_9407db3e92", using: :btree
 
   create_table "weekly_statuses", force: :cascade do |t|
     t.string   "author",      limit: 255
