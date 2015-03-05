@@ -45,7 +45,7 @@ class BlogsController < ApplicationController
     @blog.owner = @user
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :action => 'edit'}
       format.xml  { render :xml => @blog }
     end
   end
@@ -64,7 +64,7 @@ class BlogsController < ApplicationController
         format.xml  { render :xml => @blog, :status => :created, :location => @blog }
       else
         flash[:error] = 'Das Blog konnte nicht gespeichert werden.'
-        format.html { render :action => "new" }
+        format.html { render :action => "edit" }
         format.xml  { render :xml => @blog.errors, :status => :unprocessable_entity }
       end
     end
