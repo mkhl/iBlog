@@ -1,10 +1,14 @@
 class Utf8Conversion < ActiveRecord::Migration
   def up
-    change_database_encoding('utf8', 'utf8_general_ci')
+    if ActiveRecord::Base.connection.adapter_name == 'Mysql2'
+      change_database_encoding('utf8', 'utf8_general_ci')
+    end
   end
 
   def down
-    change_database_encoding('latin1', 'latin1_swedish_ci')
+    if ActiveRecord::Base.connection.adapter_name == 'Mysql2'
+      change_database_encoding('latin1', 'latin1_swedish_ci')
+    end
   end
 
   private
@@ -15,13 +19,13 @@ class Utf8Conversion < ActiveRecord::Migration
     tables = connection.tables
 
     execute <<-SQL
-      ALTER DATABASE #{database} CHARACTER SET #{encoding} COLLATE #{collation};
-    SQL
+ALTER DATABASE #{database} CHARACTER SET #{encoding} COLLATE #{collation};
+SQL
 
     tables.each do |table|
       execute <<-SQL
-        ALTER TABLE #{database}.#{table} CONVERT TO CHARACTER SET #{encoding} COLLATE #{collation};
-      SQL
+ALTER TABLE #{database}.#{table} CONVERT TO CHARACTER SET #{encoding} COLLATE #{collation};
+SQL
     end
   end
 

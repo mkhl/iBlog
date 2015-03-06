@@ -11,33 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305084633) do
+ActiveRecord::Schema.define(version: 20150305172050) do
 
   create_table "blogs", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "owner",       limit: 255
+    t.string   "name",        limit: 191
+    t.string   "owner",       limit: 191
     t.text     "description", limit: 4294967295
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "title",       limit: 255
+    t.string   "title",       limit: 191
   end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "owner_id",     limit: 4
-    t.string   "author",       limit: 255
-    t.text     "content",      limit: 16777215
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.text     "content_html", limit: 16777215
-    t.string   "owner_type",   limit: 255
+    t.string   "author",       limit: 191
+    t.text     "content",      limit: 4294967295
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.text     "content_html", limit: 4294967295
+    t.string   "owner_type",   limit: 191
   end
 
   add_index "comments", ["owner_id", "owner_type"], name: "index_comments_on_owner_id_and_owner_type", using: :btree
   add_index "comments", ["owner_id"], name: "index_comments_on_entry_id", using: :btree
 
   create_table "entries", force: :cascade do |t|
-    t.string   "title",         limit: 255
-    t.string   "author",        limit: 255
+    t.string   "title",         limit: 191
+    t.string   "author",        limit: 191
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.text     "progress",      limit: 4294967295
@@ -49,21 +49,21 @@ ActiveRecord::Schema.define(version: 20150305084633) do
     t.text     "problems_html", limit: 4294967295
   end
 
-  add_index "entries", ["blog_id"], name: "fk_rails_56330946fe", using: :btree
+  add_index "entries", ["blog_id"], name: "fk_rails_e8814577fe", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name",     limit: 255
+    t.string  "name",     limit: 191
     t.integer "entry_id", limit: 4
   end
 
-  add_index "tags", ["entry_id"], name: "fk_rails_9407db3e92", using: :btree
+  add_index "tags", ["entry_id"], name: "fk_rails_8e339a41a9", using: :btree
 
   create_table "weekly_statuses", force: :cascade do |t|
-    t.string   "author",      limit: 255
-    t.text     "status",      limit: 16777215
-    t.text     "status_html", limit: 16777215
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "author",      limit: 191
+    t.text     "status",      limit: 4294967295
+    t.text     "status_html", limit: 4294967295
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_foreign_key "entries", "blogs", on_update: :cascade, on_delete: :cascade
