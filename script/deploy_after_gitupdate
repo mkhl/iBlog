@@ -18,7 +18,7 @@ then
 fi
 
 echo "------> [Deploy] Precompiling assets"
-if ! bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=/blogging
+if ! bundle exec rake assets:precompile RAILS_ENV=production RAILS_RELATIVE_URL_ROOT=/blogging
 then
   echo >&2 ERROR precompiling assets
   exit 13
