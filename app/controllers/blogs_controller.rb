@@ -35,7 +35,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to blog_entries_path(@blog) }
       format.xml  { render :xml => @blog }
     end
   end
