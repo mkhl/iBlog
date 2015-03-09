@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305172050) do
+ActiveRecord::Schema.define(version: 20150309074207) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 191
@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 20150305172050) do
 
   add_index "entries", ["blog_id"], name: "fk_rails_e8814577fe", using: :btree
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags_legacy", force: :cascade do |t|
     t.string  "name",     limit: 191
     t.integer "entry_id", limit: 4
   end
 
-  add_index "tags", ["entry_id"], name: "fk_rails_8e339a41a9", using: :btree
+  add_index "tags_legacy", ["entry_id"], name: "fk_rails_8e339a41a9", using: :btree
 
   create_table "weekly_statuses", force: :cascade do |t|
     t.string   "author",      limit: 191
@@ -67,5 +67,5 @@ ActiveRecord::Schema.define(version: 20150305172050) do
   end
 
   add_foreign_key "entries", "blogs", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "tags", "entries", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "tags_legacy", "entries", on_update: :cascade, on_delete: :cascade
 end

@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 class Tag < ActiveRecord::Base
+  self.table_name = 'tags_legacy'
   attr_accessible :name
 
   belongs_to :entry
