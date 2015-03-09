@@ -1,5 +1,6 @@
 log/**
 db/*.sqlite*
+db/schema.rb
 tmp/*
 public/assets
 config/database.yml
