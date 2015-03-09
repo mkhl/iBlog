@@ -12,6 +12,7 @@ require 'bootstrap-sass'
 require 'uglifier'
 require 'therubyracer'
 require 'coffee-rails'
+require 'acts-as-taggable-on'
 
 module Iblog
   class Engine < ::Rails::Engine
