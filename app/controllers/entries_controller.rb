@@ -47,9 +47,7 @@ class EntriesController < ApplicationController
   end
 
   def by_tag
-    @tag = Tag.where(:name => params[:tag]).first
-    raise ActiveRecord::RecordNotFound unless @tag
-    @entries = Entry.order('id DESC').joins(:tags).where(:tags => { :name => @tag.name })
+    @entries = Entry.tagged_with(params[:tag]).by_date
     respond_to do |format|
       format.html do
         @entries = @entries.page(params[:page])
