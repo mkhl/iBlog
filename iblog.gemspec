@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'kaminari-i18n'
   s.add_dependency 'rails-i18n'
   s.add_dependency 'redcarpet'
+  s.add_dependency 'acts-as-taggable-on', '~> 3.4'
   s.add_dependency 'simple_form', '~> 3.1.0'
   s.add_dependency 'protected_attributes'
   s.add_dependency 'sass-rails', '~> 5.0'
