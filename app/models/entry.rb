@@ -13,15 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 class Entry < ActiveRecord::Base
+  acts_as_taggable
+
   include MarkdownExtension
   include AuthorExtension
 
-  attr_accessible :title, :progress, :plans, :problems, :tags_as_string
+  scope :by_date, -> { order("created_at DESC") }
+
+  attr_accessible :title, :progress, :plans, :problems, :tag_list
 
   validates :title, :progress, :blog_id, :presence => true
 
   belongs_to :blog
-  has_many :tags
   has_many :comments, :as => :owner, :dependent => :destroy
 
   def self.search(query)
@@ -29,15 +32,6 @@ class Entry < ActiveRecord::Base
     conditions = slots.map { |slot| "#{slot} LIKE ?" }
     params = slots.map { |slot| "%#{query}%" }
     where(conditions.join(' OR '), *params)
-  end
-
-  def tags_as_string
-    tags.map { |t| t.name }.join(' ')
-  end
-
-  def tags_as_string=(tags_as_string)
-    tags.destroy_all
-    self.tags = tags_as_string.split(/[, ]+/).map { |t| Tag.new(:name => t) }
   end
 
   before_save :regenerate_html
