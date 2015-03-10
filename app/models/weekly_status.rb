@@ -30,9 +30,13 @@ class WeeklyStatus < ActiveRecord::Base
   end
 
   def self.by_week(week)
-    start_time = (Time.now.beginning_of_year + week.to_i.weeks).beginning_of_week
-    where('created_at >= :start AND created_at <= :end',
-      { :start => start_time, :end => start_time.end_of_week })
+    begin
+      start_time = Date.commercial(Time.now.year, week.to_i, 1)
+      where('created_at >= :start AND created_at <= :end',
+            { :start => start_time, :end => start_time.end_of_week })
+    rescue ArgumentError => e
+      raise ArgumentError, 'Invalid week number'
+    end
   end
 
   def self.search(query)
@@ -41,7 +45,7 @@ class WeeklyStatus < ActiveRecord::Base
 
   def title
     timestamp = created_at? ? created_at : Time.now
-    "Wochenstatus KW #{timestamp.strftime('%W')} von #{author}"
+    "Wochenstatus KW #{timestamp.strftime('%V')} von #{author}"
   end
 
   def regenerate_html

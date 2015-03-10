@@ -35,10 +35,14 @@ class WeeklyStatusesController < ApplicationController
   end
 
   def by_week
-    @statuses = WeeklyStatus.by_week(params[:week]).recent
-
-    respond_to do |format|
-      format.html
+    begin
+      @statuses = WeeklyStatus.by_week(params[:week]).recent
+      respond_to do |format|
+        format.html
+      end
+    rescue ArgumentError => e
+      flash[:error] = e.message
+      redirect_to weekly_statuses_by_week_path(Time.now.strftime('%V'))
     end
   end
 
