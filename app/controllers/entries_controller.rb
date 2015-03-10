@@ -18,7 +18,8 @@ class EntriesController < ApplicationController
 
   def index
     @blog = Blog.find(params[:blog_id])
-    @entries = Entry.where(:blog_id => @blog.id).order('id DESC')
+    @entries = Entry.includes(:tags)
+                    .where(:blog_id => @blog.id).order('id DESC')
 
     respond_to do |format|
       format.html { @entries = @entries.page(params[:page]) }
@@ -58,8 +59,11 @@ class EntriesController < ApplicationController
   end
 
   def show
-    @blog = Blog.find(params[:blog_id])
-    @entry = Entry.find(params[:id])
+    @entry = Entry.includes(:blog, :comments, :tags)
+                  .references(:blog, :comments, :tags)
+                  .find(params[:id])
+
+    @blog = @entry.blog
     @edit_comment = @entry.comments.new
     @comments = @entry.comments
 

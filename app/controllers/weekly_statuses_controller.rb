@@ -43,7 +43,9 @@ class WeeklyStatusesController < ApplicationController
   end
 
   def show
-    @status = WeeklyStatus.find(params[:id])
+    @status = WeeklyStatus.includes(:comments)
+                          .references(:comments)
+                          .find(params[:id])
     @edit_comment = @status.comments.new
     @comments = @status.comments
   end
