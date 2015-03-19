@@ -20,7 +20,7 @@
         <%= link_to l(weekly_status.created_at, :format => :short), weekly_status_path(weekly_status) %>
       </li>
       <% if weekly_status.created_at != weekly_status.updated_at %>
-        <li><strong>Geändert am <%= l weekly_status.updated_at, :format => :short %></strong></li>
+        <li>Geändert am <%= l weekly_status.updated_at, :format => :short %></li>
       <% end %>
       <li>Kommentare: <%= link_to weekly_status.comments.count, weekly_status %></li>
     </ul>
