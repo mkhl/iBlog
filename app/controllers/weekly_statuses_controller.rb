@@ -15,12 +15,6 @@
 class WeeklyStatusesController < ApplicationController
   def index
     @statuses = WeeklyStatus.recent.page(params[:page])
-    handles = @statuses.map(&:author)
-    @users = User.select("handle", "name").where(handle: handles).
-        inject({}) do |memo, user|
-      memo[user.handle] = user.name
-      memo
-    end
 
     respond_to do |format|
       format.html
