@@ -48,6 +48,10 @@ class WeeklyStatus < ActiveRecord::Base
     "Wochenstatus KW #{timestamp.strftime('%V')} von #{author}"
   end
 
+  def author_name(user_index)
+    user_index[author] || author
+  end
+
   def regenerate_html
     self.status_html = md_to_html(status) if status
   end
