@@ -1,5 +1,14 @@
 <h2>Server</h2>
 
+<h3>Nutzerdatenbank</h3>
+
+<dl class="dl-horizontal">
+  <dt>Gesamtzahl</dt>
+  <dd><%= User.count %></dd>
+  <dt>zuletzt synchronisiert</dt>
+  <dd><%= User.select("id", "updated_at").find_by_handle("LAST_SYNC").updated_at %></dd>
+</dl>
+
 <h3>Log (Letzte 50 Einträge)</h3>
 
 <pre>

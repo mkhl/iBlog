@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # Copyright 2014 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class ApplicationController < ActionController::Base
-  protect_from_forgery
-  before_action :set_user
-  before_action :sync_users
-
-  protected
-
-  def sync_users
-    UserSync.start if Random.rand > 0.8 # no need to check every time
-  end
-
-  def set_user
-    @user = request.headers['REMOTE_USER'] || 'guest'
-  end
+class User < ActiveRecord::Base
+  attr_accessible :handle, :name
 end
