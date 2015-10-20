@@ -14,7 +14,7 @@ atom_feed do |feed|
         html.cdata! status.status_html
       end
       entry.author do |author|
-        author.name status.author
+        author.name status.author_name
         author.uri weekly_statuses_by_author_path(status.author)
       end
     end

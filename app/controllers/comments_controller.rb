@@ -21,8 +21,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         @comments = @comments.order("id DESC")
-        if @author = params[:author]
-          @comments = @comments.where(:author => params[:author])
+        if author = params[:author]
+          @author = User.find_by_handle(author).name || author
+          @comments = @comments.where(:author => author)
           render "comments/index/by_author"
         else
           @comments = @comments.page(params[:page]).per(40)

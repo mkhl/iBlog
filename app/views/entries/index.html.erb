@@ -6,7 +6,11 @@
       <%= @blog.name %> von <%= @blog.owner %>
     <% else %>
       <%= content_for :title, "Alle Einträge in allen Blogs" %>
-      für alle Blogs <% if params[:author] %>von <%= params[:author] %><%= content_for :title, " von #{params[:author]}" %><% end %>
+      für alle Blogs
+      <% if @author %>
+      von <%= @author %>
+      <%= content_for :title, " von #{@author}" %>
+      <% end %>
     <% end %>
   </small>
 </h1>

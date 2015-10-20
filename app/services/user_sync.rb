@@ -36,7 +36,7 @@ class UserSync
     userlist = retrieve(url, username, password)
     return false unless userlist
 
-    users = User.all.inject({}) do |memo, user|
+    users = User.select("id", "handle", "name").inject({}) do |memo, user|
       memo[user.handle] = user
       memo
     end

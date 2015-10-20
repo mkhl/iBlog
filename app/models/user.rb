@@ -14,5 +14,7 @@
 # limitations under the License.
 
 class User < ActiveRecord::Base
+  default_scope { select([:name]) } # everything else is metadata
+
   attr_accessible :handle, :name
 end

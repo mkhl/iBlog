@@ -15,16 +15,23 @@ class Comment < ActiveRecord::Base
   include MarkdownExtension
   include AuthorExtension
 
+  default_scope { includes(:user) }
+
   attr_accessible :content
 
   validates :content, :owner_id, :owner_type, :presence => true
 
   belongs_to :owner, :polymorphic => true
+  has_one :user, :primary_key => "author", :foreign_key => "handle"
 
   before_save :regenerate_html
 
   def self.search(query)
     where('content LIKE ?', "%#{query}%")
+  end
+
+  def author_name
+    user ? user.name : author
   end
 
   def regenerate_html

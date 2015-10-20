@@ -6,7 +6,7 @@ atom_feed do |feed|
 
   @comments.each do |comment|
     feed.entry(comment, :url => comment_owner_url(comment)) do |entry|
-      entry.title "Kommentar von #{comment.author} zu #{comment.owner.title}"
+      entry.title "Kommentar von #{comment.author_name} zu #{comment.owner.title}"
       entry.summary :type => "html" do |html|
         html.cdata! raw(comment.content_html)
       end
@@ -14,7 +14,7 @@ atom_feed do |feed|
         html.cdata! raw(comment.content_html)
       end
       entry.author do |author|
-        author.name comment.author
+        author.name comment.author_name
       end
     end
   end

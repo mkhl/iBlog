@@ -14,7 +14,7 @@ atom_feed do |feed|
         html.cdata! render("entry_cdata.html", :entry => blog_entry)
       end
       entry.author do |author|
-        author.name blog_entry.author
+        author.name blog_entry.author_name
         author.uri blog_entries_by_author_url(blog_entry.author)
       end
     end

@@ -18,6 +18,7 @@ class Entry < ActiveRecord::Base
   include MarkdownExtension
   include AuthorExtension
 
+  default_scope { includes(:user, :tags) }
   scope :by_date, -> { order("created_at DESC") }
 
   attr_accessible :title, :progress, :plans, :problems, :tag_list
@@ -25,6 +26,7 @@ class Entry < ActiveRecord::Base
   validates :title, :progress, :blog_id, :presence => true
 
   belongs_to :blog
+  has_one :user, :primary_key => "author", :foreign_key => "handle"
   has_many :comments, :as => :owner, :dependent => :destroy
 
   def self.search(query)
@@ -35,6 +37,10 @@ class Entry < ActiveRecord::Base
   end
 
   before_save :regenerate_html
+
+  def author_name
+    user ? user.name : author
+  end
 
   def regenerate_html
     self.progress_html = md_to_html(progress) if progress

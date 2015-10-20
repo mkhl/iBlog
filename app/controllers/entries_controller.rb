@@ -18,9 +18,7 @@ class EntriesController < ApplicationController
 
   def index
     @blog = Blog.find(params[:blog_id])
-    @entries = Entry.includes(:tags)
-                    .where(:blog_id => @blog.id).order('id DESC')
-
+    @entries = Entry.where(:blog_id => @blog.id).order('id DESC')
     respond_to do |format|
       format.html { @entries = @entries.page(params[:page]) }
       format.atom
