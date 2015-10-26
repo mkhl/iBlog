@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.0'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.20'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-i18n'
