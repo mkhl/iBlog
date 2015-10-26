@@ -1,10 +1,14 @@
 require "net/http"
 require "uri"
 
-class Notifier
+class NaveedNotifier
 
   def self.dispatch(sender, recipients, subject, body)
-    naveed = ENV["IBLOG_NAVEED_URL"]
+    naveed = ENV["IBLOG_NAVEED_URI"]
+
+    # Deprecated, remove when changed on production host:
+    naveed = ENV["IBLOG_NAVEED_URL"] unless naveed
+
     token = ENV["IBLOG_NAVEED_TOKEN"]
     return false unless naveed && token
 

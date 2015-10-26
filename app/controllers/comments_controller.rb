@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 # Copyright 2014 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -177,7 +177,7 @@ neuer Kommentar von #{author}:
 """
     EOS
 
-    Notifier.dispatch(author, users, "[iBlog] #{subject}", body)
+    NaveedNotifier.dispatch(author, users, "[iBlog] #{subject}", body)
   end
 
   def return_path(owner, comment = nil)
