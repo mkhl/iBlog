@@ -12,13 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 class Blog < ActiveRecord::Base
-  attr_accessible :name, :title, :owner, :description
+  attr_accessible :name, :title, :description
+
+  belongs_to :author
 
   has_many :entries, :dependent => :destroy
 
   validates :name, :presence => true
 
-  def self.by(owner)
-    where(:owner => owner)
+  def self.by(handle)
+    includes(:author).where('authors.handle = ?', handle).references(:author)
   end
 end

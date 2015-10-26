@@ -15,14 +15,15 @@ class Comment < ActiveRecord::Base
   include MarkdownExtension
   include AuthorExtension
 
-  default_scope { includes(:user) }
+  belongs_to :author
+  default_scope { includes(:author) }
+
+  # Points to the object commented by this one.
+  belongs_to :owner, :polymorphic => true
 
   attr_accessible :content
 
   validates :content, :owner_id, :owner_type, :presence => true
-
-  belongs_to :owner, :polymorphic => true
-  has_one :user, :primary_key => "author", :foreign_key => "handle"
 
   before_save :regenerate_html
 
@@ -30,11 +31,7 @@ class Comment < ActiveRecord::Base
     where('content LIKE ?', "%#{query}%")
   end
 
-  def author_name
-    user ? user.name : author
-  end
-
   def regenerate_html
-    self.content_html = md_to_html(content) if content
+    self.content_html = content ? md_to_html(content) : ""
   end
 end

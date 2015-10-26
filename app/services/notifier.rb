@@ -19,6 +19,7 @@ require "uri"
 class Notifier
 
   def self.dispatch(sender, recipients, subject, body)
+    puts "Attempting to send in behalf of #{sender} to #{recipients.join(', ')}:\nSubject: #{subject}\nBody: #{body}"
     naveed = ENV["IBLOG_NAVEED_URL"]
     token = ENV["IBLOG_NAVEED_TOKEN"]
     return false unless naveed && token

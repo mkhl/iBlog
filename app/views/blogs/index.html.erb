@@ -24,7 +24,7 @@
     <% @blogs.each do |blog| %>
       <tr>
         <td><%= link_to blog.name, blog_entries_path(blog) %></td>
-        <td><%= blog.owner %></td>
+        <td><%= blog.author.name %></td>
         <td><%= truncate blog.description, :length => 30 %></td>
         <td>
           <div class="btn-toolbar">

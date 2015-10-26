@@ -18,16 +18,16 @@ class Entry < ActiveRecord::Base
   include MarkdownExtension
   include AuthorExtension
 
-  default_scope { includes(:user, :tags) }
+  belongs_to :author
+  belongs_to :blog
+  has_many :comments, :as => :owner, :dependent => :destroy
+
+  default_scope { includes(:author, :tags) }
   scope :by_date, -> { order("created_at DESC") }
 
   attr_accessible :title, :progress, :plans, :problems, :tag_list
 
   validates :title, :progress, :blog_id, :presence => true
-
-  belongs_to :blog
-  has_one :user, :primary_key => "author", :foreign_key => "handle"
-  has_many :comments, :as => :owner, :dependent => :destroy
 
   def self.search(query)
     slots = ['title', 'progress', 'plans', 'problems']
@@ -38,13 +38,9 @@ class Entry < ActiveRecord::Base
 
   before_save :regenerate_html
 
-  def author_name
-    user ? user.name : author
-  end
-
   def regenerate_html
-    self.progress_html = md_to_html(progress) if progress
-    self.plans_html    = md_to_html(plans) if plans
-    self.problems_html = md_to_html(problems) if problems
+    self.progress_html = progress ? md_to_html(progress) : ""
+    self.plans_html    = plans    ? md_to_html(plans)    : ""
+    self.problems_html = problems ? md_to_html(problems) : ""
   end
 end

@@ -1,5 +1,5 @@
 # encoding: UTF-8
-# Copyright 2014 innoQ Deutschland GmbH
+# Copyright 2015 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class User < ActiveRecord::Base
-  default_scope { select([:name]) } # everything else is metadata
-
+class Author < ActiveRecord::Base
   attr_accessible :handle, :name
+
+  # Find or construct an appropriate author, given a handle
+  def self.for_handle(handle)
+    author = Author.find_by_handle(handle)
+    if ! author
+      author = Author.new(handle: handle, name: handle)
+      author.save
+    end
+    author
+  end
 end

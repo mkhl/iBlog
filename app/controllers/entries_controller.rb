@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 # Copyright 2014 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ class EntriesController < ApplicationController
 
   def index
     @blog = Blog.find(params[:blog_id])
-    @entries = Entry.where(:blog_id => @blog.id).order('id DESC')
+    @entries = Entry.where(:blog_id => @blog.id).order('entries.id DESC')
     respond_to do |format|
       format.html { @entries = @entries.page(params[:page]) }
       format.atom
@@ -35,7 +35,7 @@ class EntriesController < ApplicationController
   end
 
   def by_author
-    @entries = Entry.where(:author => params[:author]).order('id DESC')
+    @entries = Entry.includes(:author).where('authors.handle = ?', params[:author]).references(:author).order('entries.id DESC')
     respond_to do |format|
       format.html do
         @entries = @entries.page(params[:page])
@@ -77,9 +77,9 @@ class EntriesController < ApplicationController
     end
 
     @entry = Entry.new do |entry|
-      entry.author = @user
+      entry.author = Author.for_handle @user
       entry.blog_id = @blog.id if @blog
-      entry.title = "PPP von #{@user} am #{Date.today}"
+      entry.title = "PPP von #{entry.author.name} am #{Date.today}"
     end
 
     respond_to do |format|
@@ -100,7 +100,7 @@ class EntriesController < ApplicationController
     params[:entry].delete(:blog_id)
 
     @entry = Entry.new(params[:entry])
-    @entry.author = @user
+    @entry.author = @author
     @entry.blog = @blog
 
     respond_to do |format|
@@ -124,30 +124,33 @@ class EntriesController < ApplicationController
 
   def update
     @entry = Entry.find(params[:id])
-
-    respond_to do |format|
-      if params[:commit] == "Vorschau"
-        @entry.assign_attributes(params[:entry])
-        @entry.regenerate_html
-        @preview = true
-        format.html { render :action => "edit" }
-      else
-        if @entry.update_attributes(params[:entry])
-          flash[:success] = 'Der Eintrag wurde gespeichert.'
-          format.html { redirect_to blog_entry_url(@entry.blog, @entry) }
-          format.xml  { head :ok }
-        else
-          flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
+    if @entry.owned_by? @user
+      respond_to do |format|
+        if params[:commit] == "Vorschau"
+          @entry.assign_attributes(params[:entry])
+          @entry.regenerate_html
+          @preview = true
           format.html { render :action => "edit" }
-          format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+        else
+          if @entry.update_attributes(params[:entry])
+            flash[:success] = 'Der Eintrag wurde gespeichert.'
+            format.html { redirect_to blog_entry_url(@entry.blog, @entry) }
+            format.xml  { head :ok }
+          else
+            flash[:error] = 'Der Eintrag konnte nicht gespeichert werden.'
+            format.html { render :action => "edit" }
+            format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+          end
         end
       end
+    else
+      head :unauthorized
     end
   end
 
   def destroy
     @entry = Entry.find(params[:id])
-    if @entry.owned_by?(@user)
+    if @entry.owned_by? @user
       @entry.destroy
       flash[:notice] = 'Der Eintrag wurde gelöscht.'
       respond_to do |format|
@@ -168,14 +171,13 @@ class EntriesController < ApplicationController
   end
 
   def user_home
-    @author = params[:author]
-    @entries = Entry.page(params[:page]).where(:author => params[:author]).order('id DESC')
+    @author = Author.for_handle params[:author]
+    @entries = Entry.page(params[:page]).where('author_id = ?', @author.id).order('entries.id DESC')
 
     respond_to do |format|
       format.html { render :action => 'index' }
       format.atom { render :action => 'index' }
       format.xml  { render :xml => @entries }
     end
-
   end
 end

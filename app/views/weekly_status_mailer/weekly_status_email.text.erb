@@ -3,7 +3,7 @@ Wochenstatus KW <%= @week %>
 
 <% @statuses.each do |status| %>
 ==================================================
-<%= status.author %>, <%= l status.created_at %>
+<%= status.author.name %>, <%= l status.created_at %>
 <%= @host + weekly_status_path(status) %>
 --------------------------------------------------
 <%= status.status %>

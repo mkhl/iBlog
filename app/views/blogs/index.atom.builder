@@ -14,8 +14,8 @@ atom_feed do |feed|
         html.cdata!("<p>Blog #{blog.title} created.</p>")
       end
       entry.author do |author|
-        author.name blog.owner
-        author.uri blog_entries_by_author_url(blog.owner)
+        author.name blog.author.name
+        author.uri blog_entries_by_author_url(blog.author.name)
       end
     end
   end

@@ -1,5 +1,5 @@
-# encoding: UTF-8
-# Copyright 2014 innoQ Deutschland GmbH
+# encoding: utf-8
+# Copyright 2014,2015 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 class WeeklyStatusesController < ApplicationController
   def index
     @statuses = WeeklyStatus.recent.page(params[:page])
@@ -23,7 +24,8 @@ class WeeklyStatusesController < ApplicationController
   end
 
   def by_author
-    @statuses = WeeklyStatus.where(:author => params[:author]).recent
+    @author = Author.for_handle params[:author]
+    @statuses = WeeklyStatus.where('author_id = ?', @author.id).recent
 
     respond_to do |format|
       format.html do
@@ -56,7 +58,7 @@ class WeeklyStatusesController < ApplicationController
 
   def new
     @status = WeeklyStatus.new do |s|
-      s.author = @user
+      s.author = @author
     end
 
     render :edit
@@ -64,7 +66,7 @@ class WeeklyStatusesController < ApplicationController
 
   def create
     @status = WeeklyStatus.new(params[:weekly_status])
-    @status.author = @user
+    @status.author = @author
     if params[:commit] == "Vorschau"
       @status.regenerate_html
       @preview = true
@@ -89,12 +91,16 @@ class WeeklyStatusesController < ApplicationController
       @status.regenerate_html
       @preview = true
       render :edit
-    elsif @status.update_attributes(params[:weekly_status])
-      flash[:success] = "Der Eintrag wurde geändert."
-      redirect_to weekly_statuses_path
+    elsif @status.owned_by? @user
+      if @status.update_attributes(params[:weekly_status])
+        flash[:success] = "Der Eintrag wurde geändert."
+        redirect_to weekly_statuses_path
+      else
+        flash[:error] = "Der Eintrag konnte nicht geändert werden."
+        render :edit
+      end
     else
-      flash[:error] = "Der Eintrag konnte nicht geändert werden."
-      render :edit
+      head :unauthorized
     end
   end
 

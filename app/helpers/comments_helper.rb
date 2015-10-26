@@ -1,4 +1,4 @@
-# Copyright 2014 innoQ Deutschland GmbH
+# Copyright 2014, 2015 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,9 +11,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 module CommentsHelper
-  def avatar(user)
-    image_tag("https://intern.innoq.com/liqid/users/#{user}/avatar/64x64", :class => "avatar", :alt => "#{user}")
+
+  def avatar(handle)
+    image_tag("https://intern.innoq.com/liqid/users/#{handle}/avatar/64x64", :class => "avatar", :alt => "#{handle}")
   end
 
   def comment_owner_path(comment)

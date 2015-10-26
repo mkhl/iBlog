@@ -16,6 +16,6 @@ module AuthorExtension
   extend ActiveSupport::Concern
 
   def owned_by?(user)
-    author == user
+    author.handle == user
   end
 end

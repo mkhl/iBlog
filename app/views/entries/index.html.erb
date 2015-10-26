@@ -3,12 +3,12 @@
   <small>
     <% if @blog %>
       <%= content_for :title, "Alle Einträge in \"#{@blog.name}\"" %>
-      <%= @blog.name %> von <%= @blog.owner %>
+      <%= @blog.name %> von <%= @blog.author.name %>
     <% else %>
       <%= content_for :title, "Alle Einträge in allen Blogs" %>
       für alle Blogs
       <% if @author %>
-      von <%= @author %>
+      von <%= @author.name %>
       <%= content_for :title, " von #{@author}" %>
       <% end %>
     <% end %>

@@ -1,7 +1,7 @@
 atom_feed do |feed|
   feed.title "Wochenstatus"
   feed.updated @statuses.first.updated_at if @statuses.first
-  feed.subtitle "yet another internal innoQ blog"
+  feed.subtitle "weekly internal innoQ blog"
   feed.generator "i-Blogs Custom ATOM Feed Generator 1.0", :uri => root_url
 
   @statuses.each do |status|
@@ -14,8 +14,8 @@ atom_feed do |feed|
         html.cdata! status.status_html
       end
       entry.author do |author|
-        author.name status.author_name
-        author.uri weekly_statuses_by_author_path(status.author)
+        author.name status.author.name
+        author.uri weekly_statuses_by_author_path(status.author.handle)
       end
     end
   end

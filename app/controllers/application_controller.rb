@@ -1,4 +1,4 @@
-# Copyright 2014 innoQ Deutschland GmbH
+# Copyright 2014, 2015 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :set_user
-  before_action :sync_users
+  before_action :set_author, only: [:new, :create, :update]
+  before_action :sync_authors
 
   protected
 
-  def sync_users
-    UserSync.start if Random.rand > 0.8 # no need to check every time
+  def sync_authors
+    AuthorSync.start if Random.rand > 0.8 # no need to check every time
   end
 
   def set_user
-    @user = request.headers['REMOTE_USER'] || 'guest'
+    @user = request.headers['REMOTE_USER'] || 'rumpelxyz'
+  end
+
+  def set_author
+    @author = Author.find_by_handle(@user)
+    if ! @author
+      @author = Author.new(handle: @user, name: @user)
+      @author.save
+    end
   end
 end
