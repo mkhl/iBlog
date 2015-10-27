@@ -178,7 +178,7 @@ Neuer Kommentar von #{comment_author.name}:
 """
     EOS
 
-    Notifier.dispatch(comment_author.handle, interested_authors.map(&:handle), "[iBlog] #{subject}", body)
+    NaveedNotifier.dispatch(comment_author.handle, interested_authors.map(&:handle), "[iBlog] #{subject}", body)
   end
 
   def return_path(owner, comment = nil)
