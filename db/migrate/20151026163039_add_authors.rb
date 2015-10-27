@@ -4,6 +4,7 @@ class AddAuthors < ActiveRecord::Migration
     create_table :authors do |t|
       t.string :handle, null: false, index: {unique: true}
       t.string :name, null: false
+      t.string :avatar_uri
       t.timestamps null: false
     end
 

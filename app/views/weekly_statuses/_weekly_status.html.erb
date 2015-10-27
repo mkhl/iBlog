@@ -14,7 +14,7 @@
 
   <% unless @preview %>
     <ul class="breadcrumb entry-meta">
-      <li><%= avatar(weekly_status.author.handle) %><%= link_to weekly_status.author.name, weekly_statuses_by_author_path(:author => weekly_status.author.handle) %></li>
+      <li><%= avatar(weekly_status.author) %><%= link_to weekly_status.author.name, weekly_statuses_by_author_path(:author => weekly_status.author.handle) %></li>
       <li>
         Erstellt am
         <%= link_to l(weekly_status.created_at, :format => :long), weekly_status_path(weekly_status) %>

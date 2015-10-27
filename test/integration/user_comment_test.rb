@@ -3,7 +3,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '../integration_test
 class UserCommentTest < ActionDispatch::IntegrationTest
   test 'weekly status comment creation' do
     status = WeeklyStatus.new(status: 'pgs current status').tap do |w|
-      w.author = 'pg'
+      w.author = Author.for_handle 'pg'
       w.save
     end
 
@@ -23,9 +23,14 @@ class UserCommentTest < ActionDispatch::IntegrationTest
   end
 
   test 'entry comment creation' do
-    blog = Blog.create(name: 'pgs blog')
-    entry = Entry.new(title: 'pgs sample ppp', progress: 'pgs sample progress').tap do |e|
-      e.author = 'pg'
+    pg = Author.for_handle 'pg'
+    blog = Blog.new(name: 'pgs blog')
+    blog.author = pg
+    blog.save
+    entry = Entry.new(title: 'pgs sample ppp', progress: 'pgs sample progress')
+    entry.author = pg
+    entry.tap do |e|
+      e.author == pg
       e.blog = blog
       e.save
     end

@@ -14,8 +14,9 @@
 
 module CommentsHelper
 
-  def avatar(handle)
-    image_tag("https://intern.innoq.com/liqid/users/#{handle}/avatar/64x64", :class => "avatar", :alt => "#{handle}")
+  def avatar(author)
+    uri = author.avatar_uri
+    image_tag(uri ? uri : image_url('greyface.png'), :class => "avatar", :alt => author.name)
   end
 
   def comment_owner_path(comment)

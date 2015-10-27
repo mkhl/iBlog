@@ -29,7 +29,7 @@
     <% @statuses.each do |status| %>
     <div class="status">
       <p class="meta">
-        <%= avatar(status.author.handle) %>
+        <%= avatar(status.author) %>
         <%= link_to status.author.name, @host + weekly_statuses_by_author_path(:author => status.author.handle) %>
         <%= link_to l(status.created_at, :format => :default), @host + weekly_status_path(status) %>
       </p>

@@ -37,6 +37,23 @@ can set it.  If a request hits iBlog without `REMOTE_USER` set, the
 hard-coded username `guest` is used, which is convenient for
 local testing on a development machine.
 
+### Author names
+
+We have a database table that basically maps the user names (as
+handed in by `REMOTE_USER`) to the full author names and author
+avatar URIs.
+
+There is a rake task `authors:update` that retrieves such data
+via a JSON list, from some HTTPS-URI (or HTTP, if you must), and
+updates the database.
+
+The task expects one or three
+[task parameters](http://docs.seattlerb.org/rake/doc/rakefile_rdoc.html#label-Tasks+that+Expect+Parameters),
+namely, the URI and (if needed) the user and password required to
+access that URI.
+
+TODO: Document the JSON.
+
 ### Naveed
 
 iBlog provides Atom feeds for its content.  Some folks prefer

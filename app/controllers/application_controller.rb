@@ -16,16 +16,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :set_user
   before_action :set_author, only: [:new, :create, :update]
-  before_action :sync_authors
 
   protected
 
-  def sync_authors
-    AuthorSync.start if Random.rand > 0.8 # no need to check every time
-  end
-
   def set_user
-    @user = request.headers['REMOTE_USER'] || 'rumpelxyz'
+    @user = request.headers['REMOTE_USER'] || 'guest'
   end
 
   def set_author

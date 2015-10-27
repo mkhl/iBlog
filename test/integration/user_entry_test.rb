@@ -2,7 +2,10 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '../integration_test
 
 class UserEntryTest < ActionDispatch::IntegrationTest
   test 'entry creation' do
-    blog = Blog.create(name: 'guest blog', owner: 'guest')
+    guest = Author.for_handle 'guest'
+    blog = Blog.new(name: 'guest blog')
+    blog.author = guest
+    assert blog.save
 
     visit new_entry_path
     click_button 'PPP-Eintrag erstellen'
@@ -40,14 +43,17 @@ class UserEntryTest < ActionDispatch::IntegrationTest
   end
 
   test 'entries by author' do
-    blog = Blog.create(name: 'sts blog')
-    entry = Entry.new(title: 'sts sample ppp', progress: 'sts sample progress').tap do |e|
-      e.author = 'st'
+    st = Author.for_handle 'st'
+    blog = Blog.new(name: 'sts blog')
+    blog.author = st
+    assert blog.save
+    entry = Entry.new(title: 'sts sample ppp', progress: 'sts sample progress', author: st).tap do |e|
+      e.author = st
       e.blog = blog
       e.save
     end
 
-    visit blog_entries_by_author_path(entry.author)
+    visit blog_entries_by_author_path(entry.author.handle)
     assert_content 'sts sample ppp'
   end
 
