@@ -16,7 +16,7 @@ module CommentsHelper
 
   def avatar(author)
     uri = author.avatar_uri
-    image_tag(uri ? uri : image_url('greyface.png'), :class => "avatar", :alt => author.name)
+    image_tag(uri.present? ? uri : image_url('greyface.png'), :class => "avatar", :alt => author.name)
   end
 
   def comment_owner_path(comment)
