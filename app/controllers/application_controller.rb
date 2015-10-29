@@ -20,7 +20,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_user
-    @user = request.headers['REMOTE_USER'] || 'guest'
+    user = request.headers['REMOTE_USER']
+    # MySQL does not distinguish between upper and lower case.
+    # For sanity, cast everything to lower case here.
+    # (Well... Unfortunately, this casts only in the ASCII range.)
+    @user = user.present? ? user.downcase : 'guest'
   end
 
   def set_author
