@@ -20,7 +20,6 @@
 namespace :authors do
   desc "Updates author names and avatars in DB. Required argument list_uri, optional username and passwd."
   task :update, [:list_uri, :username, :passwd] => [ :environment ] do |t, args|
-    puts "have '#{args.list_uri}' for '#{args.username}' with '#{args.passwd}'"
     list_uri = args.list_uri
     username = args.username
     passwd = args.passwd
@@ -37,11 +36,18 @@ namespace :authors do
       handle2author[author.handle.downcase] = author
     end
 
+    # Set of those we found in the input data
+    in_input = Set.new
+    
     # See to it all names from external list are in the database.
     # (This never removes any records from the database no longer
     # in the external list.)
     yield_handles_and_names_and_avatar(incoming_list) do |handle, name, avatar_uri|
+      in_input << handle
       # Beware: MySQL often treats upper and lower case as identical, for sorting and equality.
+      # As downcase only works for ASCII chars, there will be trouble
+      # if upper case non-ASCII characters are used in handles,
+      # as MySQL knows how to downcase them, but Ruby doesn't. Sigh.
       if author = handle2author[handle.downcase]
         if author.name != name || author.avatar_uri != avatar_uri
           author.update(name: name, avatar_uri: avatar_uri)
@@ -53,6 +59,16 @@ namespace :authors do
         author.save
       end
     end
+
+    # Remove avatar URI data for folks that are not in the input file
+    # (as the avatar service presumably no longer has that image).
+    (SortedSet.new(handle2author.keys) - in_input).each do |nolonger|
+      author = Author.for_handle nolonger
+      if author.avatar_uri.present?
+        author.avatar_uri = nil
+        author.save
+      end
+    end
   end
 
   # Encapsulate how to retrieve handle and name
@@ -60,11 +76,11 @@ namespace :authors do
   def yield_handles_and_names_and_avatar(incoming_list)
     incoming_list["members"].each do |handle, details|
       name = details["displayName"]
-      if name
-        # TODO: Make this useable outside innoQ context.
-        avatar_uri_raw = details["avatar"]
-        avatar_uri = avatar_uri_raw ? "https://intern.innoq.com#{avatar_uri_raw}/64x64" : nil
-        yield handle, name, avatar_uri
+      if name.present?
+        avatar_uri = details["avatar_scaled"]
+        yield(handle, name, avatar_uri.present? ? avatar_uri : nil)
+      else
+        $stderr.puts "Input data has illegal empty name for handle #{handle} - ignoring that record."
       end
     end
   end
@@ -73,18 +89,27 @@ namespace :authors do
   # parse the JSON format.
   def retrieve_incoming_list(uri_raw, username, passwd)
     uri = URI.parse(uri_raw)
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true if uri.scheme == "https"
 
-    req = Net::HTTP::Get.new(uri.request_uri)
-    req.basic_auth(username, passwd) if username && passwd
-
-    http.read_timeout = 10 # seconds
-    res = http.request(req)
-    if res.kind_of? Net::HTTPSuccess
-      JSON.parse res.body
+    case uri.scheme
+    when /^file$/i
+      File.open(uri.path) {|file| JSON.parse(file.read)}
+    when /^http/i
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true if uri.scheme =~ /^https/i
+      
+      req = Net::HTTP::Get.new(uri.request_uri)
+      req.basic_auth(username, passwd) if username && passwd
+      
+      http.read_timeout = 10 # seconds
+      res = http.request(req)
+      if res.kind_of? Net::HTTPSuccess
+        JSON.parse res.body
+      else
+        raise "Could not retrieve #{uri_raw} (as user \"#{username}\"): #{res.code}: #{res.message}"
+      end
     else
-      raise "Could not retrieve #{uri_raw} (as user \"#{username}\"): #{res.code}: #{res.message}"
+      raise "Dont' understand scheme #{uri.scheme}, so could not retrieve #{uri_raw}"
     end
+    
   end
 end

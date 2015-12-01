@@ -28,14 +28,20 @@ Please use pull requests.
 
 ### Auth
 
-iBlog will look for (and blindly trust) the `REMOTE_USER`
-HTTP header.  The content of this header is the name of the user
+iBlog will look for (and blindly trust) the `REMOTE_USER` HTTP
+header.  The content of this header is the "handle" of the user
 doing the particular request.  It is assumed that iBlog is
 deployed behind some reverse proxy that duely authenticates
 users, sets this header, and makes sure nobody from the outside
-can set it.  If a request hits iBlog without `REMOTE_USER` set, the
-hard-coded username `guest` is used, which is convenient for
+can set it.  If a request hits iBlog without `REMOTE_USER` set,
+the hard-coded username `guest` is used, which is convenient for
 local testing on a development machine.
+
+For best results, handles should consist of all lower-case
+letters.
+
+If you do use upper case letters, you are fine as long as no two
+handles differ only by case.
 
 ### Author names
 
@@ -44,15 +50,36 @@ handed in by `REMOTE_USER`) to the full author names and author
 avatar URIs.
 
 There is a rake task `authors:update` that retrieves such data
-via a JSON list, from some HTTPS-URI (or HTTP, if you must), and
-updates the database.
+via a JSON list and updates the database.  This you can use to
+sync iBlog with the avatar service database, e.g., once a day.
 
 The task expects one or three
 [task parameters](http://docs.seattlerb.org/rake/doc/rakefile_rdoc.html#label-Tasks+that+Expect+Parameters),
 namely, the URI and (if needed) the user and password required to
-access that URI.
+access that URI.  Either `file:`, `http:`, or `https:` - URIs can be used.
 
-TODO: Document the JSON.
+What is retrieved from that URI is parsed as a JSON file,
+which should have the following format:
+
+    {
+      "members": {
+        "handle1": {"displayName":"Jane Author", "avatar_scaled":"http://avatar.service.org/jane_author.jpg"},
+        "handle2": {"displayName":"Simon Shy"},
+        ...
+      }
+    }
+
+* The `members` level is mandatory.
+* Any additional information in your JSON file will be ignored, with no harm done
+  (expect using a bit of RAM for a moment).
+* Handle values should be lower-case only. As mentioned, this is the same
+  as provided in the `REMOTE_USER` header.
+* If you leave out the `avatar_scaled` field for some handle, or
+  leave out a certain handle's record alltogether, that author's avatar
+  is removed and replaced with the default one.
+
+You can find a slightly longer sample input file at
+`test/integration/update_authors_test.data`.
 
 ### Naveed
 
