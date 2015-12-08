@@ -21,13 +21,14 @@ class AddAuthors < ActiveRecord::Migration
 
     table_n_column.each do |table, column|
 
-      add_column table.to_sym, :author_id, :integer, default: author.id, null: false, index: true
+      add_column table.to_sym, :author_id, :integer, default: default_author_id, null: false, index: true
       add_foreign_key table.to_sym, :authors
 
       # Find any author values we have in our current table
       # and add those not yet there to the authors table.
+      current_time = Time.now.to_s(:db)
       execute "INSERT INTO authors (handle, name, created_at, updated_at) " +
-              "SELECT new_handles.handle, new_handles.handle, '#{Time.now.to_s(:db)}', '#{Time.now.to_s(:db)}' from " +
+              "SELECT new_handles.handle, new_handles.handle, '#{current_time}', '#{current_time}' from " +
               "(SELECT #{column} AS handle FROM #{table} GROUP BY handle ORDER BY handle) as new_handles " +
               "LEFT OUTER JOIN authors ON new_handles.handle = authors.handle WHERE authors.handle IS NULL;"
 
