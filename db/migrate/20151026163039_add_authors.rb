@@ -12,7 +12,7 @@ class AddAuthors < ActiveRecord::Migration
     author = Author.new(handle: '$UNKNOWN$', name: '$UNKNOWN')
     author.save
     default_author_id = author.id
-    
+
     # Need to replace these previous author handle cloumns:
     table_n_column = [['blogs','owner'],
                       ['comments', 'author'],
@@ -27,7 +27,7 @@ class AddAuthors < ActiveRecord::Migration
       # Find any author values we have in our current table
       # and add those not yet there to the authors table.
       execute "INSERT INTO authors (handle, name, created_at, updated_at) " +
-              "SELECT new_handles.handle, new_handles.handle, now(), now() from " +
+              "SELECT new_handles.handle, new_handles.handle, '#{Time.now.to_s(:db)}', '#{Time.now.to_s(:db)}' from " +
               "(SELECT #{column} AS handle FROM #{table} GROUP BY handle ORDER BY handle) as new_handles " +
               "LEFT OUTER JOIN authors ON new_handles.handle = authors.handle WHERE authors.handle IS NULL;"
 
