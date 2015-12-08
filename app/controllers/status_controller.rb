@@ -23,5 +23,6 @@ class StatusController < ApplicationController
     end
     @log = `tail -n 50 #{Rails.root.join('log', "#{Rails.env}.log")}`
     @author_count = Author.count
+    @ruby_version = RUBY_VERSION
   end
 end
