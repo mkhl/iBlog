@@ -20,6 +20,19 @@ class UserCommentTest < ActionDispatch::IntegrationTest
     visit weekly_statuses_path
     assert_content 'pgs current status'
     assert_content 'Kommentare: 1'
+
+    visit comments_path
+    assert_content 'Alle Kommentare'
+    assert_content 'comment on pgs current status'
+
+    visit "#{comments_path}?author=guest"
+    assert_content 'Alle Kommentare von guest'
+    assert_content 'comment on pgs current status'
+  end
+
+  test 'comment by unknown author 404' do
+    get "#{comments_path}?author=rumpelstielzchen"
+    assert_equal 404, status
   end
 
   test 'entry comment creation' do

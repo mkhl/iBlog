@@ -22,9 +22,13 @@ class CommentsController < ApplicationController
       format.html do
         @comments = @comments.order("id DESC")
         if author = params[:author]
-          @author = User.find_by_handle(author).name || author
-          @comments = @comments.where(:author => author)
-          render "comments/index/by_author"
+          @author = Author.find_by_handle(author)
+          if @author
+            @comments = @comments.where(:author => @author)
+            render "comments/index/by_author"
+          else
+            render plain: "No comment by #{author} found.", status: 404
+          end
         else
           @comments = @comments.page(params[:page]).per(40)
           render "comments/index/all"
