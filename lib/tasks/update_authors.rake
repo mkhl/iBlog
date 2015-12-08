@@ -17,6 +17,8 @@
 # puts any new authors (by handle) into the database
 # and updates all authors' name and avatar info.
 
+require 'net/http'
+
 namespace :authors do
   desc "Updates author names and avatars in DB. Required argument list_uri, optional username and passwd."
   task :update, [:list_uri, :username, :passwd] => [ :environment ] do |t, args|
