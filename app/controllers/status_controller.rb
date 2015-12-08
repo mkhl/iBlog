@@ -14,9 +14,14 @@
 class StatusController < ApplicationController
   def index
     @headers = request.headers
-    ["HTTP_AUTHORIZATION", "action_dispatch.secret_key_base", "action_dispatch.secret_token", "PASSENGER_CONNECT_PASSWORD"].each do |k|
-      @headers[k] = "*REMOVED*" if @headers[k].present?
+    headers_to_be_removed =  ["HTTP_AUTHORIZATION",
+                              "action_dispatch.secret_key_base",
+                              "action_dispatch.secret_token",
+                              "PASSENGER_CONNECT_PASSWORD"]
+    headers_to_be_removed.each do |header|
+      @headers[header] = "*REMOVED*" if @headers[header].present?
     end
     @log = `tail -n 50 #{Rails.root.join('log', "#{Rails.env}.log")}`
+    @author_count = Author.count
   end
 end

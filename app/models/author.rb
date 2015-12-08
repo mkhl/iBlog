@@ -19,7 +19,7 @@ class Author < ActiveRecord::Base
   # Find or construct an appropriate author, given a handle
   def self.for_handle(handle)
     author = Author.find_by_handle handle
-    if ! author
+    unless author
       author = Author.new(handle: handle, name: handle)
       author.save
     end

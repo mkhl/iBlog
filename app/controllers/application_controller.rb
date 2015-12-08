@@ -28,10 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_author
-    @author = Author.find_by_handle(@user)
-    if ! @author
-      @author = Author.new(handle: @user, name: @user)
-      @author.save
-    end
+    @author = Author.for_handle(@user)
   end
 end
