@@ -2,7 +2,9 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '../test_helper')
 
 class WeeklyStatusTest < ActiveSupport::TestCase
   test 'should save entry with valid attributes' do
+    author = Author.for_handle 'muchwriter'
     status = WeeklyStatus.new(status: 'my current status')
+    status.author = author
     assert status.save, 'Saved entry with valid attributes'
   end
 
@@ -19,7 +21,10 @@ class WeeklyStatusTest < ActiveSupport::TestCase
   end
 
   test 'automatic attribute markdown conversion' do
-    status = WeeklyStatus.create(status: 'My awesome weekly status with **strong** test')
+    author = Author.for_handle 'opinionnatedwriter'
+    status = WeeklyStatus.new(status: 'My awesome weekly status with **strong** test')
+    status.author = author
+    status.save
 
     # attribute conversion should be triggered on `save`
     status.save

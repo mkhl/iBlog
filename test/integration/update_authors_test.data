@@ -1,0 +1,23 @@
+{
+  "members": {
+    "same_guy": {
+      "displayName":"Sebastian Same",
+      "avatar_scaled": "https://example.com/sebastian_same.png"
+    },
+    "new_author": {
+      "displayName":"Anton Newauthor",
+      "avatar_scaled": "https://norbert.new.picture/blah.jpg"
+    },
+    "new_picture": {
+      "displayName":"Nadja Newpicture",
+      "avatar_scaled": "https://example.com/nadja_newpicture"
+    },
+    "no_picture": {
+      "displayName":"Simon Shy"
+    },
+    "new_name": {
+      "displayName":"Justus Justmarried",
+      "avatar_scaled": "https://lifechange.unorg/love.jpg"
+    }
+  }
+}  

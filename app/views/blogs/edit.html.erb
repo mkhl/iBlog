@@ -4,7 +4,6 @@
   <legend>Blog <%= @blog.new_record? ? 'erstellen' : 'bearbeiten' %></legend>
   <%= f.input :name %>
   <%= f.input :title %>
-  <%= f.input :owner %>
   <%= f.input :description, :as => :text, :input_html => { :class => "col-md-5", :rows => 3 } %>
 
   <div class="form-group">

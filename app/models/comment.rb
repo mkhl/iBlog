@@ -15,11 +15,15 @@ class Comment < ActiveRecord::Base
   include MarkdownExtension
   include AuthorExtension
 
+  belongs_to :author
+  default_scope { includes(:author) }
+
+  # Points to the object commented by this one.
+  belongs_to :owner, :polymorphic => true
+
   attr_accessible :content
 
   validates :content, :owner_id, :owner_type, :presence => true
-
-  belongs_to :owner, :polymorphic => true
 
   before_save :regenerate_html
 
@@ -28,6 +32,6 @@ class Comment < ActiveRecord::Base
   end
 
   def regenerate_html
-    self.content_html = md_to_html(content) if content
+    self.content_html = content ? md_to_html(content) : ""
   end
 end

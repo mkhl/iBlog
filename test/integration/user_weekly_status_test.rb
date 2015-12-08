@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 
 require File.join(File.expand_path(File.dirname(__FILE__)), '../integration_test_helper')
 
@@ -25,12 +25,13 @@ class UserWeeklyStatusTest < ActionDispatch::IntegrationTest
   end
 
   test 'weekly status by author' do
+    st = Author.for_handle 'st'
     st_status = WeeklyStatus.new(status: 'sts current status').tap do |w|
-      w.author = 'st'
+      w.author = st
       w.save
     end
 
-    visit weekly_statuses_by_author_path(st_status.author)
+    visit weekly_statuses_by_author_path(st_status.author.handle)
     assert_content 'sts current status'
   end
 end

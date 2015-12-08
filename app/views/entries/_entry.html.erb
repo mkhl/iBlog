@@ -33,7 +33,7 @@
 
   <% unless @preview %>
     <ul class="breadcrumb entry-meta">
-      <li><%= avatar(entry.author) %><%= link_to entry.author, blog_entries_by_author_path(:author => entry.author) %></li>
+      <li><%= avatar(entry.author) %><%= link_to entry.author.name, blog_entries_by_author_path(:author => entry.author.handle) %></li>
       <li>Erstellt am <%= l entry.created_at, :format => :short %></li>
       <% if entry.created_at != entry.updated_at %>
         <li>Geändert am <%= l entry.updated_at, :format => :short %></li>

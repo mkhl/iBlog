@@ -2,11 +2,15 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '../test_helper')
 
 class CommentTest < ActiveSupport::TestCase
   setup do
-    @blog = Blog.create(name: 'sample blog')
+    @author = Author.for_handle 'rumpelstielzchen'
+    @blog = Blog.new(name: 'sample blog')
+    @blog.author = @author
+    @blog.save
     @entry = Entry.new.tap do |e|
       e.blog = @blog
       e.title = 'Sample PPP'
       e.progress = 'Sample progress...'
+      e.author = @author
       e.save
     end
   end
@@ -15,6 +19,7 @@ class CommentTest < ActiveSupport::TestCase
     comment = Comment.new(content: 'Sample comment')
     comment.owner = @entry
     comment.owner_type = @entry.class
+    comment.author = Author.for_handle 'sample_commenter'
 
     assert comment.save
   end
@@ -35,6 +40,7 @@ class CommentTest < ActiveSupport::TestCase
     comment = Comment.new(content: 'Comment with **strong** text')
     comment.owner = @entry
     comment.owner_type = @entry.class
+    comment.author = Author.for_handle 'another_opinionated_author'
 
     # attribute conversion should be triggered on `save`
     comment.save

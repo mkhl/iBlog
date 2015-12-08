@@ -1,4 +1,4 @@
-# Copyright 2014 innoQ Deutschland GmbH
+# Copyright 2014, 2015 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,20 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_user
+  before_action :set_user
+  before_action :set_author, only: [:new, :create, :update]
 
   protected
+
   def set_user
-    @user = request.headers['REMOTE_USER'] || 'guest'
+    user = request.headers['REMOTE_USER']
+    # MySQL does not distinguish between upper and lower case.
+    # For sanity, cast everything to lower case here.
+    # (Well... Unfortunately, this casts only in the ASCII range.)
+    @user = user.present? ? user.downcase : 'guest'
+  end
+
+  def set_author
+    @author = Author.for_handle(@user)
   end
 end

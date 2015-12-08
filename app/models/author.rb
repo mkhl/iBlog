@@ -1,4 +1,5 @@
-# Copyright 2014 innoQ Deutschland GmbH
+# encoding: UTF-8
+# Copyright 2015 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,16 +12,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-class Blog < ActiveRecord::Base
-  attr_accessible :name, :title, :description
 
-  belongs_to :author
+class Author < ActiveRecord::Base
+  attr_accessible :handle, :name, :avatar_uri
 
-  has_many :entries, :dependent => :destroy
-
-  validates :name, :presence => true
-
-  def self.by(handle)
-    includes(:author).where('authors.handle = ?', handle).references(:author)
+  # Find or construct an appropriate author, given a handle
+  def self.for_handle(handle)
+    author = Author.find_by_handle handle
+    unless author
+      author = Author.new(handle: handle, name: handle)
+      author.save
+    end
+    author
   end
 end

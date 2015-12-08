@@ -11,7 +11,6 @@ class UserBlogTest < ActionDispatch::IntegrationTest
 
     fill_in 'Name', :with => 'John Doe blog'
     fill_in 'Title', :with => 'blog-title'
-    fill_in 'Owner', :with => 'jd'
     fill_in 'Description', :with => 'blog-description'
 
     click_button 'Blog erstellen'

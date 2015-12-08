@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 # Copyright 2014 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +21,14 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         @comments = @comments.order("id DESC")
-        if @author = params[:author]
-          @comments = @comments.where(:author => params[:author])
-          render "comments/index/by_author"
+        if author = params[:author]
+          @author = Author.find_by_handle(author)
+          if @author
+            @comments = @comments.where(:author => @author)
+            render "comments/index/by_author"
+          else
+            render plain: "No comment by #{author} found.", status: 404
+          end
         else
           @comments = @comments.page(params[:page]).per(40)
           render "comments/index/all"
@@ -101,7 +106,7 @@ class CommentsController < ApplicationController
     end
 
     comment = owner.comments.new(:content => params[:comment][:content])
-    comment.author = @user
+    comment.author = @author
 
     if params[:commit] == "Vorschau"
       comment.regenerate_html
@@ -144,40 +149,40 @@ class CommentsController < ApplicationController
   end
 
   private
+  # comment is the comment
+  # owner is the object that has been commented
   def notify(comment, owner)
-    author = comment.author
-    comments = owner.comments.select([:author, :content]) # XXX: inefficient
-
-    commenters = comments.map(&:author)
-    users = [owner.author].concat(commenters).uniq
-    users.delete(author)
-
-    preceding_comment = comments[-2]
+    comment_author = comment.author
+    all_comments = owner.comments
+    interested_authors = all_comments.map(&:author).concat([owner.author])
+    interested_authors.delete(comment_author)
+    interested_authors.uniq!
 
     if owner.is_a?(Entry)
       subject = owner.title
       url = blog_entry_url(owner.blog, owner, anchor: "comment-#{comment.id}")
     elsif owner.is_a?(WeeklyStatus)
-      subject = "Wochenstatus von #{owner.author}"
+      subject = "Wochenstatus von #{owner.author.name}"
       url = weekly_status_url(owner, anchor: "comment-#{comment.id}")
     end
 
     body = <<-EOS
-neuer Kommentar von #{author}:
+Neuer Kommentar von #{comment_author.name}:
 """
 #{comment.content}
 """
 #{url}
     EOS
 
+    preceding_comment = all_comments[-2]
     body += <<-EOS if preceding_comment
-\nvorhergehender Kommentar von #{preceding_comment.author}:
+\nvorhergehender Kommentar von #{preceding_comment.author.name}:
 """
 #{preceding_comment.content}
 """
     EOS
 
-    Notifier.dispatch(author, users, "[iBlog] #{subject}", body)
+    NaveedNotifier.dispatch(comment_author.handle, interested_authors.map(&:handle), "[iBlog] #{subject}", body)
   end
 
   def return_path(owner, comment = nil)

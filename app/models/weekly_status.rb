@@ -17,9 +17,12 @@ class WeeklyStatus < ActiveRecord::Base
   include MarkdownExtension
   include AuthorExtension
 
-  attr_accessible :status, :status_html
-
+  belongs_to :author
   has_many :comments, :as => :owner, :dependent => :destroy
+
+  default_scope { includes(:author) }
+
+  attr_accessible :status, :status_html
 
   validates :status, :presence => true
 
@@ -45,10 +48,10 @@ class WeeklyStatus < ActiveRecord::Base
 
   def title
     timestamp = created_at? ? created_at : Time.now
-    "Wochenstatus KW #{timestamp.strftime('%V')} von #{author}"
+    "Wochenstatus KW #{timestamp.strftime('%V')} von #{author.name}"
   end
 
   def regenerate_html
-    self.status_html = md_to_html(status) if status
+    self.status_html = status ? md_to_html(status) : ""
   end
 end

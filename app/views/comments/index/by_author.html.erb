@@ -1,5 +1,5 @@
-<%= content_for :title, "Alle Kommentare von #{@author}" %>
-<h1>Alle Kommentare von <%= @author %></h1>
+<%= content_for :title, "Alle Kommentare von #{@author.name}" %>
+<h1>Alle Kommentare von <%= @author.name %></h1>
 
 <ol class="comments unstyled">
   <%= render @comments, :show_owner => true %>

@@ -3,7 +3,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '../integration_test
 class UserCommentTest < ActionDispatch::IntegrationTest
   test 'weekly status comment creation' do
     status = WeeklyStatus.new(status: 'pgs current status').tap do |w|
-      w.author = 'pg'
+      w.author = Author.for_handle 'pg'
       w.save
     end
 
@@ -20,12 +20,30 @@ class UserCommentTest < ActionDispatch::IntegrationTest
     visit weekly_statuses_path
     assert_content 'pgs current status'
     assert_content 'Kommentare: 1'
+
+    visit comments_path
+    assert_content 'Alle Kommentare'
+    assert_content 'comment on pgs current status'
+
+    visit "#{comments_path}?author=guest"
+    assert_content 'Alle Kommentare von guest'
+    assert_content 'comment on pgs current status'
+  end
+
+  test 'comment by unknown author 404' do
+    get "#{comments_path}?author=rumpelstielzchen"
+    assert_equal 404, status
   end
 
   test 'entry comment creation' do
-    blog = Blog.create(name: 'pgs blog')
-    entry = Entry.new(title: 'pgs sample ppp', progress: 'pgs sample progress').tap do |e|
-      e.author = 'pg'
+    pg = Author.for_handle 'pg'
+    blog = Blog.new(name: 'pgs blog')
+    blog.author = pg
+    blog.save
+    entry = Entry.new(title: 'pgs sample ppp', progress: 'pgs sample progress')
+    entry.author = pg
+    entry.tap do |e|
+      e.author == pg
       e.blog = blog
       e.save
     end

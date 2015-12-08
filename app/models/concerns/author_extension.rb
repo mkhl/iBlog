@@ -1,4 +1,4 @@
-# Copyright 2014 innoQ Deutschland GmbH
+# Copyright 2015 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,6 @@ module AuthorExtension
   extend ActiveSupport::Concern
 
   def owned_by?(user)
-    author == user
+    author.handle == user
   end
 end

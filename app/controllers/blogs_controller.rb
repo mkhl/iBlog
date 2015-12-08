@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 # Copyright 2014 innoQ Deutschland GmbH
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,11 +15,9 @@
 
 class BlogsController < ApplicationController
 
-  before_filter :set_user
-
   def index
     @blogs = if params[:owner]
-      Blog.where(:owner => params[:owner])
+      Blog.by params[:owner]
     else
       Blog.all
     end
@@ -42,7 +40,7 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
-    @blog.owner = @user
+    @blog.author = Author.for_handle @user
 
     respond_to do |format|
       format.html { render :action => 'edit'}
@@ -56,6 +54,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(params[:blog])
+    @blog.author = @author
 
     respond_to do |format|
       if @blog.save
