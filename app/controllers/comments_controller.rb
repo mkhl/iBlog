@@ -168,21 +168,24 @@ class CommentsController < ApplicationController
 
     body = <<-EOS
 Neuer Kommentar von #{comment_author.name}:
-"""
-#{comment.content}
-"""
+
+#{quote_lines comment.content}
+
 #{url}
     EOS
 
     preceding_comment = all_comments[-2]
     body += <<-EOS if preceding_comment
 \nvorhergehender Kommentar von #{preceding_comment.author.name}:
-"""
-#{preceding_comment.content}
-"""
+
+#{quote_lines preceding_comment.content}
     EOS
 
     NaveedNotifier.dispatch(comment_author.handle, interested_authors.map(&:handle), "[iBlog] #{subject}", body)
+  end
+
+  def quote_lines(msg)
+    msg.lines.map { |line| "> #{line}" }.join("")
   end
 
   def return_path(owner, comment = nil)
